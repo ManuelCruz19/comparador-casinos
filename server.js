@@ -1,56 +1,62 @@
 const express = require('express');
-const { createClient } = require('@supabase/supabase-js');
-const cors = require('cors');
-require('dotenv').config();
-
+const path = require('path');
 const app = express();
-app.use(cors());
+
+const PORT = process.env.PORT || 10000;
+
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.static('public'));
 
-// Configuración con las API Keys de Supabase
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Lista de casinos para la API
+const casinos = [
+    {
+        id: 1,
+        nombre: "Codere Casino",
+        calificacion: "4.9",
+        bono: "$5,000 MXN + 100 Giros Gratis",
+        metodos_pago: "SPEI, OXXO Pay, Visa/Mastercard",
+        link_afiliado: "https://www.codere.mx"
+    },
+    {
+        id: 2,
+        nombre: "Bet365",
+        calificacion: "4.8",
+        bono: "100% hasta $4,000 MXN en Tu Primer Depósito",
+        metodos_pago: "Tarjeta de Crédito, SPEI, Todito Cash",
+        link_afiliado: "https://www.bet365.mx"
+    },
+    {
+        id: 3,
+        nombre: "Caliente Casino",
+        calificacion: "4.7",
+        bono: "$1,000 MXN Gratis Sin Depósito",
+        metodos_pago: "OXXO, Banamex, SPEI, Caliente Card",
+        link_afiliado: "https://www.caliente.mx"
+    }
+];
 
-// Ruta para obtener los casinos
-app.get('/api/casinos', async (req, res) => {
-    try {
-        const { data, error } = await supabase
-            .from('casinos')
-            .select('*')
-            .order('calificacion', { ascending: false });
+// Endpoint API casinos
+app.get('/api/casinos', (req, res) => {
+    res.json(casinos);
+});
 
-        if (error) throw error;
-        res.json(data || []);
-    } catch (err) {
-        console.error("Error en Supabase:", err);
-        res.status(500).send("Error al obtener los casinos");
+// Redirección de afiliados
+app.get('/go/:id', (req, res) => {
+    const casinoId = parseInt(req.params.id);
+    const casino = casinos.find(c => c.id === casinoId);
+    if (casino) {
+        res.redirect(casino.link_afiliado);
+    } else {
+        res.redirect('/');
     }
 });
 
-// Ruta de redirección de afiliados
-app.get('/go/:id', async (req, res) => {
-    const casinoId = req.params.id;
-    try {
-        const { data, error } = await supabase
-            .from('casinos')
-            .select('link_afiliado')
-            .eq('id', casinoId)
-            .single();
-
-        if (error || !data) {
-            return res.status(404).send("Casino no encontrado");
-        }
-
-        res.redirect(data.link_afiliado);
-    } catch (err) {
-        console.error("Error de redirección:", err);
-        res.status(500).send("Error de redirección");
-    }
+// Asegurar que cualquier ruta cargue el index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor en línea en el puerto ${PORT}`);
 });
