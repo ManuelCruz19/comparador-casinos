@@ -293,7 +293,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Cargar datos persistentes del navegador (LocalStorage) para que no se pierdan al actualizar
+        // Cargar datos persistentes del navegador (LocalStorage)
         let misFichas = parseInt(localStorage.getItem('slot_fichas')) || 250;
         let nivelPase = parseInt(localStorage.getItem('slot_nivel')) || 1;
         let expPase = parseInt(localStorage.getItem('slot_exp')) || 0;
@@ -413,15 +413,15 @@
                 contenedorBtn.innerHTML = `<button onclick="jugarGallina()" class="btn btn-warning btn-lg w-100 fw-bold py-3 shadow text-dark">DAR PASO A GALLINA 🐔</button>`;
             } else if (juego === 'ruleta') {
                 titulo.innerText = "🎯 Ruleta de la Suerte";
-                desc.innerText = "Gira la rueda arcade para ganar multiplicadores sorpresa al instante.";
+                desc.innerText = "Gira la rueda arcade. Hay sectores con premios, mitades y casillas donde pierdes.";
                 pantalla.innerHTML = `
                     <div class="display-2 mb-3">🎡</div>
-                    <div id="estado-ruleta" class="text-warning fw-bold fs-5">Listo para girar</div>
+                    <div id="estado-ruleta" class="text-warning fw-bold fs-5">Rueda equilibrada (Probabilidad real)</div>
                 `;
                 contenedorBtn.innerHTML = `<button onclick="jugarRuleta()" class="btn btn-danger btn-lg w-100 fw-bold py-3 shadow">GIRAR RULETA 🎯</button>`;
             } else if (juego === 'slots') {
                 titulo.innerText = "🎰 Slots Clásicos Neón";
-                desc.innerText = "Consigue 3 símbolos iguales en línea para llevarte el premio acumulado.";
+                desc.innerText = "Combina símbolos. Hay premios por 2 iguales o el Jackpot por 3 iguales.";
                 pantalla.innerHTML = `
                     <div class="d-flex gap-3 justify-content-center">
                         <div class="slot-box-pro" id="slot1">🍒</div>
@@ -444,7 +444,7 @@
             }
         }
 
-        // LÓGICA DE JUEGOS
+        // LÓGICA DE JUEGOS CON PROBABILIDADES REALES
         let avionEnCurso = false;
         let intervaloAvion = null;
 
@@ -463,7 +463,6 @@
             btn.className = "btn btn-warning btn-lg w-100 fw-bold py-3 shadow text-dark";
             btn.innerText = "¡RETIRAR GANANCIAS!";
             
-            // Permitir retirar haciendo clic de nuevo
             btn.onclick = function() {
                 if (!avionEnCurso) return;
                 clearInterval(intervaloAvion);
@@ -495,14 +494,14 @@
             if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
             misFichas -= apuesta;
 
-            const exito = Math.random() >= 0.4;
+            const exito = Math.random() >= 0.5; // 50% de probabilidad real
             if (exito) {
                 const premio = apuesta * 2;
                 misFichas += premio;
                 document.getElementById('estado-gallina').innerText = "🐔 ¡Cruzó con éxito! Ganaste +" + premio;
                 ganarExperiencia(20);
             } else {
-                document.getElementById('estado-gallina').innerText = "🚗 ¡Un coche detuvo a la gallina! Perdiste.";
+                document.getElementById('estado-gallina').innerText = "🚗 ¡Un coche detuvo a la gallina! Perdiste la apuesta.";
                 ganarExperiencia(10);
             }
             guardarDatos();
@@ -513,13 +512,29 @@
             if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
             misFichas -= apuesta;
 
-            const multis = [0, 1.5, 2, 3, 0.5];
-            const m = multis[Math.floor(Math.random() * multis.length)];
-            const premio = Math.round(apuesta * m);
+            // Sectores equilibrados de la ruleta (Con opción real de perder 0x)
+            const resultadosRuleta = [
+                { mult: 0, texto: "😢 Cayó en 0x (Perdiste)" },
+                { mult: 0.5, texto: "⭐ Cayó en 0.5x (Recuperas la mitad)" },
+                { mult: 1, texto: "🔄 Cayó en 1x (Recuperas tu apuesta)" },
+                { mult: 2, texto: "🎉 ¡Cayó en 2x (Duplicas tu apuesta!)" },
+                { mult: 3, texto: "🔥 ¡JACKPOT RULETA 3x!" }
+            ];
+
+            // Probabilidades ponderadas
+            const rand = Math.random();
+            let elegido;
+            if (rand < 0.35) elegido = resultadosRuleta[0]; // 35% de perder
+            else if (rand < 0.60) elegido = resultadosRuleta[1]; // 25% recuperar mitad
+            else if (rand < 0.80) elegido = resultadosRuleta[2]; // 20% recuperar igual
+            else if (rand < 0.95) elegido = resultadosRuleta[3]; // 15% duplicar
+            else elegido = resultadosRuleta[4]; // 5% triple
+
+            const premio = Math.round(apuesta * elegido.mult);
             misFichas += premio;
 
-            document.getElementById('estado-ruleta').innerText = `🎯 Cayó en ${m}x. Recibiste +${premio} Fichas`;
-            ganarExperiencia(15);
+            document.getElementById('estado-ruleta').innerText = `${elegido.texto} (+${premio} Fichas)`;
+            ganarExperiencia(elegido.mult > 0 ? 20 : 10);
             guardarDatos();
         }
 
@@ -538,11 +553,20 @@
             document.getElementById('slot3').innerText = s3;
 
             if (s1 === s2 && s2 === s3) {
+                // Premio Mayor (3 iguales)
                 const premio = apuesta * 5;
                 misFichas += premio;
-                alert(`🎉 ¡JACKPOT! 3 símbolos iguales. Ganaste +${premio} Fichas.`);
+                alert(`🎉 ¡JACKPOT! 3 símbolos iguales (${s1}${s2}${s3}). Ganaste +${premio} Fichas.`);
                 ganarExperiencia(35);
+            } else if (s1 === s2 || s2 === s3 || s1 === s3) {
+                // Premio Menor (2 iguales - para que no siempre pierdan)
+                const premio = Math.round(apuesta * 1.5);
+                misFichas += premio;
+                alert(`✨ ¡Par encontrado! Ganaste +${premio} Fichas.`);
+                ganarExperiencia(20);
             } else {
+                // Pérdida
+                alert(`😢 No hubo combinaciones. ¡Sigue intentando!`);
                 ganarExperiencia(10);
             }
             guardarDatos();
