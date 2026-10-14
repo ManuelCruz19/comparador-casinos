@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 10000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Lista de casinos para la API
+// Lista oficial de casinos recomendados (Tus fuentes de afiliación)
 const casinos = [
     {
         id: 1,
@@ -41,7 +41,7 @@ app.get('/api/casinos', (req, res) => {
     res.json(casinos);
 });
 
-// Redirección de afiliados
+// Redirección inteligente de afiliados (/go/id)
 app.get('/go/:id', (req, res) => {
     const casinoId = parseInt(req.params.id);
     const casino = casinos.find(c => c.id === casinoId);
@@ -52,11 +52,11 @@ app.get('/go/:id', (req, res) => {
     }
 });
 
-// Asegurar que cualquier ruta cargue el index.html
+// Ruta comodín para el frontend
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor en línea en el puerto ${PORT}`);
+    console.log(`Servidor profesional activo en el puerto ${PORT}`);
 });
