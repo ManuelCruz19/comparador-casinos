@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Casinos 2026 - Zona Arcade Pro & Comparador</title>
+    <title>Top Casinos 2026 - Zona Arcade Gratis & Comparador</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
     <script>
@@ -55,7 +55,7 @@
         }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* DISEÑO ARCADE PRO TIPO CASINO ONLINE */
+        /* ESTILOS ARCADE LIBRE Y DINÁMICO */
         .arcade-wrapper {
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
             border: 2px solid #6366f1;
@@ -82,7 +82,7 @@
             color: #cbd5e1;
             font-weight: 700;
             border-radius: 12px;
-            padding: 12px 20px;
+            padding: 12px 25px;
             transition: 0.2s;
         }
         .arcade-tab:hover, .arcade-tab.active {
@@ -91,20 +91,6 @@
             border-color: #818cf8;
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
         }
-        .slot-box-pro {
-            background: #111827;
-            border: 3px solid #f59e0b;
-            border-radius: 14px;
-            font-size: 3.2rem;
-            width: 85px;
-            height: 95px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
-        }
-        .pass-progress { height: 10px; border-radius: 10px; background: #1f2937; }
-        .pass-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #f59e0b, #ef4444); transition: width 0.4s ease; }
     </style>
 </head>
 <body>
@@ -115,14 +101,7 @@
             <a class="navbar-brand fw-extrabold fs-4" href="#">
                 <i class="fa-solid fa-dice text-warning me-2"></i>Slot<span class="text-info">Comparador</span>
             </a>
-            <div class="d-flex align-items-center gap-3">
-                <span class="badge bg-dark border border-warning text-warning fs-6 px-3 py-2 shadow-sm">
-                    <i class="fa-solid fa-coins me-1"></i> <span id="contador-fichas">100</span> 🪙
-                </span>
-                <button class="btn btn-sm btn-warning fw-bold px-3 shadow" data-bs-toggle="modal" data-bs-target="#modalTienda">
-                    <i class="fa-solid fa-cart-shopping me-1"></i> Comprar Fichas
-                </button>
-            </div>
+            <span class="text-success small fw-semibold"><i class="fa-solid fa-shield-halved me-1"></i> Modo Entretenimiento Gratis</span>
         </div>
     </nav>
 
@@ -130,12 +109,12 @@
     <header class="hero-section text-center">
         <div class="container">
             <span class="badge text-light px-3 py-2 rounded-pill mb-3 border border-light border-opacity-10" style="background: rgba(99,102,241,0.3); color: #c7d2fe !important;">Plataforma Oficial 2026</span>
-            <h1 class="display-5 fw-bold mb-2 text-white">Casinos Verificados & Zona Arcade</h1>
-            <p class="text-muted mx-auto" style="max-width: 600px;">Prueba suerte en nuestros minijuegos interactivos guardados en tu perfil y descubre los mejores bonos de dinero real.</p>
+            <h1 class="display-5 fw-bold mb-2 text-white">Casinos Verificados & Zona de Juegos Gratis</h1>
+            <p class="text-muted mx-auto" style="max-width: 600px;">Diviértete con nuestros minijuegos interactivos de habilidad totalmente gratis y descubre los mejores bonos de dinero real.</p>
         </div>
     </header>
 
-    <!-- Main Content (Lista de Casinos) -->
+    <!-- Main Content (Lista de Casinos - Tu fuente principal de ingresos por afiliados) -->
     <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="h5 fw-bold mb-0 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos Recomendados</h2>
@@ -149,143 +128,49 @@
         </div>
     </main>
 
-    <!-- 🎮 ZONA ARCADE PROFESIONAL 🎮 -->
+    <!-- 🎮 ZONA ARCADE LIBRE 🎮 -->
     <section class="container my-5">
         <div class="arcade-wrapper">
-            <!-- Barra superior del Arcade con Pase de Batalla -->
-            <div class="row align-items-center mb-4 pb-3 border-bottom border-secondary border-opacity-25">
-                <div class="col-lg-7 mb-3 mb-lg-0">
-                    <h3 class="text-white fw-bold mb-1" style="font-family: 'Orbitron', sans-serif;">
-                        <i class="fa-solid fa-gamepad text-warning me-2"></i>CASINO ARCADE LOUNGE
-                    </h3>
-                    <p class="text-muted small mb-0">Tus fichas y nivel VIP se guardan automáticamente en tu navegador.</p>
-                </div>
-                <div class="col-lg-5">
-                    <div class="bg-dark p-3 rounded-3 border border-warning border-opacity-25 shadow-sm">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span class="small fw-bold text-warning"><i class="fa-solid fa-crown me-1"></i>Pase VIP: Nivel <span id="nivel-pase">1</span></span>
-                            <span class="small text-muted"><span id="exp-pase">0</span>/100 XP</span>
-                        </div>
-                        <div class="pass-progress mb-1">
-                            <div id="barra-pase" class="pass-bar" style="width: 0%;"></div>
-                        </div>
-                        <button class="btn btn-link btn-sm text-info p-0 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalPase">Ver beneficios VIP <i class="fa-solid fa-chevron-right ms-1"></i></button>
-                    </div>
-                </div>
+            <div class="text-center mb-4">
+                <h3 class="text-white fw-bold" style="font-family: 'Orbitron', sans-serif;">
+                    <i class="fa-solid fa-gamepad text-warning me-2"></i>ZONA DE JUEGOS GRATIS
+                </h3>
+                <p class="text-muted small">Juega libremente sin registros ni pagos. Pon a prueba tus reflejos y suerte.</p>
             </div>
 
-            <!-- Botones de Selección de Juegos -->
-            <div class="d-flex gap-2 overflow-auto mb-4 pb-2">
+            <!-- Botones de Selección de Juegos (Solo Avión, Gallina y Moneda) -->
+            <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
                 <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ El Avión (Crash)</button>
                 <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 La Gallina Express</button>
-                <button onclick="cambiarJuego('ruleta')" id="tab-ruleta" class="arcade-tab">🎯 Ruleta de la Suerte</button>
-                <button onclick="cambiarJuego('slots')" id="tab-slots" class="arcade-tab">🎰 Slots Clásicos</button>
                 <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
             </div>
 
             <!-- Pantalla del Juego y Controles -->
-            <div class="row align-items-center">
-                <div class="col-lg-8 mb-4 mb-lg-0">
-                    <div id="pantalla-juego" class="game-stage text-center">
-                        <!-- El contenido interactivo se carga aquí -->
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-8">
+                    <div id="pantalla-juego" class="game-stage text-center mb-4">
+                        <!-- Contenido dinámico del juego -->
+                    </div>
+
+                    <div id="contenedor-boton-accion" class="text-center">
+                        <!-- Botón principal de acción -->
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4">
-                    <div class="bg-dark p-4 rounded-4 h-100 border border-secondary border-opacity-25 d-flex flex-column justify-content-between">
-                        <div>
-                            <h4 class="text-white fw-bold mb-2" id="titulo-juego">🛩️ El Avión (Crash)</h4>
-                            <p class="small text-muted mb-4" id="desc-juego">Apuesta tus fichas y retira antes de que el avión se eleve demasiado y choque.</p>
-                        </div>
-                        
-                        <div>
-                            <div class="mb-3">
-                                <label class="small text-white-50 fw-bold mb-1">Apuesta por ronda:</label>
-                                <div class="input-group">
-                                    <input type="number" id="input-apuesta" value="10" min="5" max="500" class="form-control bg-secondary bg-opacity-25 text-warning fw-bold border-0 fs-5">
-                                    <button onclick="document.getElementById('input-apuesta').value = 25" class="btn btn-outline-secondary btn-sm text-white">25</button>
-                                    <button onclick="document.getElementById('input-apuesta').value = 50" class="btn btn-outline-secondary btn-sm text-white">50</button>
-                                </div>
-                            </div>
-
-                            <div id="contenedor-boton-accion">
-                                <!-- Botón dinámico de juego -->
-                            </div>
-
-                            <div id="alerta-dinero-real" class="mt-3 p-3 rounded-3 bg-success bg-opacity-25 text-success small border border-success d-none text-center">
-                                🔥 <strong>¿Quieres ganar dinero real?</strong> Usa nuestros bonos exclusivos en los mejores casinos listados arriba.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Banner inteligente hacia Afiliados (Tu monetización real automática) -->
+            <div class="mt-4 p-4 rounded-4 bg-dark border border-success border-opacity-50 text-center">
+                <h5 class="text-white fw-bold mb-2">🔥 ¿Te gustó la emoción de jugar?</h5>
+                <p class="text-muted small mb-3">Lleva esa misma adrenalina a los casinos en línea con licencias oficiales y reclama bonos de bienvenida exclusivos.</p>
+                <a href="#lista-casinos" class="btn btn-success fw-bold px-4 py-2">Ver Casinos Recomendados Arriba ⬆️</a>
             </div>
         </div>
     </section>
 
-    <!-- MODAL TIENDA DE FICHAS -->
-    <div class="modal fade" id="modalTienda" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white border border-warning">
-                <div class="modal-header border-secondary">
-                    <h5 class="modal-title fw-bold text-warning"><i class="fa-solid fa-coins me-2"></i>Recargar Fichas Virtuales</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <p class="text-muted small">Selecciona un paquete para recargar tu saldo arcade al instante:</p>
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-secondary">
-                                <h4 class="text-warning fw-bold mb-1">500 🪙</h4>
-                                <p class="small text-muted mb-2">$29 MXN</p>
-                                <button onclick="recargarFichas(500)" class="btn btn-sm btn-warning w-100 fw-bold">Obtener</button>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="p-3 rounded-3 bg-secondary bg-opacity-25 border border-warning">
-                                <span class="badge bg-danger mb-1">Mejor Oferta</span>
-                                <h4 class="text-warning fw-bold mb-1">2,000 🪙</h4>
-                                <p class="small text-muted mb-2">$79 MXN</p>
-                                <button onclick="recargarFichas(2000)" class="btn btn-sm btn-warning w-100 fw-bold">Obtener</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL PASE VIP -->
-    <div class="modal fade" id="modalPase" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white border border-info">
-                <div class="modal-header border-secondary">
-                    <h5 class="modal-title fw-bold text-info"><i class="fa-solid fa-crown me-2"></i>Beneficios del Pase de Batalla VIP</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-group list-group-flush bg-transparent">
-                        <li class="list-group-item bg-transparent text-white border-secondary d-flex justify-content-between align-items-center">
-                            <span>Nivel 1: +100 Fichas de Bienvenida</span>
-                            <span class="badge bg-success">Activo</span>
-                        </li>
-                        <li class="list-group-item bg-transparent text-white border-secondary d-flex justify-content-between align-items-center">
-                            <span>Nivel 2: Multiplicador x1.5 en Minijuegos</span>
-                            <span class="badge bg-secondary">Bloqueado</span>
-                        </li>
-                        <li class="list-group-item bg-transparent text-white border-secondary d-flex justify-content-between align-items-center">
-                            <span>Nivel 3: Acceso a Bono Exclusivo sin Depósito</span>
-                            <span class="badge bg-warning text-dark">VIP</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="text-center py-4 text-muted border-top border-secondary border-opacity-25 mt-5">
         <div class="container">
-            <p class="small mb-1">&copy; 2026 SlotComparador. Todos los derechos reservados.</p>
+            <p class="small mb-1">&copy; 2026 SlotComparador. Todos los derechos reservados. Contenido de entretenimiento gratuito.</p>
             <p class="text-danger small fw-semibold"><i class="fa-solid fa-triangle-exclamation me-1"></i> Juega con responsabilidad. +18 prohibido a menores.</p>
         </div>
     </footer>
@@ -293,50 +178,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Cargar datos persistentes del navegador (LocalStorage)
-        let misFichas = parseInt(localStorage.getItem('slot_fichas')) || 250;
-        let nivelPase = parseInt(localStorage.getItem('slot_nivel')) || 1;
-        let expPase = parseInt(localStorage.getItem('slot_exp')) || 0;
-        let partidasJugadas = parseInt(localStorage.getItem('slot_partidas')) || 0;
-        let juegoActual = 'avion';
-
-        function guardarDatos() {
-            localStorage.setItem('slot_fichas', misFichas);
-            localStorage.setItem('slot_nivel', nivelPase);
-            localStorage.setItem('slot_exp', expPase);
-            localStorage.setItem('slot_partidas', partidasJugadas);
-            actualizarUI();
-        }
-
-        function actualizarUI() {
-            document.getElementById('contador-fichas').innerText = misFichas;
-            document.getElementById('nivel-pase').innerText = nivelPase;
-            document.getElementById('exp-pase').innerText = expPase;
-            document.getElementById('barra-pase').style.width = expPase + '%';
-            if (partidasJugadas >= 3) {
-                document.getElementById('alerta-dinero-real').classList.remove('d-none');
-            }
-        }
-
-        function ganarExperiencia(puntos) {
-            expPase += puntos;
-            partidasJugadas++;
-            if (expPase >= 100) {
-                nivelPase++;
-                expPase = 0;
-                misFichas += 100;
-                alert(`👑 ¡Felicidades! Subiste al Nivel ${nivelPase} del Pase VIP. Ganaste +100 Fichas extra.`);
-            }
-            guardarDatos();
-        }
-
-        function recargarFichas(cantidad) {
-            misFichas += cantidad;
-            guardarDatos();
-            alert(`🎉 ¡Recarga exitosa! Se acreditaron +${cantidad} Fichas a tu cuenta.`);
-            bootstrap.Modal.getInstance(document.getElementById('modalTienda')).hide();
-        }
-
         // Cargar Casinos desde API
         async function cargarCasinos() {
             try {
@@ -383,216 +224,97 @@
             }
         }
 
-        // GESTIÓN DE JUEGOS INTERACTIVOS
+        // GESTIÓN DE JUEGOS GRATIS
         function cambiarJuego(juego) {
-            juegoActual = juego;
             document.querySelectorAll('.arcade-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${juego}`).classList.add('active');
 
             const pantalla = document.getElementById('pantalla-juego');
-            const titulo = document.getElementById('titulo-juego');
-            const desc = document.getElementById('desc-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
             if (juego === 'avion') {
-                titulo.innerText = "🛩️ El Avión (Crash)";
-                desc.innerText = "El multiplicador sube segundo a segundo. ¡Retira tus ganancias antes de que el avión explote!";
                 pantalla.innerHTML = `
                     <div class="display-4 mb-2">🛫</div>
                     <div id="mult-avion" class="display-3 fw-bold text-warning mb-2">1.00x</div>
-                    <p class="small text-muted mb-0">Estado: Listo para despegar</p>
+                    <p class="small text-muted mb-0">Haz clic en iniciar y retira a tiempo antes del choque</p>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="jugarAvion()" class="btn btn-success btn-lg w-100 fw-bold py-3 shadow">INICIAR VUELO 🛩️</button>`;
+                contenedorBtn.innerHTML = `<button onclick="iniciarAvionGratis()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO GRATIS 🛩️</button>`;
             } else if (juego === 'gallina') {
-                titulo.innerText = "🐔 La Gallina Express";
-                desc.innerText = "Cruza los carriles de la carretera sin ser alcanzado por los autos.";
                 pantalla.innerHTML = `
                     <div class="display-3 mb-3">🐔 ➔ 🛣️ ➔ 🚗</div>
-                    <div id="estado-gallina" class="text-info fw-bold fs-5">Selecciona carril para avanzar</div>
+                    <div id="estado-gallina" class="text-info fw-bold fs-5">Ayuda a la gallina a cruzar la calle</div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="jugarGallina()" class="btn btn-warning btn-lg w-100 fw-bold py-3 shadow text-dark">DAR PASO A GALLINA 🐔</button>`;
-            } else if (juego === 'ruleta') {
-                titulo.innerText = "🎯 Ruleta de la Suerte";
-                desc.innerText = "Gira la rueda arcade. Hay sectores con premios, mitades y casillas donde pierdes.";
-                pantalla.innerHTML = `
-                    <div class="display-2 mb-3">🎡</div>
-                    <div id="estado-ruleta" class="text-warning fw-bold fs-5">Rueda equilibrada (Probabilidad real)</div>
-                `;
-                contenedorBtn.innerHTML = `<button onclick="jugarRuleta()" class="btn btn-danger btn-lg w-100 fw-bold py-3 shadow">GIRAR RULETA 🎯</button>`;
-            } else if (juego === 'slots') {
-                titulo.innerText = "🎰 Slots Clásicos Neón";
-                desc.innerText = "Combina símbolos. Hay premios por 2 iguales o el Jackpot por 3 iguales.";
-                pantalla.innerHTML = `
-                    <div class="d-flex gap-3 justify-content-center">
-                        <div class="slot-box-pro" id="slot1">🍒</div>
-                        <div class="slot-box-pro" id="slot2">💎</div>
-                        <div class="slot-box-pro" id="slot3">7️⃣</div>
-                    </div>
-                `;
-                contenedorBtn.innerHTML = `<button onclick="jugarSlots()" class="btn btn-warning btn-lg w-100 fw-bold py-3 shadow text-dark">GIRAR CARRETES 🎰</button>`;
+                contenedorBtn.innerHTML = `<button onclick="cruzarGallinaGratis()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">DAR PASO A GALLINA 🐔</button>`;
             } else if (juego === 'moneda') {
-                titulo.innerText = "🪙 Cara o Cruz VIP";
-                desc.innerText = "Apuesta al lado ganador y dobla tus fichas en un segundo.";
                 pantalla.innerHTML = `
-                    <div class="display-1 mb-3">🪙</div>
-                    <div class="d-flex gap-2 justify-content-center w-100">
-                        <button onclick="lanzarMoneda('Cara')" class="btn btn-outline-info fw-bold px-4 py-2">Elegir CARA</button>
-                        <button onclick="lanzarMoneda('Cruz')" class="btn btn-outline-warning fw-bold px-4 py-2">Elegir CRUZ</button>
+                    <div id="moneda-icono" class="display-1 mb-3">🪙</div>
+                    <div id="estado-moneda" class="text-warning fw-bold fs-5">Elige un lado para lanzar la moneda</div>
+                `;
+                contenedorBtn.innerHTML = `
+                    <div class="d-flex justify-content-center gap-3">
+                        <button onclick="lanzarMonedaGratis('Cara')" class="btn btn-info fw-bold px-4 py-2">Elegir CARA</button>
+                        <button onclick="lanzarMonedaGratis('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark">Elegir CRUZ</button>
                     </div>
                 `;
-                contenedorBtn.innerHTML = `<p class="small text-muted text-center mb-0">Selecciona arriba tu opción para jugar</p>`;
             }
         }
 
-        // LÓGICA DE JUEGOS CON PROBABILIDADES REALES
-        let avionEnCurso = false;
-        let intervaloAvion = null;
+        // LÓGICA DE JUEGOS GRATIS
+        let vueloActivo = false;
+        let timerAvion = null;
 
-        function jugarAvion() {
-            const apuesta = parseInt(document.getElementById('input-apuesta').value) || 10;
-            if (misFichas < apuesta) { alert("¡No tienes suficientes fichas! Recarga en la tienda."); return; }
-            
-            misFichas -= apuesta;
-            guardarDatos();
-
-            let mult = 1.00;
-            const crashEn = (Math.random() * 3 + 1.2).toFixed(2);
-            avionEnCurso = true;
-            
+        function iniciarAvionGratis() {
             const btn = document.querySelector('#contenedor-boton-accion button');
-            btn.className = "btn btn-warning btn-lg w-100 fw-bold py-3 shadow text-dark";
-            btn.innerText = "¡RETIRAR GANANCIAS!";
-            
-            btn.onclick = function() {
-                if (!avionEnCurso) return;
-                clearInterval(intervaloAvion);
-                avionEnCurso = false;
-                const premio = Math.round(apuesta * mult);
-                misFichas += premio;
-                ganarExperiencia(25);
-                alert(`🎉 ¡Retiraste a tiempo con ${mult.toFixed(2)}x! Ganaste +${premio} Fichas.`);
-                cambiarJuego('avion');
-            };
+            if (!vueloActivo) {
+                vueloActivo = true;
+                let m = 1.00;
+                const crash = (Math.random() * 3 + 1.2).toFixed(2);
 
-            intervaloAvion = setInterval(() => {
-                mult += 0.04;
-                document.getElementById('mult-avion').innerText = mult.toFixed(2) + "x";
+                btn.innerText = "¡RETIRAR A TIEMPO!";
+                btn.className = "btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark";
 
-                if (mult >= crashEn) {
-                    clearInterval(intervaloAvion);
-                    avionEnCurso = false;
-                    document.getElementById('mult-avion').innerText = "¡💥 CRASH!";
-                    alert("😢 El avión voló muy alto y explotó. Perdiste la apuesta.");
-                    ganarExperiencia(10);
-                    setTimeout(() => cambiarJuego('avion'), 1500);
-                }
-            }, 120);
+                timerAvion = setInterval(() => {
+                    m += 0.05;
+                    document.getElementById('mult-avion').innerText = m.toFixed(2) + "x";
+                    if (m >= crash) {
+                        clearInterval(timerAvion);
+                        vueloActivo = false;
+                        document.getElementById('mult-avion').innerText = "¡💥 EXPLOSIÓN!";
+                        btn.innerText = "INICIAR VUELO GRATIS 🛩️";
+                        btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
+                    }
+                }, 100);
+            } else {
+                clearInterval(timerAvion);
+                vueloActivo = false;
+                alert("🎉 ¡Excelente reflejo! Retiraste con éxito.");
+                btn.innerText = "INICIAR VUELO GRATIS 🛩️";
+                btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
+                document.getElementById('mult-avion').innerText = "1.00x";
+            }
         }
 
-        function jugarGallina() {
-            const apuesta = parseInt(document.getElementById('input-apuesta').value) || 10;
-            if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
-            misFichas -= apuesta;
-
-            const exito = Math.random() >= 0.5; // 50% de probabilidad real
+        function cruzarGallinaGratis() {
+            const exito = Math.random() >= 0.4;
             if (exito) {
-                const premio = apuesta * 2;
-                misFichas += premio;
-                document.getElementById('estado-gallina').innerText = "🐔 ¡Cruzó con éxito! Ganaste +" + premio;
-                ganarExperiencia(20);
+                document.getElementById('estado-gallina').innerText = "🎉 ¡La gallina cruzó la calle con éxito!";
             } else {
-                document.getElementById('estado-gallina').innerText = "🚗 ¡Un coche detuvo a la gallina! Perdiste la apuesta.";
-                ganarExperiencia(10);
+                document.getElementById('estado-gallina').innerText = "💥 ¡Un coche la alcanzó! Inténtalo de nuevo.";
             }
-            guardarDatos();
         }
 
-        function jugarRuleta() {
-            const apuesta = parseInt(document.getElementById('input-apuesta').value) || 10;
-            if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
-            misFichas -= apuesta;
-
-            // Sectores equilibrados de la ruleta (Con opción real de perder 0x)
-            const resultadosRuleta = [
-                { mult: 0, texto: "😢 Cayó en 0x (Perdiste)" },
-                { mult: 0.5, texto: "⭐ Cayó en 0.5x (Recuperas la mitad)" },
-                { mult: 1, texto: "🔄 Cayó en 1x (Recuperas tu apuesta)" },
-                { mult: 2, texto: "🎉 ¡Cayó en 2x (Duplicas tu apuesta!)" },
-                { mult: 3, texto: "🔥 ¡JACKPOT RULETA 3x!" }
-            ];
-
-            // Probabilidades ponderadas
-            const rand = Math.random();
-            let elegido;
-            if (rand < 0.35) elegido = resultadosRuleta[0]; // 35% de perder
-            else if (rand < 0.60) elegido = resultadosRuleta[1]; // 25% recuperar mitad
-            else if (rand < 0.80) elegido = resultadosRuleta[2]; // 20% recuperar igual
-            else if (rand < 0.95) elegido = resultadosRuleta[3]; // 15% duplicar
-            else elegido = resultadosRuleta[4]; // 5% triple
-
-            const premio = Math.round(apuesta * elegido.mult);
-            misFichas += premio;
-
-            document.getElementById('estado-ruleta').innerText = `${elegido.texto} (+${premio} Fichas)`;
-            ganarExperiencia(elegido.mult > 0 ? 20 : 10);
-            guardarDatos();
-        }
-
-        function jugarSlots() {
-            const apuesta = parseInt(document.getElementById('input-apuesta').value) || 10;
-            if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
-            misFichas -= apuesta;
-
-            const simbolos = ['🍒', '💎', '7️⃣', '🔔', '🍋'];
-            const s1 = simbolos[Math.floor(Math.random() * simbolos.length)];
-            const s2 = simbolos[Math.floor(Math.random() * simbolos.length)];
-            const s3 = simbolos[Math.floor(Math.random() * simbolos.length)];
-
-            document.getElementById('slot1').innerText = s1;
-            document.getElementById('slot2').innerText = s2;
-            document.getElementById('slot3').innerText = s3;
-
-            if (s1 === s2 && s2 === s3) {
-                // Premio Mayor (3 iguales)
-                const premio = apuesta * 5;
-                misFichas += premio;
-                alert(`🎉 ¡JACKPOT! 3 símbolos iguales (${s1}${s2}${s3}). Ganaste +${premio} Fichas.`);
-                ganarExperiencia(35);
-            } else if (s1 === s2 || s2 === s3 || s1 === s3) {
-                // Premio Menor (2 iguales - para que no siempre pierdan)
-                const premio = Math.round(apuesta * 1.5);
-                misFichas += premio;
-                alert(`✨ ¡Par encontrado! Ganaste +${premio} Fichas.`);
-                ganarExperiencia(20);
-            } else {
-                // Pérdida
-                alert(`😢 No hubo combinaciones. ¡Sigue intentando!`);
-                ganarExperiencia(10);
-            }
-            guardarDatos();
-        }
-
-        function lanzarMoneda(eleccion) {
-            const apuesta = parseInt(document.getElementById('input-apuesta').value) || 10;
-            if (misFichas < apuesta) { alert("¡Fichas insuficientes!"); return; }
-            misFichas -= apuesta;
-
+        function lanzarMonedaGratis(eleccion) {
             const resultado = Math.random() >= 0.5 ? 'Cara' : 'Cruz';
+            document.getElementById('moneda-icono').innerText = resultado === 'Cara' ? '🪙' : '👑';
             if (eleccion === resultado) {
-                const premio = apuesta * 2;
-                misFichas += premio;
-                alert(`🪙 Salió ${resultado}. ¡Acertaste y ganaste +${premio} Fichas!`);
-                ganarExperiencia(20);
+                document.getElementById('estado-moneda').innerText = `🎉 Salió ${resultado}. ¡Acertaste tu predicción!`;
             } else {
-                alert(`😢 Salió ${resultado}. Perdiste la apuesta.`);
-                ganarExperiencia(10);
+                document.getElementById('estado-moneda').innerText = `😢 Salió ${resultado}. ¡Sigue probando suerte!`;
             }
-            guardarDatos();
         }
 
         // Inicializar
         cargarCasinos();
-        actualizarUI();
         cambiarJuego('avion');
     </script>
 </body>
