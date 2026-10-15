@@ -141,7 +141,7 @@
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
         }
 
-        /* CANVAS DE JUEGOS */
+        /* CANVAS */
         .arcade-canvas {
             background: #1e1b4b;
             border-radius: 14px;
@@ -175,7 +175,7 @@
             transform: scale(1.05);
         }
 
-        /* GATO IMPOSIBLE */
+        /* GATO PRO */
         .tictactoe-grid {
             display: grid;
             grid-template-columns: repeat(3, 70px);
@@ -270,7 +270,7 @@
                     <div id="arcade-container" class="arcade-wrapper">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h3 class="text-white fw-bold fs-6 mb-0" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CHICKEN MASTER & ARCADE
+                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CHICKEN MASTER & MINAS
                             </h3>
                             <button onclick="toggleFullScreen()" class="btn btn-sm btn-dark text-info border border-info">
                                 <i class="fa-solid fa-expand me-1"></i> Fullscreen
@@ -281,7 +281,7 @@
                         <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
                             <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Master</button>
                             <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab">🛩️ AviaMasters</button>
-                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas</button>
+                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas & Bombas</button>
                             <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Pro</button>
                         </div>
 
@@ -402,7 +402,7 @@
             if (juego === 'gallina') {
                 pantalla.innerHTML = `
                     <canvas id="canvas-chickenmaster" width="320" height="220" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-warning fw-bold small">Apuesta: 10 fichas | Nivel 0/5 (1.0x)</div>
+                    <div id="estado-chicken" class="text-warning fw-bold small">Apuesta: 10 fichas | Nivel 0/5 (1.0x) - Calle tranquila</div>
                 `;
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-2">
@@ -422,7 +422,7 @@
                 contenedorBtn.innerHTML = `<button onclick="iniciarAviaMasters()" class="btn btn-success fw-bold px-4 py-2 shadow">INICIAR VUELO 🛩️ (-10f)</button>`;
                 dibujarAviaMastersFrame(1.00, 40, 140);
             } else if (juego === 'minas') {
-                iniciarMinasJuego();
+                prepararMinasJuego();
             } else if (juego === 'gato') {
                 iniciarGatoImposible();
             }
@@ -434,20 +434,22 @@
             vueloAviaActivo = false;
         }
 
-        // --- 1. CHICKEN MASTER (Carros Verticales con Atropello y Multiplicadores) ---
+        // --- 1. CHICKEN MASTER (5 Carriles, Tráfico Tranquilo, Azar en el Salto) ---
         let nivelChicken = 0;
         let gananciaChicken = 0;
-        let autosY = [-50, 70, 190];
+        let autoY = -60;
         let intervaloChicken = null;
+        let carroAtropellando = false;
         const multsChickenVals = [1.15, 1.37, 1.64, 2.10, 3.50];
 
         function iniciarChickenMasterScene() {
             dibujarChickenMasterFrame();
             if (intervaloChicken) clearInterval(intervaloChicken);
+            // Calle mayormente tranquila; el carro pasa ocasionalmente
             intervaloChicken = setInterval(() => {
-                for(let i=0; i<3; i++) {
-                    autosY[i] += 8;
-                    if (autosY[i] > 240) autosY[i] = -60;
+                if (carroAtropellando) {
+                    autoY += 12;
+                    if (autoY > 260) { autoY = -60; carroAtropellando = false; }
                 }
                 dibujarChickenMasterFrame();
             }, 50);
@@ -459,7 +461,7 @@
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Fondo asfalto con carriles verticales
+            // Fondo de la pista con carriles
             ctx.fillStyle = '#0f172a';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -469,31 +471,44 @@
             ctx.beginPath(); ctx.moveTo(213, 0); ctx.lineTo(213, canvas.height); ctx.stroke();
             ctx.setLineDash([]);
 
-            // Bloques de multiplicadores verticales
-            let posXs = [53, 160, 266];
+            // 5 Carriles / Niveles distribuidos idéntico a tu captura
+            let coordsCarriles = [
+                {x: 53, y: 35, mult: '1.15x'},
+                {x: 160, y: 75, mult: '1.37x'},
+                {x: 266, y: 115, mult: '1.64x'},
+                {x: 160, y: 155, mult: '2.10x'},
+                {x: 53, y: 195, mult: '3.50x'}
+            ];
+
             for(let i=0; i<5; i++) {
-                let carrilIndex = i % 3;
-                let posY = 15 + (i * 40);
-                ctx.fillStyle = '#1e293b';
-                ctx.fillRect(posXs[carrilIndex] - 22, posY, 44, 30);
-                ctx.strokeStyle = '#f59e0b';
-                ctx.strokeRect(posXs[carrilIndex] - 22, posY, 44, 30);
+                let c = coordsCarriles[i];
+                ctx.fillStyle = i === nivelChicken ? '#312e81' : '#1e293b';
+                ctx.fillRect(c.x - 24, c.y - 15, 48, 30);
+                ctx.strokeStyle = i === nivelChicken ? '#38bdf8' : '#f59e0b';
+                ctx.strokeRect(c.x - 24, c.y - 15, 48, 30);
                 ctx.fillStyle = '#facc15';
-                ctx.font = 'bold 10px Orbitron';
-                ctx.fillText(multsChickenVals[i] + 'x', posXs[carrilIndex] - 18, posY + 18);
+                ctx.font = 'bold 11px Orbitron';
+                ctx.fillText(c.mult, c.x - 18, c.y + 4);
             }
 
-            // Carros circulando VERTICALMENTE
-            ctx.font = '22px sans-serif';
-            ctx.fillText('🚗', 45, autosY[0]);
-            ctx.fillText('🚙', 150, autosY[1]);
-            ctx.fillText('🚒', 255, autosY[2]);
+            // Carro ocasional en la pista
+            if (carroAtropellando) {
+                ctx.font = '24px sans-serif';
+                ctx.fillText('🚙', 145, autoY);
+            }
 
-            // Gallina en su avance
-            let chickenCoords = [{x: 53, y: 190}, {x: 160, y: 150}, {x: 266, y: 110}, {x: 160, y: 70}, {x: 53, y: 30}];
-            let currentCoord = chickenCoords[nivelChicken];
+            // Posición de la gallina según el nivel actual (0 al 5)
+            let chickenPos = [
+                {x: 20, y: 195},
+                {x: 53, y: 35},
+                {x: 160, y: 75},
+                {x: 266, y: 115},
+                {x: 160, y: 155},
+                {x: 53, y: 195}
+            ];
+            let pos = chickenPos[nivelChicken];
             ctx.font = '26px sans-serif';
-            ctx.fillText('🐔', currentCoord.x - 12, currentCoord.y);
+            ctx.fillText('🐔', pos.x - 12, pos.y + 6);
         }
 
         function saltarChickenMaster() {
@@ -504,10 +519,11 @@
                 gananciaChicken = COSTO_PARTIDA;
             }
 
-            // Azar real: Riesgo de choque por carros verticales
-            let riesgo = 0.18 + (nivelChicken * 0.15);
-            if (Math.random() < riesgo) {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Atropellado por el carro vertical! Perdiste ${gananciaChicken} fichas.</span>`;
+            // Azar real al dar el salto: 25% de probabilidad de que cruce un carro y la atropelle
+            if (Math.random() < 0.25) {
+                carroAtropellando = true;
+                autoY = -40;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Un carro apareció de la nada y atropelló a la gallina! Perdiste ${gananciaChicken} fichas.</span>`;
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
@@ -522,12 +538,12 @@
             if (nivelChicken >= 5) {
                 fichas += gananciaChicken;
                 actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste a la meta! Ganaste +${gananciaChicken} fichas.</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste a la meta (3.5x)! Ganaste +${gananciaChicken} fichas.</span>`;
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
             } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 Nivel ${nivelChicken}/5 superado (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 Nivel ${nivelChicken}/5 superado (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f. ¿Saltar o Retirar?</span>`;
             }
         }
 
@@ -535,7 +551,7 @@
             if (nivelChicken > 0 && gananciaChicken > 0) {
                 fichas += gananciaChicken;
                 actualizarHUD();
-                alert(`🎉 ¡Retirado con éxito! +${gananciaChicken} fichas.`);
+                alert(`🎉 ¡Retiro exitoso! +${gananciaChicken} fichas añadidas a tu balance.`);
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
@@ -605,10 +621,38 @@
             }
         }
 
-        // --- 3. JUEGO DE MINAS (ESTILO ESTRELLAS / DIAMANTES) ---
+        // --- 3. JUEGO DE MINAS (Con opción de bombas y Cashout con ganancias) ---
         let minasTablero = Array(16).fill(false);
         let minasDescubiertas = 0;
         let minasActivo = false;
+        let cantidadBombas = 3;
+        let premioActualMinas = 0;
+
+        function prepararMinasJuego() {
+            const pantalla = document.getElementById('pantalla-juego');
+            const contenedorBtn = document.getElementById('contenedor-boton-accion');
+
+            pantalla.innerHTML = `
+                <div class="p-3 text-center">
+                    <h6 class="text-white mb-2">Selecciona la cantidad de bombas:</h6>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <button onclick="configurarBombas(1)" class="btn btn-sm btn-outline-info" id="b-1">1 Bomba</button>
+                        <button onclick="configurarBombas(3)" class="btn btn-sm btn-info active" id="b-3">3 Bombas</button>
+                        <button onclick="configurarBombas(5)" class="btn btn-sm btn-outline-warning" id="b-5">5 Bombas</button>
+                    </div>
+                    <p class="text-muted small">Apuesta: 10 fichas</p>
+                </div>
+            `;
+            contenedorBtn.innerHTML = `<button onclick="iniciarMinasJuego()" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow">INICIAR JUEGO DE MINAS 💣</button>`;
+        }
+
+        function configurarBombas(n) {
+            cantidadBombas = n;
+            document.querySelectorAll('.btn-outline-info, .btn-info, .btn-outline-warning, .btn-warning').forEach(b => {
+                if(b.id.startsWith('b-')) b.className = "btn btn-sm btn-outline-secondary";
+            });
+            document.getElementById(`b-${n}`).className = "btn btn-sm btn-info active";
+        }
 
         function iniciarMinasJuego() {
             if (!actualizarHUD()) return;
@@ -616,11 +660,11 @@
             actualizarHUD();
             minasActivo = true;
             minasDescubiertas = 0;
+            premioActualMinas = COSTO_PARTIDA;
 
             minasTablero = Array(16).fill(false);
-            // Colocar 3 minas al azar
             let colocadas = 0;
-            while(colocadas < 3) {
+            while(colocadas < cantidadBombas) {
                 let idx = Math.floor(Math.random() * 16);
                 if (!minasTablero[idx]) { minasTablero[idx] = true; colocadas++; }
             }
@@ -635,7 +679,12 @@
             gridHTML += '</div>';
 
             pantalla.innerHTML = gridHTML;
-            contenedorBtn.innerHTML = `<div id="estado-minas" class="text-info small fw-bold mt-2">¡Encuentra estrellas y evita las minas! 💎</div>`;
+            contenedorBtn.innerHTML = `
+                <div class="d-flex justify-content-center gap-2 mt-2 align-items-center">
+                    <span id="estado-minas" class="text-info small fw-bold">Estrellas: 0 | Acumulado: 10f</span>
+                    <button onclick="retirarMinas()" id="btn-retirar-minas" class="btn btn-success btn-sm fw-bold" style="display:none;">CASHOUT 💰</button>
+                </div>
+            `;
         }
 
         function clicMina(index) {
@@ -646,21 +695,38 @@
             if (minasTablero[index]) {
                 celda.innerText = '💣';
                 celda.style.background = '#7f1d1d';
-                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Boom! Pisaste una mina y perdiste.</span>`;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Pisaste una bomba! Perdiste todo.</span>`;
                 minasActivo = false;
+                document.getElementById('btn-retirar-minas').style.display = 'none';
             } else {
                 celda.innerText = '⭐';
                 celda.style.background = '#065f46';
                 minasDescubiertas++;
-                let premioActual = Math.floor(COSTO_PARTIDA * (1 + (minasDescubiertas * 0.4)));
-                document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">✨ ¡Estrella encontrada! Acumulado: ${premioActual} fichas</span>`;
+                // Multiplicador aumenta más conforme hay más bombas
+                let multFactor = 1.25 + (cantidadBombas * 0.15);
+                premioActualMinas = Math.floor(premioActualMinas * multFactor);
 
-                if (minasDescubiertas >= 13) {
-                    fichas += premioActual;
+                document.getElementById('estado-minas').innerHTML = `⭐ Estrellas: ${minasDescubiertas} | Acumulado: <strong class="text-warning">${premioActualMinas}f</strong>`;
+                document.getElementById('btn-retirar-minas').style.display = 'inline-block';
+
+                if (minasDescubiertas >= (16 - cantidadBombas)) {
+                    fichas += premioActualMinas;
                     actualizarHUD();
-                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Completaste todas las estrellas! Ganaste +${premioActual} fichas.</span>`;
+                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${premioActualMinas} fichas al encontrar todas las estrellas!</span>`;
                     minasActivo = false;
+                    document.getElementById('btn-retirar-minas').style.display = 'none';
                 }
+            }
+        }
+
+        function retirarMinas() {
+            if (minasActivo && premioActualMinas > 0) {
+                fichas += premioActualMinas;
+                actualizarHUD();
+                alert(`🎉 ¡Retiro exitoso de Minas! Ganaste +${premioActualMinas} fichas.`);
+                minasActivo = false;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">💰 Retirado con éxito. Inicia otra partida.</span>`;
+                document.getElementById('btn-retirar-minas').style.display = 'none';
             }
         }
 
@@ -708,7 +774,6 @@
                 return;
             }
 
-            // IA simple
             setTimeout(() => {
                 if (!gatoActivo) return;
                 let vacias = [];
