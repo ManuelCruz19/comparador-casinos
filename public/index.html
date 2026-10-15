@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Casinos 2026 - Zona Arcade 2D & Comparador Oficial</title>
+    <title>Top Casinos Online México 2026 | Bonos Gratis & Minijuegos 2D</title>
+    <meta name="description" content="Compara los mejores casinos online autorizados en México. Reclama bonos sin depósito, pagos rápidos por SPEI y juega gratis a minijuegos arcade 2D.">
+    <meta name="keywords" content="casinos online mexico, bonos sin deposito, jugar crash gratis, codere bono, caliente casino spei">
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
     <script>
@@ -12,11 +15,13 @@
       gtag('js', new Date());
       gtag('config', 'G-92DGVM5HR9');
     </script>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -32,7 +37,7 @@
         }
         .hero-section {
             background: radial-gradient(circle at top, #1e1b4b 0%, #05070b 70%);
-            padding: 40px 0;
+            padding: 30px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .casino-card {
@@ -56,7 +61,17 @@
         }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* CONTENEDOR DE ANUNCIOS AJUSTADO */
+        /* BANCO DE FICHAS HUD */
+        .wallet-hud {
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            border: 2px solid #38bdf8;
+            border-radius: 50rem;
+            padding: 8px 22px;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* CONTENEDOR DE ANUNCIOS */
         .ad-sidebar-box {
             background: #0b0f19;
             border: 1px solid rgba(99, 102, 241, 0.2);
@@ -83,14 +98,14 @@
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
             border: 2px solid #6366f1;
             border-radius: 24px;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
             padding: 25px;
         }
         .game-stage-2d {
             background: #030712;
-            border: 2px solid rgba(99, 102, 241, 0.4);
+            border: 2px solid rgba(99, 102, 241, 0.5);
             border-radius: 18px;
-            min-height: 280px;
+            min-height: 300px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -104,39 +119,70 @@
             color: #cbd5e1;
             font-weight: 700;
             border-radius: 12px;
-            padding: 10px 20px;
+            padding: 8px 16px;
             transition: 0.2s;
+            font-size: 0.9rem;
         }
         .arcade-tab.active {
             background: #4f46e5;
             color: #ffffff;
             border-color: #818cf8;
-            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
         }
 
-        /* ANIMACIÓN 2D */
+        /* JUEGO DEL GATO NEÓN */
+        .tictactoe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 75px);
+            grid-template-rows: repeat(3, 75px);
+            gap: 8px;
+        }
+        .tictactoe-cell {
+            background: #111827;
+            border: 2px solid #4f46e5;
+            border-radius: 12px;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Orbitron', sans-serif;
+            color: #38bdf8;
+            box-shadow: inset 0 0 10px rgba(79, 70, 229, 0.2);
+        }
+        .tictactoe-cell:hover {
+            background: #1e1b4b;
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* ANIMACIONES Y CARRILES */
         #plane-icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
             transition: transform 0.1s linear;
         }
         .coin-2d {
             font-size: 4.5rem;
             display: inline-block;
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
             transition: transform 0.6s ease-out;
         }
         .coin-spin {
-            transform: rotateY(1080deg) scale(1.1);
+            transform: rotateY(1080deg) scale(1.15);
         }
         .road-lane {
-            width: 100%;
-            height: 60px;
+            width: 85%;
+            height: 55px;
             background: #1e293b;
-            border-top: 2px dashed #475569;
-            border-bottom: 2px dashed #475569;
-            margin: 5px 0;
+            border-top: 2px dashed #38bdf8;
+            border-bottom: 2px dashed #38bdf8;
+            margin: 6px 0;
             display: flex;
             align-items: center;
             justify-content: space-around;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -144,21 +190,24 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand fw-extrabold fs-4" href="#">
                 <i class="fa-solid fa-dice text-warning me-2"></i>Slot<span class="text-info">Comparador</span>
             </a>
-            <span class="text-success small fw-semibold px-3 py-1 rounded-pill bg-success bg-opacity-10 border border-success border-opacity-25">
-                <i class="fa-solid fa-bolt me-1"></i> Modo Gratis Activo
-            </span>
+            <!-- HUD DE FICHAS VIRTUALES -->
+            <div class="wallet-hud d-flex align-items-center text-warning">
+                <i class="fa-solid fa-coins me-2 fs-5"></i>
+                <span class="text-white small me-1">Fichas:</span>
+                <span id="saldo-fichas" class="fw-bold fs-5 text-info">100</span>
+            </div>
         </div>
     </nav>
 
     <!-- Header -->
     <header class="hero-section text-center">
         <div class="container">
-            <h1 class="display-6 fw-bold mb-2 text-white">Casinos Autorizados & Minijuegos 2D</h1>
-            <p class="text-muted mx-auto mb-0" style="max-width: 600px;">Juega libremente en la zona arcade y reclama los mejores bonos de bienvenida para dinero real.</p>
+            <h1 class="h4 fw-bold mb-1 text-white">Zona Arcade & Casinos Autorizados</h1>
+            <p class="text-muted small mx-auto mb-0" style="max-width: 550px;">Diviértete con tus 100 fichas virtuales en los minijuegos neón.</p>
         </div>
     </header>
 
@@ -201,32 +250,22 @@
             <!-- CONTENIDO CENTRAL -->
             <div class="col-lg-8">
 
-                <!-- LISTA DE CASINOS -->
-                <main class="mb-5">
-                    <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos Recomendados</h2>
-                    <div id="lista-casinos" class="row g-4">
-                        <div class="col-12 text-center py-4">
-                            <div class="spinner-border text-info" role="status"></div>
-                            <p class="text-muted mt-2">Cargando opciones...</p>
-                        </div>
-                    </div>
-                </main>
-
                 <!-- 🎮 ZONA ARCADE INTERACTIVA 2D 🎮 -->
-                <section class="my-5">
+                <section class="mb-5">
                     <div class="arcade-wrapper">
-                        <div class="text-center mb-4">
-                            <h3 class="text-white fw-bold" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-2"></i>MINIJUEGOS ARCADE 2D
+                        <div class="text-center mb-3">
+                            <h3 class="text-white fw-bold fs-5" style="font-family: 'Orbitron', sans-serif;">
+                                <i class="fa-solid fa-gamepad text-warning me-2"></i>SALÓN DE ARCADE FANTASY
                             </h3>
-                            <p class="text-muted small">Selecciona un juego interactivo para poner a prueba tus reflejos.</p>
+                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Gana para duplicarlas!</p>
                         </div>
 
                         <!-- Selector de Juegos -->
                         <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ El Avión 2D</button>
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 La Gallina 2D</button>
-                            <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz 2D</button>
+                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ Avión Crash</button>
+                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 Gallina Cross</button>
+                            <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
+                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Neón</button>
                         </div>
 
                         <!-- Escenario 2D -->
@@ -242,13 +281,24 @@
                         </div>
 
                         <!-- CTA Afiliados -->
-                        <div class="mt-4 p-4 rounded-4 bg-dark border border-success border-opacity-50 text-center">
-                            <h5 class="text-white fw-bold mb-2">🔥 ¿Quieres jugar con dinero real?</h5>
-                            <p class="text-muted small mb-3">Aprovecha los bonos sin depósito y giros gratis en casinos verificados.</p>
-                            <a href="#lista-casinos" class="btn btn-success fw-bold px-4 py-2">Ver Casinos Recomendados ⬆️</a>
+                        <div class="mt-4 p-3 rounded-4 bg-dark border border-success border-opacity-50 text-center">
+                            <h6 class="text-white fw-bold mb-1">🔥 ¿Se acabaron tus fichas o quieres dinero real?</h6>
+                            <p class="text-muted small mb-2">Recarga la página para obtener 100 fichas nuevas o reclama bonos de bienvenida.</p>
+                            <a href="#lista-casinos" class="btn btn-success btn-sm fw-bold px-3 py-2">Ver Casinos Recomendados ⬇️</a>
                         </div>
                     </div>
                 </section>
+
+                <!-- LISTA DE CASINOS -->
+                <main class="mb-5">
+                    <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos Recomendados</h2>
+                    <div id="lista-casinos" class="row g-4">
+                        <div class="col-12 text-center py-4">
+                            <div class="spinner-border text-info" role="status"></div>
+                            <p class="text-muted mt-2">Cargando opciones...</p>
+                        </div>
+                    </div>
+                </main>
 
             </div>
 
@@ -266,6 +316,27 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // SISTEMA DE FICHAS VIRTUALES
+        let fichas = 100;
+        const COSTO_PARTIDA = 10;
+
+        function actualizarHUD() {
+            document.getElementById('saldo-fichas').innerText = fichas;
+            if (fichas <= 0) {
+                document.getElementById('pantalla-juego').innerHTML = `
+                    <div class="p-4 text-center">
+                        <i class="fa-solid fa-triangle-exclamation text-danger fa-3x mb-3"></i>
+                        <h4 class="text-white fw-bold">¡Te has quedado sin fichas!</h4>
+                        <p class="text-muted small mb-3">Recarga la página en tu navegador para obtener 100 fichas nuevas y seguir generando vistas.</p>
+                        <button onclick="location.reload()" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow">RECARGAR FICHAS 🔄</button>
+                    </div>
+                `;
+                document.getElementById('contenedor-boton-accion').innerHTML = '';
+                return false;
+            }
+            return true;
+        }
+
         async function cargarCasinos() {
             try {
                 const response = await fetch('/api/casinos');
@@ -306,8 +377,9 @@
             }
         }
 
-        // LÓGICA JUEGOS 2D
+        // LÓGICA DE JUEGOS ARCADE
         function cambiarJuego(juego) {
+            if (fichas <= 0) return;
             document.querySelectorAll('.arcade-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${juego}`).classList.add('active');
 
@@ -317,47 +389,54 @@
             if (juego === 'avion') {
                 pantalla.innerHTML = `
                     <div id="plane-icon" class="mb-2">🛫</div>
-                    <div id="mult-avion" class="display-4 fw-bold text-warning mb-1">1.00x</div>
-                    <p class="small text-muted mb-0">¡Despega y retira antes del choque!</p>
+                    <div id="mult-avion" class="display-4 fw-bold text-warning mb-1" style="font-family:'Orbitron'">1.00x</div>
+                    <p class="small text-muted mb-0">Apuesta ${COSTO_PARTIDA} fichas y retira antes del choque</p>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="iniciarAvion2D()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO 🛩️</button>`;
+                contenedorBtn.innerHTML = `<button onclick="iniciarAvion2D()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO 🛩️ (-10 fichas)</button>`;
             } else if (juego === 'gallina') {
                 pantalla.innerHTML = `
-                    <div class="w-100 px-3">
-                        <div class="road-lane"><span id="car1">🏎️</span></div>
-                        <div class="road-lane"><span id="chicken-player" class="fs-2">🐔</span></div>
-                        <div class="road-lane"><span id="car2">🚗</span></div>
+                    <div class="w-100 px-3 d-flex flex-column align-items-center">
+                        <div class="road-lane"><span id="car1">🏎️ Rápido</span></div>
+                        <div class="road-lane"><span id="chicken-player" class="fs-2">🐔 Meta</span></div>
+                        <div class="road-lane"><span id="car2">🚗 Turbo</span></div>
                     </div>
-                    <div id="estado-gallina" class="text-info fw-bold small mt-2">Haz clic para avanzar a la meta</div>
+                    <div id="estado-gallina" class="text-info fw-bold small mt-2">Ayuda a la gallina a cruzar la autopista</div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="cruzarGallina2D()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">AVANZAR GALLINA 🐔</button>`;
+                contenedorBtn.innerHTML = `<button onclick="cruzarGallina2D()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">CRUZAR VÍAS 🐔 (-10 fichas)</button>`;
             } else if (juego === 'moneda') {
                 pantalla.innerHTML = `
                     <div id="coin-element" class="coin-2d mb-2">🪙</div>
-                    <div id="estado-moneda" class="text-warning fw-bold fs-5 mb-2">Elige CARA o CRUZ</div>
+                    <div id="estado-moneda" class="text-warning fw-bold fs-5 mb-2" style="font-family:'Orbitron'">¡Elige Cara o Cruz!</div>
                 `;
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-3">
-                        <button onclick="lanzarMoneda2D('Cara')" class="btn btn-info fw-bold px-4 py-2">Elegir CARA</button>
-                        <button onclick="lanzarMoneda2D('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark">Elegir CRUZ</button>
+                        <button onclick="lanzarMoneda2D('Cara')" class="btn btn-info fw-bold px-4 py-2 shadow">Elegir CARA 🪙</button>
+                        <button onclick="lanzarMoneda2D('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">Elegir CRUZ 👑</button>
                     </div>
                 `;
+            } else if (juego === 'gato') {
+                iniciarGatoNeon();
             }
         }
 
+        // --- 1. JUEGO AVIÓN CRASH ---
         let vueloActivo = false;
         let timerAvion = null;
 
         function iniciarAvion2D() {
+            if (!actualizarHUD()) return;
             const btn = document.querySelector('#contenedor-boton-accion button');
             const plane = document.getElementById('plane-icon');
+
             if (!vueloActivo) {
+                fichas -= COSTO_PARTIDA;
+                actualizarHUD();
                 vueloActivo = true;
                 let m = 1.00;
                 let posY = 0;
                 const crash = (Math.random() * 3 + 1.2).toFixed(2);
 
-                btn.innerText = "¡RETIRAR A TIEMPO!";
+                btn.innerText = "¡RETIRAR GANANCIAS!";
                 btn.className = "btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark";
 
                 timerAvion = setInterval(() => {
@@ -371,7 +450,7 @@
                         vueloActivo = false;
                         plane.style.transform = `translateY(0px) rotate(0deg)`;
                         document.getElementById('mult-avion').innerText = "💥 CRASH";
-                        btn.innerText = "INICIAR VUELO 🛩️";
+                        btn.innerText = "INICIAR VUELO 🛩️ (-10 fichas)";
                         btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
                     }
                 }, 100);
@@ -379,26 +458,42 @@
                 clearInterval(timerAvion);
                 vueloActivo = false;
                 plane.style.transform = `translateY(0px) rotate(0deg)`;
-                alert("🎉 ¡Retiraste a tiempo con éxito!");
-                btn.innerText = "INICIAR VUELO 🛩️";
+                let premio = Math.floor(COSTO_PARTIDA * 1.8);
+                fichas += premio;
+                actualizarHUD();
+                alert(`🎉 ¡Retiraste a tiempo! Ganaste +${premio} fichas.`);
+                btn.innerText = "INICIAR VUELO 🛩️ (-10 fichas)";
                 btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
                 document.getElementById('mult-avion').innerText = "1.00x";
             }
         }
 
+        // --- 2. JUEGO GALLINA ---
         function cruzarGallina2D() {
-            const exito = Math.random() >= 0.4;
+            if (!actualizarHUD()) return;
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
+
+            const exito = Math.random() >= 0.45;
             const chicken = document.getElementById('chicken-player');
             if (exito) {
-                chicken.style.transform = "scale(1.3)";
-                setTimeout(() => chicken.style.transform = "scale(1)", 300);
-                document.getElementById('estado-gallina').innerText = "🎉 ¡Gallina cruzó con éxito!";
+                let premio = 20;
+                fichas += premio;
+                actualizarHUD();
+                chicken.style.transform = "scale(1.4) translateY(-10px)";
+                setTimeout(() => chicken.style.transform = "scale(1) translateY(0)", 400);
+                document.getElementById('estado-gallina').innerHTML = `<span class="text-success fw-bold">🎉 ¡La gallina cruzó con éxito! (+${premio} fichas)</span>`;
             } else {
-                document.getElementById('estado-gallina').innerText = "💥 ¡Un auto detuvo a la gallina!";
+                document.getElementById('estado-gallina').innerHTML = `<span class="text-danger fw-bold">💥 ¡Un auto detuvo a la gallina! Perdiste la apuesta.</span>`;
             }
         }
 
+        // --- 3. JUEGO MONEDA ---
         function lanzarMoneda2D(eleccion) {
+            if (!actualizarHUD()) return;
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
+
             const coin = document.getElementById('coin-element');
             coin.classList.add('coin-spin');
             
@@ -407,13 +502,109 @@
                 const resultado = Math.random() >= 0.5 ? 'Cara' : 'Cruz';
                 coin.innerText = resultado === 'Cara' ? '🪙' : '👑';
                 if (eleccion === resultado) {
-                    document.getElementById('estado-moneda').innerText = `🎉 Salió ${resultado}. ¡Acertaste!`;
+                    let premio = 25;
+                    fichas += premio;
+                    actualizarHUD();
+                    document.getElementById('estado-moneda').innerHTML = `<span class="text-success">🎉 Salió ${resultado}. ¡Ganaste +${premio} fichas!</span>`;
                 } else {
-                    document.getElementById('estado-moneda').innerText = `😢 Salió ${resultado}. Inténtalo de nuevo.`;
+                    document.getElementById('estado-moneda').innerHTML = `<span class="text-danger">😢 Salió ${resultado}. Suerte la próxima.</span>`;
                 }
             }, 600);
         }
 
+        // --- 4. JUEGO DEL GATO NEÓN (TIC-TAC-TOE) ---
+        let tableroGato = ['', '', '', '', '', '', '', '', ''];
+        let juegoGatoActivo = true;
+
+        function iniciarGatoNeon() {
+            if (!actualizarHUD()) return;
+            juegoGatoActivo = true;
+            tableroGato = ['', '', '', '', '', '', '', '', ''];
+
+            const pantalla = document.getElementById('pantalla-juego');
+            const contenedorBtn = document.getElementById('contenedor-boton-accion');
+
+            pantalla.innerHTML = `
+                <div class="tictactoe-grid mb-2" id="grid-gato">
+                    <div class="tictactoe-cell" onclick="jugarGato(0)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(1)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(2)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(3)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(4)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(5)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(6)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(7)"></div>
+                    <div class="tictactoe-cell" onclick="jugarGato(8)"></div>
+                </div>
+                <div id="estado-gato" class="text-info small fw-bold">Tu turno (X) - Apuesta: 10 fichas</div>
+            `;
+            contenedorBtn.innerHTML = `<button onclick="iniciarGatoNeon()" class="btn btn-outline-info btn-sm fw-bold px-4">Reiniciar Gato 🔄</button>`;
+            
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
+        }
+
+        function jugarGato(index) {
+            if (!juegoGatoActivo || tableroGato[index] !== '') return;
+
+            tableroGato[index] = 'X';
+            actualizarVisualGato();
+
+            if (verificarGanadorGato('X')) {
+                let premio = 30;
+                fichas += premio;
+                actualizarHUD();
+                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🎉 ¡Has vencido a la IA! (+${premio} fichas)</span>`;
+                juegoGatoActivo = false;
+                return;
+            }
+
+            if (!tableroGato.includes('')) {
+                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Se devuelven tus fichas.</span>`;
+                fichas += COSTO_PARTIDA;
+                actualizarHUD();
+                juegoGatoActivo = false;
+                return;
+            }
+
+            // Turno de la IA (O)
+            setTimeout(() => {
+                if (!juegoGatoActivo) return;
+                let celdasVacias = [];
+                tableroGato.forEach((val, i) => { if (val === '') celdasVacias.push(i); });
+                if (celdasVacias.length > 0) {
+                    let movimientoIA = celdasVacias[Math.floor(Math.random() * celdasVacias.length)];
+                    tableroGato[movimientoIA] = 'O';
+                    actualizarVisualGato();
+
+                    if (verificarGanadorGato('O')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA ganó. Perdiste la apuesta.</span>`;
+                        juegoGatoActivo = false;
+                    }
+                }
+            }, 350);
+        }
+
+        function actualizarVisualGato() {
+            const celdas = document.querySelectorAll('.tictactoe-cell');
+            tableroGato.forEach((val, i) => {
+                celdas[i].innerText = val;
+                celdas[i].style.color = val === 'X' ? '#38bdf8' : '#f59e0b';
+            });
+        }
+
+        function verificarGanadorGato(jugador) {
+            const combinaciones = [
+                [0,1,2], [3,4,5], [6,7,8], // Filas
+                [0,3,6], [1,4,7], [2,5,8], // Columnas
+                [0,4,8], [2,4,6]          // Diagonales
+            ];
+            return combinaciones.some(comb => {
+                return comb.every(index => tableroGato[index] === jugador);
+            });
+        }
+
+        // Inicialización
         cargarCasinos();
         cambiarJuego('avion');
     </script>
