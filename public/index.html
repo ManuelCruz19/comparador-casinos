@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Casinos 2026 - Zona Arcade & Comparador Oficial</title>
+    <title>Top Casinos 2026 - Zona Arcade 2D & Comparador Oficial</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
     <script>
@@ -32,7 +32,7 @@
         }
         .hero-section {
             background: radial-gradient(circle at top, #1e1b4b 0%, #05070b 70%);
-            padding: 60px 0;
+            padding: 40px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .casino-card {
@@ -53,56 +53,51 @@
         .btn-claim {
             background: linear-gradient(45deg, #10b981, #059669);
             border: none; color: white; font-weight: 700; padding: 12px; border-radius: 10px;
-            transition: 0.2s;
         }
-        .btn-claim:hover { filter: brightness(1.1); }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* ESTILOS ESPACIOS PUBLICITARIOS (Monetización por vistas/impresiones) */
+        /* ESPACIOS PUBLICITARIOS ADAPTATIVOS (PC Y MÓVIL) */
         .ad-space-side {
             background: #0b0f19;
-            border: 1px dashed rgba(99, 102, 241, 0.3);
+            border: 1px dashed rgba(99, 102, 241, 0.4);
             border-radius: 14px;
             min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
-            color: #64748b;
-            font-size: 0.85rem;
-        }
-        .ad-banner-top {
-            background: #0b0f19;
-            border: 1px dashed rgba(99, 102, 241, 0.3);
-            border-radius: 12px;
             padding: 15px;
+            color: #64748b;
+        }
+        .ad-banner-mobile {
+            background: #0b0f19;
+            border: 1px dashed rgba(99, 102, 241, 0.4);
+            border-radius: 12px;
+            padding: 12px;
             text-align: center;
             color: #64748b;
-            font-size: 0.85rem;
-            margin-bottom: 30px;
+            margin: 20px 0;
         }
 
-        /* ZONA ARCADE PROFESIONAL */
+        /* ESCENARIOS ARCADE 2D */
         .arcade-wrapper {
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
             border: 2px solid #6366f1;
             border-radius: 24px;
             box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
-            padding: 30px;
+            padding: 25px;
         }
-        .game-stage {
+        .game-stage-2d {
             background: #030712;
             border: 2px solid rgba(99, 102, 241, 0.4);
             border-radius: 18px;
             min-height: 280px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
-            padding: 20px;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.9);
         }
         .arcade-tab {
             background: #111827;
@@ -110,14 +105,39 @@
             color: #cbd5e1;
             font-weight: 700;
             border-radius: 12px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             transition: 0.2s;
         }
-        .arcade-tab:hover, .arcade-tab.active {
+        .arcade-tab.active {
             background: #4f46e5;
             color: #ffffff;
             border-color: #818cf8;
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+        }
+
+        /* ANIMACIÓN 2D DE AVION Y MONEDA */
+        #plane-icon {
+            font-size: 3.5rem;
+            transition: transform 0.1s linear;
+        }
+        .coin-2d {
+            font-size: 4.5rem;
+            display: inline-block;
+            transition: transform 0.6s ease-out;
+        }
+        .coin-spin {
+            transform: rotateY(1080deg) scale(1.1);
+        }
+        .road-lane {
+            width: 100%;
+            height: 60px;
+            background: #1e293b;
+            border-top: 2px dashed #475569;
+            border-bottom: 2px dashed #475569;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
         }
     </style>
 </head>
@@ -130,7 +150,7 @@
                 <i class="fa-solid fa-dice text-warning me-2"></i>Slot<span class="text-info">Comparador</span>
             </a>
             <span class="text-success small fw-semibold px-3 py-1 rounded-pill bg-success bg-opacity-10 border border-success border-opacity-25">
-                <i class="fa-solid fa-bolt me-1"></i> Plataforma Verificada 2026
+                <i class="fa-solid fa-bolt me-1"></i> Modo Gratis Activo
             </span>
         </div>
     </nav>
@@ -138,98 +158,111 @@
     <!-- Header -->
     <header class="hero-section text-center">
         <div class="container">
-            <span class="badge text-light px-3 py-2 rounded-pill mb-3 border border-light border-opacity-10" style="background: rgba(99,102,241,0.3); color: #c7d2fe !important;">Guía Oficial de iGaming</span>
-            <h1 class="display-5 fw-bold mb-2 text-white">Casinos Autorizados & Zona de Minijuegos</h1>
-            <p class="text-muted mx-auto" style="max-width: 650px;">Compara los operadores con mejores bonos de bienvenida y disfruta de nuestra zona de entretenimiento interactivo gratuita.</p>
+            <h1 class="display-6 fw-bold mb-2 text-white">Casinos Autorizados & Minijuegos 2D</h1>
+            <p class="text-muted mx-auto mb-0" style="max-width: 600px;">Juega libremente en la zona arcade y reclama los mejores bonos de bienvenida para dinero real.</p>
         </div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL CON ESPACIOS PUBLICITARIOS LATERALES -->
-    <div class="container-fluid my-4">
-        <div class="row px-2">
+    <!-- BANNER PUBLICITARIO PARA MÓVIL (ARRIBA) -->
+    <div class="container d-lg-none">
+        <div class="ad-banner-mobile">
+            <script>
+                atOptions = {
+                    'key' : '378ad42d30475f670e8b806ce90b7741',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://bicea.org/22/378ad42d30475f670e8b806ce90b7741"></script>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL CON PUBLICIDAD LATERAL (PC) -->
+    <div class="container-fluid my-3">
+        <div class="row px-lg-4">
             
-            <!-- ANUNCIO LATERAL IZQUIERDO (Generación por vistas) -->
+            <!-- ANUNCIO LATERAL IZQUIERDO (Sólo PC) -->
             <div class="col-lg-2 d-none d-lg-block">
-                <div class="ad-space-side sticky-top" style="top: 90px;">
-                    <div>
-                        <i class="fa-solid fa-rectangle-ad fa-2x mb-2 text-indigo"></i>
-                        <p class="mb-0">Espacio Publicitario Lateral<br><small class="text-muted">Anuncios Automáticos</small></p>
-                        <!-- Pega aquí el código HTML/JS de tu red de anuncios (ej. Adsterra / Adsense) -->
-                    </div>
-                </div>
+                <script>
+                    atOptions = {
+                        'key' : '36184539941b9613accf596895648460',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://bicea.org/22/36184539941b9613accf596895648460"></script>
             </div>
 
-            <!-- CONTENIDO CENTRAL DE LA PLATAFORMA -->
+            <!-- CONTENIDO PRINCIPAL (PC Y MÓVIL) -->
             <div class="col-lg-8">
-                
-                <!-- Banner Publicitario Superior -->
-                <div class="ad-banner-top">
-                    <i class="fa-solid fa-bullhorn text-warning me-2"></i> Patrocinado: Descubre los mejores bonos de casino con registro express en México.
-                </div>
 
-                <!-- SECCIÓN DE CASINOS (Afiliación) -->
+                <!-- LISTA DE CASINOS -->
                 <main class="mb-5">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2 class="h5 fw-bold mb-0 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos Recomendados</h2>
-                    </div>
-
+                    <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos Recomendados</h2>
                     <div id="lista-casinos" class="row g-4">
                         <div class="col-12 text-center py-4">
                             <div class="spinner-border text-info" role="status"></div>
-                            <p class="text-muted mt-2">Cargando opciones de casinos...</p>
+                            <p class="text-muted mt-2">Cargando opciones...</p>
                         </div>
                     </div>
                 </main>
 
-                <!-- 🎮 ZONA ARCADE DE ALTA RETENCIÓN 🎮 -->
+                <!-- 🎮 ZONA ARCADE INTERACTIVA 2D 🎮 -->
                 <section class="my-5">
                     <div class="arcade-wrapper">
                         <div class="text-center mb-4">
                             <h3 class="text-white fw-bold" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-2"></i>ZONA ARCADE INTERACTIVA
+                                <i class="fa-solid fa-gamepad text-warning me-2"></i>MINIJUEGOS ARCADE 2D
                             </h3>
-                            <p class="text-muted small">Juega gratis y pon a prueba tus reflejos en nuestros simuladores.</p>
+                            <p class="text-muted small">Selecciona un juego interactivo para poner a prueba tus reflejos.</p>
                         </div>
 
                         <!-- Selector de Juegos -->
-                        <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
-                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ El Avión (Crash)</button>
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 La Gallina Express</button>
-                            <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
+                        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ El Avión 2D</button>
+                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 La Gallina 2D</button>
+                            <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz 2D</button>
                         </div>
 
-                        <!-- Escenario del Juego -->
+                        <!-- Escenario 2D -->
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
-                                <div id="pantalla-juego" class="game-stage text-center mb-4">
-                                    <!-- Contenido dinámico -->
+                                <div id="pantalla-juego" class="game-stage-2d text-center p-3 mb-3">
+                                    <!-- Dinámico -->
                                 </div>
                                 <div id="contenedor-boton-accion" class="text-center">
-                                    <!-- Botones -->
+                                    <!-- Botón -->
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Llamado a la acción hacia Afiliados -->
-                        <div class="mt-5 p-4 rounded-4 bg-dark border border-success border-opacity-50 text-center">
-                            <h5 class="text-white fw-bold mb-2">🔥 ¿Listo para jugar con dinero real?</h5>
-                            <p class="text-muted small mb-3">Reclama tu bono exclusivo con los operadores listados en la parte superior.</p>
-                            <a href="#lista-casinos" class="btn btn-success fw-bold px-4 py-2">Ver Casinos Autorizados ⬆️</a>
+                        <!-- CTA Afiliados -->
+                        <div class="mt-4 p-4 rounded-4 bg-dark border border-success border-opacity-50 text-center">
+                            <h5 class="text-white fw-bold mb-2">🔥 ¿Quieres jugar con dinero real?</h5>
+                            <p class="text-muted small mb-3">Aprovecha los bonos sin depósito y giros gratis en casinos verificados.</p>
+                            <a href="#lista-casinos" class="btn btn-success fw-bold px-4 py-2">Ver Casinos Recomendados ⬆️</a>
                         </div>
                     </div>
                 </section>
 
             </div>
 
-            <!-- ANUNCIO LATERAL DERECHO (Generación por vistas) -->
+            <!-- ANUNCIO LATERAL DERECHO (Sólo PC) -->
             <div class="col-lg-2 d-none d-lg-block">
-                <div class="ad-space-side sticky-top" style="top: 90px;">
-                    <div>
-                        <i class="fa-solid fa-rectangle-ad fa-2x mb-2 text-indigo"></i>
-                        <p class="mb-0">Espacio Publicitario Lateral<br><small class="text-muted">Anuncios Automáticos</small></p>
-                        <!-- Pega aquí el código HTML/JS de tu red de anuncios -->
-                    </div>
-                </div>
+                <script>
+                    atOptions = {
+                        'key' : '36184539941b9613accf596895648460',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://bicea.org/22/36184539941b9613accf596895648460"></script>
             </div>
 
         </div>
@@ -238,15 +271,14 @@
     <!-- Footer -->
     <footer class="text-center py-4 text-muted border-top border-secondary border-opacity-25 mt-5">
         <div class="container">
-            <p class="small mb-1">&copy; 2026 SlotComparador. Todos los derechos reservados. Plataforma de comparación y entretenimiento.</p>
-            <p class="text-danger small fw-semibold"><i class="fa-solid fa-triangle-exclamation me-1"></i> Juego responsable. Exclusivo para mayores de 18 años (+18).</p>
+            <p class="small mb-1">&copy; 2026 SlotComparador. Todos los derechos reservados.</p>
+            <p class="text-danger small fw-semibold"><i class="fa-solid fa-triangle-exclamation me-1"></i> Juega con responsabilidad. Exclusivo +18.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Cargar Casinos desde API
         async function cargarCasinos() {
             try {
                 const response = await fetch('/api/casinos');
@@ -255,7 +287,7 @@
                 contenedor.innerHTML = '';
 
                 casinos.forEach((casino, index) => {
-                    const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Más Popular</span>' : '';
+                    const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Popular</span>' : '';
                     contenedor.innerHTML += `
                         <div class="col-lg-4 col-md-6">
                             <div class="casino-card p-4 h-100 d-flex flex-column justify-content-between">
@@ -282,12 +314,12 @@
                         </div>
                     `;
                 });
-            } catch (error) {
-                console.error("Error al cargar casinos:", error);
+            } catch (e) {
+                console.error(e);
             }
         }
 
-        // GESTIÓN DE JUEGOS ARCADE
+        // LÓGICA JUEGOS 2D
         function cambiarJuego(juego) {
             document.querySelectorAll('.arcade-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${juego}`).classList.add('active');
@@ -297,40 +329,45 @@
 
             if (juego === 'avion') {
                 pantalla.innerHTML = `
-                    <div class="display-4 mb-2">🛫</div>
-                    <div id="mult-avion" class="display-3 fw-bold text-warning mb-2">1.00x</div>
-                    <p class="small text-muted mb-0">Retira tus ganancias antes de que el avión explote</p>
+                    <div id="plane-icon" class="mb-2">🛫</div>
+                    <div id="mult-avion" class="display-4 fw-bold text-warning mb-1">1.00x</div>
+                    <p class="small text-muted mb-0">¡Despega y retira antes del choque!</p>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="iniciarAvionGratis()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO 🛩️</button>`;
+                contenedorBtn.innerHTML = `<button onclick="iniciarAvion2D()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO 🛩️</button>`;
             } else if (juego === 'gallina') {
                 pantalla.innerHTML = `
-                    <div class="display-3 mb-3">🐔 ➔ 🛣️ ➔ 🚗</div>
-                    <div id="estado-gallina" class="text-info fw-bold fs-5">Ayuda a la gallina a cruzar la carretera</div>
+                    <div class="w-100 px-3">
+                        <div class="road-lane"><span id="car1">🏎️</span></div>
+                        <div class="road-lane"><span id="chicken-player" class="fs-2">🐔</span></div>
+                        <div class="road-lane"><span id="car2">🚗</span></div>
+                    </div>
+                    <div id="estado-gallina" class="text-info fw-bold small mt-2">Haz clic para avanzar a la meta</div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="cruzarGallinaGratis()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">DAR PASO A GALLINA 🐔</button>`;
+                contenedorBtn.innerHTML = `<button onclick="cruzarGallina2D()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">AVANZAR GALLINA 🐔</button>`;
             } else if (juego === 'moneda') {
                 pantalla.innerHTML = `
-                    <div id="moneda-icono" class="display-1 mb-3">🪙</div>
-                    <div id="estado-moneda" class="text-warning fw-bold fs-5">Selecciona tu predicción de moneda</div>
+                    <div id="coin-element" class="coin-2d mb-2">🪙</div>
+                    <div id="estado-moneda" class="text-warning fw-bold fs-5 mb-2">Elige CARA o CRUZ</div>
                 `;
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-3">
-                        <button onclick="lanzarMonedaGratis('Cara')" class="btn btn-info fw-bold px-4 py-2">Elegir CARA</button>
-                        <button onclick="lanzarMonedaGratis('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark">Elegir CRUZ</button>
+                        <button onclick="lanzarMoneda2D('Cara')" class="btn btn-info fw-bold px-4 py-2">Elegir CARA</button>
+                        <button onclick="lanzarMoneda2D('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark">Elegir CRUZ</button>
                     </div>
                 `;
             }
         }
 
-        // LÓGICA DE MINIJUEGOS
         let vueloActivo = false;
         let timerAvion = null;
 
-        function iniciarAvionGratis() {
+        function iniciarAvion2D() {
             const btn = document.querySelector('#contenedor-boton-accion button');
+            const plane = document.getElementById('plane-icon');
             if (!vueloActivo) {
                 vueloActivo = true;
                 let m = 1.00;
+                let posY = 0;
                 const crash = (Math.random() * 3 + 1.2).toFixed(2);
 
                 btn.innerText = "¡RETIRAR A TIEMPO!";
@@ -338,11 +375,15 @@
 
                 timerAvion = setInterval(() => {
                     m += 0.05;
+                    posY += 2;
+                    plane.style.transform = `translateY(-${posY}px) rotate(-15deg)`;
                     document.getElementById('mult-avion').innerText = m.toFixed(2) + "x";
+
                     if (m >= crash) {
                         clearInterval(timerAvion);
                         vueloActivo = false;
-                        document.getElementById('mult-avion').innerText = "¡💥 EXPLOSIÓN!";
+                        plane.style.transform = `translateY(0px) rotate(0deg)`;
+                        document.getElementById('mult-avion').innerText = "💥 CRASH";
                         btn.innerText = "INICIAR VUELO 🛩️";
                         btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
                     }
@@ -350,33 +391,42 @@
             } else {
                 clearInterval(timerAvion);
                 vueloActivo = false;
-                alert("🎉 ¡Excelente reflejo! Retiraste a tiempo.");
+                plane.style.transform = `translateY(0px) rotate(0deg)`;
+                alert("🎉 ¡Retiraste a tiempo con éxito!");
                 btn.innerText = "INICIAR VUELO 🛩️";
                 btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
                 document.getElementById('mult-avion').innerText = "1.00x";
             }
         }
 
-        function cruzarGallinaGratis() {
+        function cruzarGallina2D() {
             const exito = Math.random() >= 0.4;
+            const chicken = document.getElementById('chicken-player');
             if (exito) {
-                document.getElementById('estado-gallina').innerText = "🎉 ¡La gallina cruzó con éxito al otro lado!";
+                chicken.style.transform = "scale(1.3)";
+                setTimeout(() => chicken.style.transform = "scale(1)", 300);
+                document.getElementById('estado-gallina').innerText = "🎉 ¡Gallina cruzó con éxito!";
             } else {
-                document.getElementById('estado-gallina').innerText = "💥 ¡Un vehículo detuvo a la gallina! Inténtalo de nuevo.";
+                document.getElementById('estado-gallina').innerText = "💥 ¡Un auto detuvo a la gallina!";
             }
         }
 
-        function lanzarMonedaGratis(eleccion) {
-            const resultado = Math.random() >= 0.5 ? 'Cara' : 'Cruz';
-            document.getElementById('moneda-icono').innerText = resultado === 'Cara' ? '🪙' : '👑';
-            if (eleccion === resultado) {
-                document.getElementById('estado-moneda').innerText = `🎉 Salió ${resultado}. ¡Acertaste tu predicción!`;
-            } else {
-                document.getElementById('estado-moneda').innerText = `😢 Salió ${resultado}. ¡Sigue probando suerte!`;
-            }
+        function lanzarMoneda2D(eleccion) {
+            const coin = document.getElementById('coin-element');
+            coin.classList.add('coin-spin');
+            
+            setTimeout(() => {
+                coin.classList.remove('coin-spin');
+                const resultado = Math.random() >= 0.5 ? 'Cara' : 'Cruz';
+                coin.innerText = resultado === 'Cara' ? '🪙' : '👑';
+                if (eleccion === resultado) {
+                    document.getElementById('estado-moneda').innerText = `🎉 Salió ${resultado}. ¡Acertaste!`;
+                } else {
+                    document.getElementById('estado-moneda').innerText = `😢 Salió ${resultado}. Inténtalo de nuevo.`;
+                }
+            }, 600);
         }
 
-        // Inicializar
         cargarCasinos();
         cambiarJuego('avion');
     </script>
