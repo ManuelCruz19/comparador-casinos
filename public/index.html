@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Top Casinos Online México 2026 | Minijuegos Casino 3D</title>
-    <meta name="description" content="Compara los mejores casinos online autorizados en México y juega gratis a minijuegos arcade 3D de alta gama.">
+    <title>Top Casinos Online México 2026 | Blackjack y Penales Pro</title>
+    <meta name="description" content="Compara los mejores casinos online autorizados en México y juega gratis a minijuegos arcade inmersivos.">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
@@ -62,14 +62,14 @@
         }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* HUD DE FICHAS 3D */
+        /* HUD DE FICHAS */
         .wallet-hud {
             background: linear-gradient(135deg, #1e1b4b, #0f172a);
             border: 2px solid #38bdf8;
             border-radius: 50rem;
             padding: 6px 18px;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
 
         /* ANUNCIOS */
@@ -94,12 +94,12 @@
             margin-bottom: 20px;
         }
 
-        /* CONTENEDOR ARCADE 3D INMERSIVO */
+        /* CONTENEDOR ARCADE APP INMERSIVA */
         .arcade-wrapper {
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
-            border: 3px solid #6366f1;
+            border: 2px solid #6366f1;
             border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.5), inset 0 3px 8px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.4);
             padding: 20px;
             position: relative;
         }
@@ -112,19 +112,17 @@
             overflow-y: auto;
             background: #020617;
         }
-        .game-stage-3d {
-            background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%);
+        .game-stage {
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
             border: 2px solid rgba(99, 102, 241, 0.6);
             border-radius: 18px;
-            min-height: 340px;
+            min-height: 350px;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 15px 30px rgba(0, 0, 10, 0.9), 0 10px 20px rgba(0,0,0,0.5);
-            perspective: 1000px;
         }
         .arcade-tab {
             background: #0f172a;
@@ -132,71 +130,69 @@
             color: #cbd5e1;
             font-weight: 700;
             border-radius: 12px;
-            padding: 8px 14px;
+            padding: 8px 16px;
             transition: 0.3s;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+            font-size: 0.9rem;
         }
         .arcade-tab.active {
-            background: linear-gradient(135deg, #4f46e5, #3730a3);
+            background: #4f46e5;
             color: #ffffff;
             border-color: #818cf8;
-            box-shadow: 0 0 25px rgba(79, 70, 229, 0.9), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.8);
         }
 
-        /* GRID DE MINAS 3D EFECTO GEMAS */
-        .mines-grid-3d {
-            display: grid;
-            grid-template-columns: repeat(4, 62px);
-            grid-template-rows: repeat(4, 62px);
-            gap: 12px;
-            justify-content: center;
-            transform-style: preserve-3d;
-        }
-        .mine-tile-3d {
-            background: linear-gradient(145deg, #312e81, #1e1b4b);
-            border: 2px solid #818cf8;
-            border-radius: 16px;
-            font-size: 1.8rem;
+        /* TARJETAS DE BLACKJACK */
+        .card-table-ui {
             display: flex;
-            align-items: center;
+            gap: 10px;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.6), inset 0 3px 6px rgba(255,255,255,0.25);
+            margin: 10px 0;
         }
-        .mine-tile-3d:hover {
-            transform: translateY(-5px) scale(1.05);
-            border-color: #38bdf8;
-            box-shadow: 0 12px 25px rgba(56, 189, 248, 0.5), inset 0 3px 6px rgba(255,255,255,0.4);
-        }
-
-        /* GATO PRO 3D */
-        .tictactoe-grid-3d {
-            display: grid;
-            grid-template-columns: repeat(3, 76px);
-            grid-template-rows: repeat(3, 76px);
-            gap: 12px;
-        }
-        .tictactoe-tile-3d {
-            background: linear-gradient(145deg, #1e1b4b, #0f172a);
-            border: 2px solid #6366f1;
-            border-radius: 16px;
-            font-size: 2.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+        .playing-card {
+            background: #ffffff;
+            color: #0f172a;
             font-family: 'Orbitron', sans-serif;
-            color: #38bdf8;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.6), inset 0 3px 6px rgba(255,255,255,0.2);
-            transition: 0.25s;
+            font-weight: 800;
+            width: 50px;
+            height: 75px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            font-size: 1.2rem;
         }
-        .tictactoe-tile-3d:hover {
-            transform: translateY(-4px);
-            border-color: #38bdf8;
-            box-shadow: 0 12px 20px rgba(56,189,248,0.4);
+
+        /* PORTERÍA DE PENALES */
+        .goal-container {
+            width: 280px;
+            height: 140px;
+            border: 4px solid #ffffff;
+            border-bottom: none;
+            position: relative;
+            margin: 0 auto 15px auto;
+            background: rgba(16, 185, 129, 0.15);
+        }
+        .goal-zones {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            height: 100%;
+        }
+        .goal-zone {
+            border: 1px dashed rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .goal-zone:hover {
+            background: rgba(250, 204, 21, 0.3);
+            color: #facc15;
         }
     </style>
 </head>
@@ -224,8 +220,8 @@
     <!-- Header -->
     <header class="hero-section text-center">
         <div class="container">
-            <h1 class="h5 fw-bold mb-1 text-white">Zona Arcade 3D Inmersiva</h1>
-            <p class="text-muted small mx-auto mb-0" style="max-width: 500px;">Gráficos mejorados y experiencia tipo aplicación nativa.</p>
+            <h1 class="h5 fw-bold mb-1 text-white">Minijuegos Pro & Casinos Autorizados México</h1>
+            <p class="text-muted small mx-auto mb-0" style="max-width: 500px;">Disfruta de Blackjack Rápido y Duelo de Penales en app inmersiva.</p>
         </div>
     </header>
 
@@ -268,12 +264,12 @@
             <!-- CONTENIDO CENTRAL -->
             <div class="col-lg-8">
 
-                <!-- 🎮 ZONA ARCADE 3D 🎮 -->
+                <!-- 🎮 ZONA ARCADE 🎮 -->
                 <section class="mb-5">
                     <div id="arcade-container" class="arcade-wrapper">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h3 class="text-white fw-bold fs-6 mb-0" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CASINO APP 3D ENGINE
+                                <i class="fa-solid fa-gamepad text-warning me-1"></i>ZONA DE JUEGOS PRO
                             </h3>
                             <button onclick="toggleFullScreen()" class="btn btn-sm btn-dark text-info border border-info">
                                 <i class="fa-solid fa-expand me-1"></i> Fullscreen
@@ -282,16 +278,16 @@
 
                         <!-- Selector de Juegos -->
                         <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Master</button>
-                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab">🛩️ AviaMasters</button>
-                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas & Estrellas</button>
-                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Pro</button>
+                            <button onclick="cambiarJuego('blackjack')" id="tab-blackjack" class="arcade-tab active">🃏 Blackjack Pro</button>
+                            <button onclick="cambiarJuego('penales')" id="tab-penales" class="arcade-tab">⚽ Duelo de Penales</button>
+                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas</button>
+                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Imposible</button>
                         </div>
 
-                        <!-- Escenario 3D -->
+                        <!-- Escenario -->
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
-                                <div id="pantalla-juego" class="game-stage-3d text-center p-3 mb-2">
+                                <div id="pantalla-juego" class="game-stage text-center p-3 mb-2">
                                     <!-- Dinámico -->
                                 </div>
                                 <div id="contenedor-boton-accion" class="text-center">
@@ -302,19 +298,19 @@
 
                         <!-- CTA Afiliados -->
                         <div class="mt-3 p-2 rounded-3 bg-dark border border-success border-opacity-50 text-center">
-                            <h6 class="text-white fw-bold small mb-1">🔥 ¿Quieres dinero real o más fichas?</h6>
-                            <a href="#lista-casinos" class="btn btn-success btn-sm fw-bold px-3 py-1">Ver Casinos Recomendados ⬇️</a>
+                            <h6 class="text-white fw-bold small mb-1">🔥 ¿Buscas casinos reales con licencias oficiales?</h6>
+                            <a href="#lista-casinos" class="btn btn-success btn-sm fw-bold px-3 py-1">Ver Listado Completo ⬇️</a>
                         </div>
                     </div>
                 </section>
 
-                <!-- LISTA DE CASINOS -->
+                <!-- LISTA DE CASINOS AMPLIADA Y REAL -->
                 <main class="mb-5">
-                    <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Top Casinos y Bonos Recomendados (2026)</h2>
+                    <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Casinos Online Autorizados en México</h2>
                     <div id="lista-casinos" class="row g-4">
                         <div class="col-12 text-center py-4">
                             <div class="spinner-border text-info" role="status"></div>
-                            <p class="text-muted mt-2">Cargando opciones...</p>
+                            <p class="text-muted mt-2">Cargando casinos...</p>
                         </div>
                     </div>
                 </main>
@@ -359,278 +355,225 @@
             contenedor.classList.toggle('fullscreen-mode');
         }
 
-        async function cargarCasinos() {
-            try {
-                const response = await fetch('/api/casinos');
-                const casinos = await response.json();
-                const contenedor = document.getElementById('lista-casinos');
-                contenedor.innerHTML = '';
+        const casinosReales = [
+            { id: 'caliente', nombre: 'Caliente Casino', calificacion: '4.8', bono: '$1,000 MXN sin depósito + 100%', metodos_pago: 'SPEI, OXXO, Tarjetas' },
+            { id: 'codere', nombre: 'Codere México', calificacion: '4.7', bono: 'Hasta $5,000 MXN en apuestas', metodos_pago: 'SPEI, OXXO Pay, Efectivo' },
+            { id: 'winpot', nombre: 'Winpot Casino', calificacion: '4.6', bono: '$500 MXN gratis + Bono de bienvenida', metodos_pago: 'SPEI, STP, OXXO' },
+            { id: 'novibet', nombre: 'Novibet', calificacion: '4.6', bono: '100% hasta $4,000 MXN + giros', metodos_pago: 'SPEI, Tarjetas Bancarias' },
+            { id: 'playuzu', nombre: 'PlayUZU', calificacion: '4.5', bono: '80 Giros sin requisito de apuesta', metodos_pago: 'SPEI, PayPal, Tarjetas' },
+            { id: 'strendus', nombre: 'Strendus', calificacion: '4.5', bono: '$600 MXN de regalo al registrarte', metodos_pago: 'SPEI, OXXO, CoDi' },
+            { id: '1xbet', nombre: '1xBet México', calificacion: '4.4', bono: 'Bono del 100% en primer depósito', metodos_pago: 'SPEI, Criptomonedas, Tarjetas' },
+            { id: 'betway', nombre: 'Betway', calificacion: '4.4', bono: 'Apuestas iniales aseguradas', metodos_pago: 'SPEI, Neteller, Tarjetas' },
+            { id: 'bigbola', nombre: 'Big Bola', calificacion: '4.3', bono: 'Bono exclusivo de bienvenida', metodos_pago: 'SPEI, Tarjetas bancarias' }
+        ];
 
-                casinos.forEach((casino, index) => {
-                    const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Popular</span>' : '';
-                    contenedor.innerHTML += `
-                        <div class="col-lg-4 col-md-6">
-                            <div class="casino-card p-4 h-100 d-flex flex-column justify-content-between">
-                                <div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <div class="d-flex align-items-center">
-                                            <h3 class="h6 fw-bold mb-0 text-white">${casino.nombre}</h3>
-                                            ${topBadge}
-                                        </div>
-                                        <span class="badge-rating"><i class="fa-solid fa-star me-1"></i>${casino.calificacion}</span>
+        function cargarCasinos() {
+            const contenedor = document.getElementById('lista-casinos');
+            contenedor.innerHTML = '';
+
+            casinosReales.forEach((casino, index) => {
+                const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Popular</span>' : (index === 1 ? '<span class="badge bg-warning text-dark ms-2">#2 Top</span>' : '');
+                contenedor.innerHTML += `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="casino-card p-4 h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <h3 class="h6 fw-bold mb-0 text-white">${casino.nombre}</h3>
+                                        ${topBadge}
                                     </div>
-                                    <div class="mb-3 p-3 rounded-3" style="background: rgba(56, 189, 248, 0.08); border: 1px dashed rgba(56, 189, 248, 0.3);">
-                                        <span class="text-uppercase small text-muted d-block mb-1 fw-bold">Bono Exclusivo</span>
-                                        <span class="bonus-text fs-6">${casino.bono}</span>
-                                    </div>
-                                    <p class="text-muted small mb-4"><strong>Pagos:</strong> ${casino.metodos_pago}</p>
+                                    <span class="badge-rating"><i class="fa-solid fa-star me-1"></i>${casino.calificacion}</span>
                                 </div>
-                                <a href="/go/${casino.id}" target="_blank" class="btn btn-claim shadow-sm text-center">Reclamar Bono ↗</a>
+                                <div class="mb-3 p-3 rounded-3" style="background: rgba(56, 189, 248, 0.08); border: 1px dashed rgba(56, 189, 248, 0.3);">
+                                    <span class="text-uppercase small text-muted d-block mb-1 fw-bold">Bono Exclusivo</span>
+                                    <span class="bonus-text fs-6">${casino.bono}</span>
+                                </div>
+                                <p class="text-muted small mb-4"><strong>Pagos:</strong> ${casino.metodos_pago}</p>
                             </div>
+                            <a href="#" class="btn btn-claim shadow-sm text-center">Reclamar Bono ↗</a>
                         </div>
-                    `;
-                });
-            } catch (e) { console.error(e); }
+                    </div>
+                `;
+            });
         }
 
         function cambiarJuego(juego) {
             if (fichas <= 0) return;
-            detenerMotores();
             document.querySelectorAll('.arcade-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${juego}`).classList.add('active');
 
+            if (juego === 'blackjack') iniciarBlackjack();
+            else if (juego === 'penales') iniciarPenales();
+            else if (juego === 'minas') prepararMinasJuego();
+            else if (juego === 'gato') iniciarGatoImposible();
+        }
+
+        // --- 1. BLACKJACK PRO ---
+        let bjJugador = [];
+        let bjCrupier = [];
+        let bjActivo = false;
+
+        function iniciarBlackjack() {
+            if (!actualizarHUD()) return;
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
+            bjActivo = true;
+
+            bjJugador = [obtenerCartaAleatoria(), obtenerCartaAleatoria()];
+            bjCrupier = [obtenerCartaAleatoria()];
+
+            renderizarBlackjack();
+        }
+
+        function obtenerCartaAleatoria() {
+            const valores = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+            return valores[Math.floor(Math.random() * valores.length)];
+        }
+
+        function calcularPuntajeBJ(mano) {
+            let total = 0;
+            let ases = 0;
+            mano.forEach(c => {
+                if (c === 'A') { ases++; total += 11; }
+                else if (['J','Q','K'].includes(c)) total += 10;
+                else total += parseInt(c);
+            });
+            while (total > 21 && ases > 0) { total -= 10; ases--; }
+            return total;
+        }
+
+        function renderizarBlackjack() {
             const pantalla = document.getElementById('pantalla-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
-            if (juego === 'gallina') {
-                pantalla.innerHTML = `
-                    <canvas id="canvas-chickenmaster" width="320" height="230" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-warning fw-bold small" style="font-family:'Orbitron'">Apuesta: 10f | Motor 3D Pro</div>
-                `;
+            let pJugador = calcularPuntajeBJ(bjJugador);
+            let pCrupier = calcularPuntajeBJ(bjCrupier);
+
+            pantalla.innerHTML = `
+                <div class="p-2">
+                    <h6 class="text-muted small">Crupier (Puntaje: ${bjActivo ? '?' : pCrupier})</h6>
+                    <div class="card-table-ui">
+                        ${bjCrupier.map(c => `<div class="playing-card">${c}</div>`).join('')}
+                        ${bjActivo ? '<div class="playing-card bg-secondary text-white">?</div>' : ''}
+                    </div>
+                    <hr class="border-secondary my-2">
+                    <h6 class="text-muted small">Tus Cartas (Puntaje: ${pJugador})</h6>
+                    <div class="card-table-ui">
+                        ${bjJugador.map(c => `<div class="playing-card">${c}</div>`).join('')}
+                    </div>
+                    <div id="estado-bj" class="text-info fw-bold small mt-2">Toma una decisión estratégica</div>
+                </div>
+            `;
+
+            if (bjActivo) {
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-2">
-                        <button onclick="saltarChickenMaster()" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">SALTAR CARRIL 🐔</button>
-                        <button onclick="retirarChickenMaster()" id="btn-retirar-chicken" class="btn btn-success fw-bold px-4 py-2 shadow" style="display:none;">CASHOUT 💰</button>
+                        <button onclick="pedirCartaBJ()" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">Pedir Carta 🃏</button>
+                        <button onclick="plantarseBJ()" class="btn btn-danger fw-bold px-4 py-2 shadow">Plantarse 🛑</button>
                     </div>
                 `;
-                iniciarChickenMasterScene();
-            } else if (juego === 'avion') {
-                pantalla.innerHTML = `
-                    <canvas id="canvas-aviamasters" width="320" height="210" class="arcade-canvas mb-2"></canvas>
-                    <div class="d-flex justify-content-around w-100 text-light small fw-bold" style="font-family:'Orbitron'">
-                        <span>ALT: <strong id="hud-alt">0m</strong></span>
-                        <span>MULT: <strong id="hud-mult" class="text-warning">1.00x</strong></span>
-                    </div>
-                `;
-                contenedorBtn.innerHTML = `<button onclick="iniciarAviaMasters()" class="btn btn-success fw-bold px-4 py-2 shadow">INICIAR VUELO 🛩️ (-10f)</button>`;
-                dibujarAviaMastersFrame(1.00, 40, 140);
-            } else if (juego === 'minas') {
-                prepararMinasJuego();
-            } else if (juego === 'gato') {
-                iniciarGatoImposible();
-            }
-        }
-
-        function detenerMotores() {
-            if (intervaloChicken) clearInterval(intervaloChicken);
-            if (intervaloAvia) clearInterval(intervaloAvia);
-            vueloAviaActivo = false;
-        }
-
-        // --- 1. CHICKEN MASTER 3D REAL ---
-        let nivelChicken = 0;
-        let gananciaChicken = 0;
-        let autoY = -70;
-        let intervaloChicken = null;
-        let carroAtropellando = false;
-        const multsChickenVals = [1.15, 1.37, 1.64, 2.10, 3.50];
-
-        function iniciarChickenMasterScene() {
-            dibujarChickenSceneFrame();
-            if (intervaloChicken) clearInterval(intervaloChicken);
-            intervaloChicken = setInterval(() => {
-                if (carroAtropellando) {
-                    autoY += 14;
-                    if (autoY > 270) { autoY = -70; carroAtropellando = false; }
-                }
-                dibujarChickenSceneFrame();
-            }, 40);
-        }
-
-        function dibujarChickenSceneFrame() {
-            const canvas = document.getElementById('canvas-chickenmaster');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Fondo 3D con perspectiva de neón
-            let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            grad.addColorStop(0, '#312e81');
-            grad.addColorStop(1, '#020617');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Pistas de luz 3D
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 3;
-            ctx.setLineDash([10, 10]);
-            ctx.beginPath(); ctx.moveTo(106, 0); ctx.lineTo(106, canvas.height); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(213, 0); ctx.lineTo(213, canvas.height); ctx.stroke();
-            ctx.setLineDash([]);
-
-            // Bloques 3D de multiplicadores
-            let coordsCarriles = [
-                {x: 53, y: 35, mult: '1.15x'},
-                {x: 160, y: 75, mult: '1.37x'},
-                {x: 266, y: 115, mult: '1.64x'},
-                {x: 160, y: 155, mult: '2.10x'},
-                {x: 53, y: 195, mult: '3.50x'}
-            ];
-
-            for(let i=0; i<5; i++) {
-                let c = coordsCarriles[i];
-                ctx.fillStyle = i === nivelChicken ? '#6366f1' : '#0f172a';
-                ctx.fillRect(c.x - 25, c.y - 16, 50, 32);
-                ctx.strokeStyle = i === nivelChicken ? '#38bdf8' : '#f59e0b';
-                ctx.lineWidth = i === nivelChicken ? 3 : 2;
-                ctx.strokeRect(c.x - 25, c.y - 16, 50, 32);
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 12px Orbitron';
-                ctx.fillText(c.mult, c.x - 20, c.y + 5);
-            }
-
-            if (carroAtropellando) {
-                ctx.font = '30px sans-serif';
-                ctx.fillText('🏎️', 142, autoY);
-            }
-
-            let chickenPos = [
-                {x: 20, y: 195},
-                {x: 53, y: 35},
-                {x: 160, y: 75},
-                {x: 266, y: 115},
-                {x: 160, y: 155},
-                {x: 53, y: 195}
-            ];
-            let pos = chickenPos[nivelChicken];
-            ctx.font = '30px sans-serif';
-            ctx.fillText('🐔', pos.x - 14, pos.y + 8);
-        }
-
-        function saltarChickenMaster() {
-            if (nivelChicken === 0) {
-                if (!actualizarHUD()) return;
-                fichas -= COSTO_PARTIDA;
-                actualizarHUD();
-                gananciaChicken = COSTO_PARTIDA;
-            }
-
-            if (Math.random() < 0.26) {
-                carroAtropellando = true;
-                autoY = -40;
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Atropellado! Perdiste ${gananciaChicken} fichas.</span>`;
-                nivelChicken = 0;
-                gananciaChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
-                return;
-            }
-
-            nivelChicken++;
-            gananciaChicken = Math.floor(COSTO_PARTIDA * multsChickenVals[nivelChicken - 1]);
-            document.getElementById('btn-retirar-chicken').style.display = 'inline-block';
-            document.getElementById('btn-retirar-chicken').innerText = `CASHOUT (${gananciaChicken}f)`;
-
-            if (nivelChicken >= 5) {
-                fichas += gananciaChicken;
-                actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${gananciaChicken} fichas!</span>`;
-                nivelChicken = 0;
-                gananciaChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
             } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">✨ Nivel ${nivelChicken}/5 (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f</span>`;
+                contenedorBtn.innerHTML = `<button onclick="iniciarBlackjack()" class="btn btn-success fw-bold px-4 py-2 shadow">Nueva Partida (-10f) 🔄</button>`;
             }
         }
 
-        function retirarChickenMaster() {
-            if (nivelChicken > 0 && gananciaChicken > 0) {
-                fichas += gananciaChicken;
-                actualizarHUD();
-                alert(`🎉 ¡Retiro exitoso! +${gananciaChicken} fichas.`);
-                nivelChicken = 0;
-                gananciaChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success">💰 Cobro realizado.</span>`;
+        function pedirCartaBJ() {
+            if (!bjActivo) return;
+            bjJugador.push(obtenerCartaAleatoria());
+            let p = calcularPuntajeBJ(bjJugador);
+            renderizarBlackjack();
+
+            if (p > 21) {
+                bjActivo = false;
+                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">💥 ¡Te pasaste de 21! Perdiste la apuesta.</span>`;
+                renderizarBlackjack();
             }
         }
 
-        // --- 2. AVIAMASTERS 3D ---
-        let intervaloAvia = null;
-        let vueloAviaActivo = false;
+        function plantarseBJ() {
+            if (!bjActivo) return;
+            bjActivo = false;
 
-        function dibujarAviaMastersFrame(mult, x, y) {
-            const canvas = document.getElementById('canvas-aviamasters');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            grad.addColorStop(0, '#1e3a8a');
-            grad.addColorStop(1, '#020617');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#475569';
-            ctx.fillRect(10, 160, 100, 20);
-            ctx.font = '32px sans-serif';
-            ctx.fillText('🛩️', x, y);
-        }
+            // Turno de la IA del Crupier
+            while (calcularPuntajeBJ(bjCrupier) < 17) {
+                bjCrupier.push(obtenerCartaAleatoria());
+            }
 
-        function iniciarAviaMasters() {
-            if (!actualizarHUD()) return;
-            const btn = document.querySelector('#contenedor-boton-accion button');
+            let pJug = calcularPuntajeBJ(bjJugador);
+            let pCrup = calcularPuntajeBJ(bjCrupier);
 
-            if (!vueloAviaActivo) {
-                fichas -= COSTO_PARTIDA;
-                actualizarHUD();
-                vueloAviaActivo = true;
-                let m = 1.00;
-                let posX = 40, posY = 140;
-                let alt = 0;
-                let crash = (Math.random() * 3.5 + 1.2).toFixed(2);
+            renderizarBlackjack();
 
-                btn.innerText = "¡RETIRAR PREMIO!";
-                btn.className = "btn btn-warning btn-sm fw-bold px-4 py-2 text-dark shadow";
-
-                intervaloAvia = setInterval(() => {
-                    m += 0.04;
-                    alt += 2.5;
-                    posX += 2;
-                    posY -= 1;
-                    document.getElementById('hud-mult').innerText = m.toFixed(2) + "x";
-                    document.getElementById('hud-alt').innerText = alt.toFixed(0) + "m";
-                    dibujarAviaMastersFrame(m, posX, posY);
-
-                    if (m >= crash || posX > 290) {
-                        clearInterval(intervaloAvia);
-                        vueloAviaActivo = false;
-                        document.getElementById('hud-mult').innerText = "💥 CRASH";
-                        btn.innerText = "INICIAR VUELO 🛩️ (-10f)";
-                        btn.className = "btn btn-success btn-sm fw-bold px-4 py-2 shadow";
-                    }
-                }, 100);
-            } else {
-                clearInterval(intervaloAvia);
-                vueloAviaActivo = false;
-                let premio = Math.floor(COSTO_PARTIDA * 2.2);
+            if (pCrup > 21 || pJug > pCrup) {
+                let premio = COSTO_PARTIDA * 2;
                 fichas += premio;
                 actualizarHUD();
-                alert(`🎉 ¡Premio retirado! +${premio} fichas.`);
-                btn.innerText = "INICIAR VUELO 🛩️ (-10f)";
-                btn.className = "btn btn-success btn-sm fw-bold px-4 py-2 shadow";
+                document.getElementById('estado-bj').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste el Blackjack! +${premio} fichas.</span>`;
+            } else if (pJug === pCrup) {
+                fichas += COSTO_PARTIDA;
+                actualizarHUD();
+                document.getElementById('estado-bj').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
+            } else {
+                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">🤖 El Crupier ganó. Suerte la próxima.</span>`;
             }
         }
 
-        // --- 3. JUEGO DE MINAS 3D (GEMAS Y BOMBAS) ---
+        // --- 2. DUELO DE PENALES ---
+        let gananciaPenal = 0;
+        let rondaPenal = 0;
+
+        function iniciarPenales() {
+            if (!actualizarHUD()) return;
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
+            rondaPenal = 1;
+            gananciaPenal = COSTO_PARTIDA;
+            renderizarPenales('¡Elige a dónde patear el penal!');
+        }
+
+        function renderizarPenales(mensaje) {
+            const pantalla = document.getElementById('pantalla-juego');
+            const contenedorBtn = document.getElementById('contenedor-boton-accion');
+
+            pantalla.innerHTML = `
+                <div class="p-2">
+                    <div class="goal-container">
+                        <div class="goal-zones">
+                            <div class="goal-zone" onclick="patearPenal('Izquierda')">Ángulo Izq</div>
+                            <div class="goal-zone" onclick="patearPenal('Centro')">Centro</div>
+                            <div class="goal-zone" onclick="patearPenal('Derecha')">Ángulo Der</div>
+                        </div>
+                    </div>
+                    <div id="estado-penal" class="text-warning fw-bold small">${mensaje}</div>
+                </div>
+            `;
+            contenedorBtn.innerHTML = rondaPenal > 1 ? `<button onclick="retirarPenales()" class="btn btn-success btn-sm fw-bold">CASHOUT (${gananciaPenal}f) 💰</button>` : '';
+        }
+
+        function patearPenal(zonaElegida) {
+            const zonasIA = ['Izquierda', 'Centro', 'Derecha'];
+            const paradaIA = zonasIA[Math.floor(Math.random() * zonasIA.length)];
+
+            if (zonaElegida === paradaIA) {
+                renderizarPenales(`❌ ¡El portero se tiró a la ${paradaIA} y atajó tu penal! Perdiste ${gananciaPenal}f.`);
+                rondaPenal = 0;
+            } else {
+                gananciaPenal = Math.floor(gananciaPenal * 1.5);
+                rondaPenal++;
+                renderizarPenales(`⚽ ¡GOOOL! El portero se tiró al lado contrario. Acumulado: ${gananciaPenal}f. ¡Elige siguiente disparo!`);
+            }
+        }
+
+        function retirarPenales() {
+            if (gananciaPenal > 0) {
+                fichas += gananciaPenal;
+                actualizarHUD();
+                alert(`🎉 ¡Cobro exitoso! +${gananciaPenal} fichas.`);
+                iniciarPenales();
+            }
+        }
+
+        // --- 3. MINAS ---
         let minasTablero = Array(16).fill(false);
         let minasDescubiertas = 0;
         let minasActivo = false;
@@ -643,16 +586,15 @@
 
             pantalla.innerHTML = `
                 <div class="p-3 text-center">
-                    <h6 class="text-white mb-2" style="font-family:'Orbitron'">Selecciona la cantidad de bombas:</h6>
+                    <h6 class="text-white mb-2">Selecciona bombas:</h6>
                     <div class="d-flex justify-content-center gap-2 mb-3">
                         <button onclick="configurarBombas(1)" class="btn btn-sm btn-outline-info" id="b-1">1 Bomba</button>
                         <button onclick="configurarBombas(3)" class="btn btn-sm btn-info active" id="b-3">3 Bombas</button>
                         <button onclick="configurarBombas(5)" class="btn btn-sm btn-outline-warning" id="b-5">5 Bombas</button>
                     </div>
-                    <p class="text-muted small">Apuesta: 10 fichas</p>
                 </div>
             `;
-            contenedorBtn.innerHTML = `<button onclick="iniciarMinasJuego()" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow">INICIAR MINAS 3D 💣</button>`;
+            contenedorBtn.innerHTML = `<button onclick="iniciarMinasJuego()" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow">INICIAR MINAS 💣</button>`;
         }
 
         function configurarBombas(n) {
@@ -681,9 +623,9 @@
             const pantalla = document.getElementById('pantalla-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
-            let gridHTML = '<div class="mines-grid-3d">';
+            let gridHTML = '<div class="mines-grid" style="display:grid; grid-template-columns:repeat(4,50px); gap:6px; justify-content:center;">';
             for(let i=0; i<16; i++) {
-                gridHTML += `<div class="mine-tile-3d" id="mine-${i}" onclick="clicMina(${i})">💎</div>`;
+                gridHTML += `<div class="mine-tile" id="mine-${i}" onclick="clicMina(${i})" style="background:#1e1b4b; border:1px solid #6366f1; height:50px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; cursor:pointer; border-radius:10px;">💎</div>`;
             }
             gridHTML += '</div>';
 
@@ -692,7 +634,7 @@
                 <div class="d-flex justify-content-center gap-2 mt-2 align-items-center flex-wrap">
                     <span id="estado-minas" class="text-info small fw-bold">Estrellas: 0 | Acumulado: 10f</span>
                     <button onclick="retirarMinas()" id="btn-retirar-minas" class="btn btn-success btn-sm fw-bold" style="display:none;">CASHOUT 💰</button>
-                    <button onclick="prepararMinasJuego()" class="btn btn-outline-danger btn-sm fw-bold">🔄 Volver a Empezar</button>
+                    <button onclick="prepararMinasJuego()" class="btn btn-outline-danger btn-sm fw-bold">🔄 Reiniciar</button>
                 </div>
             `;
         }
@@ -705,26 +647,18 @@
             if (minasTablero[index]) {
                 celda.innerText = '💣';
                 celda.style.background = '#7f1d1d';
-                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Bomba! Perdiste la partida.</span>`;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Bomba! Perdiste.</span>`;
                 minasActivo = false;
                 document.getElementById('btn-retirar-minas').style.display = 'none';
             } else {
                 celda.innerText = '⭐';
                 celda.style.background = '#065f46';
                 minasDescubiertas++;
-                let multFactor = 1.30 + (cantidadBombas * 0.15);
+                let multFactor = 1.25 + (cantidadBombas * 0.15);
                 premioActualMinas = Math.floor(premioActualMinas * multFactor);
 
                 document.getElementById('estado-minas').innerHTML = `⭐ Estrellas: ${minasDescubiertas} | Acumulado: <strong class="text-warning">${premioActualMinas}f</strong>`;
                 document.getElementById('btn-retirar-minas').style.display = 'inline-block';
-
-                if (minasDescubiertas >= (16 - cantidadBombas)) {
-                    fichas += premioActualMinas;
-                    actualizarHUD();
-                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${premioActualMinas} fichas!</span>`;
-                    minasActivo = false;
-                    document.getElementById('btn-retirar-minas').style.display = 'none';
-                }
             }
         }
 
@@ -739,7 +673,7 @@
             }
         }
 
-        // --- 4. GATO PRO 3D ---
+        // --- 4. GATO IMPOSIBLE ---
         let tableroGato = Array(9).fill('');
         let gatoActivo = true;
 
@@ -754,67 +688,96 @@
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
             pantalla.innerHTML = `
-                <div class="tictactoe-grid-3d mb-2" id="grid-gato" style="margin: 0 auto;">
-                    ${Array(9).fill(0).map((_, i) => `<div class="tictactoe-tile-3d" onclick="jugarGato(${i})"></div>`).join('')}
+                <div class="tictactoe-grid mb-2" id="grid-gato" style="margin: 0 auto; display:grid; grid-template-columns:repeat(3,70px); gap:8px; justify-content:center;">
+                    ${Array(9).fill(0).map((_, i) => `<div class="tictactoe-tile" onclick="jugarGatoImposible(${i})" style="background:#111827; border:2px solid #4f46e5; height:70px; display:flex; align-items:center; justify-content:center; font-size:2rem; cursor:pointer; border-radius:12px; color:#38bdf8;"></div>`).join('')}
                 </div>
-                <div id="estado-gato" class="text-info small fw-bold">Gana a la IA para duplicar (+25f) 🤖</div>
+                <div id="estado-gato" class="text-info small fw-bold">Modo Imposible (IA Invencible) 🤖</div>
             `;
             contenedorBtn.innerHTML = `<button onclick="iniciarGatoImposible()" class="btn btn-outline-info btn-sm px-3">Reiniciar 🔄</button>`;
         }
 
-        function jugarGato(i) {
-            if (!gatoActivo || tableroGato[i] !== '') return;
-            tableroGato[i] = 'X';
+        function jugarGatoImposible(index) {
+            if (!gatoActivo || tableroGato[index] !== '') return;
+
+            tableroGato[index] = 'X';
             actualizarVisualGato();
 
-            if (verificarGanadorGato(tableroGato, 'X')) {
-                fichas += 25;
+            if (verificarGanador(tableroGato, 'X')) {
+                let premio = 50;
+                fichas += premio;
                 actualizarHUD();
-                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +25 fichas!</span>`;
+                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Imposible! Le ganaste a la IA (+${premio}f)</span>`;
                 gatoActivo = false;
                 return;
             }
 
             if (!tableroGato.includes('')) {
+                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
                 fichas += COSTO_PARTIDA;
                 actualizarHUD();
-                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
                 gatoActivo = false;
                 return;
             }
 
             setTimeout(() => {
                 if (!gatoActivo) return;
-                let vacias = [];
-                tableroGato.forEach((v, idx) => { if(v === '') vacias.push(idx); });
-                if(vacias.length > 0) {
-                    let mov = vacias[Math.floor(Math.random() * vacias.length)];
+                let mov = obtenerMovimientoMinimax(tableroGato, 'O');
+                if (mov !== -1) {
                     tableroGato[mov] = 'O';
                     actualizarVisualGato();
-                    if (verificarGanadorGato(tableroGato, 'O')) {
-                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA ganó. Perdiste.</span>`;
+
+                    if (verificarGanador(tableroGato, 'O')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA invencible ganó. Perdiste.</span>`;
+                        gatoActivo = false;
+                    } else if (!tableroGato.includes('')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
+                        fichas += COSTO_PARTIDA;
+                        actualizarHUD();
                         gatoActivo = false;
                     }
                 }
-            }, 250);
+            }, 300);
+        }
+
+        function obtenerMovimientoMinimax(tab, jugador) {
+            for (let i = 0; i < 9; i++) {
+                if (tab[i] === '') {
+                    tab[i] = 'O';
+                    if (verificarGanador(tab, 'O')) { tab[i] = ''; return i; }
+                    tab[i] = '';
+                }
+            }
+            for (let i = 0; i < 9; i++) {
+                if (tab[i] === '') {
+                    tab[i] = 'X';
+                    if (verificarGanador(tab, 'X')) { tab[i] = ''; return i; }
+                    tab[i] = '';
+                }
+            }
+            if (tab[4] === '') return 4;
+            const esquinas = [0, 2, 6, 8].filter(i => tab[i] === '');
+            if (esquinas.length > 0) return esquinas[Math.floor(Math.random() * esquinas.length)];
+            const vacias = [];
+            tab.forEach((v, i) => { if (v === '') vacias.push(i); });
+            return vacias.length > 0 ? vacias[Math.floor(Math.random() * vacias.length)] : -1;
         }
 
         function actualizarVisualGato() {
-            const celdas = document.querySelectorAll('.tictactoe-tile-3d');
-            tableroGato.forEach((v, i) => {
-                celdas[i].innerText = v;
-                celdas[i].style.color = v === 'X' ? '#38bdf8' : '#f59e0b';
+            const celdas = document.querySelectorAll('.tictactoe-tile');
+            tableroGato.forEach((val, i) => {
+                celdas[i].innerText = val;
+                celdas[i].style.color = val === 'X' ? '#38bdf8' : '#f59e0b';
             });
         }
 
-        function verificarGanadorGato(t, j) {
+        function verificarGanador(tab, jugador) {
             const comb = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            return comb.some(c => c.every(i => t[i] === j));
+            return comb.some(c => c.every(i => tab[i] === jugador));
         }
 
         // Inicializar
         cargarCasinos();
-        cambiarJuego('gallina');
+        iniciarBlackjack();
     </script>
 </body>
 </html>
