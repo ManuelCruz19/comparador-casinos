@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Casinos Online México 2026 | Bonos Gratis & Minijuegos 2D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Top Casinos Online México 2026 | Bonos Gratis & Minijuegos Arcade</title>
     <meta name="description" content="Compara los mejores casinos online autorizados en México. Reclama bonos sin depósito, pagos rápidos por SPEI y juega gratis a minijuegos arcade 2D.">
-    <meta name="keywords" content="casinos online mexico, bonos sin deposito, jugar crash gratis, codere bono, caliente casino spei">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
@@ -28,6 +27,8 @@
             background-color: #05070b;
             color: #f8fafc;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         .text-muted { color: #94a3b8 !important; }
         .navbar {
@@ -37,7 +38,7 @@
         }
         .hero-section {
             background: radial-gradient(circle at top, #1e1b4b 0%, #05070b 70%);
-            padding: 30px 0;
+            padding: 20px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .casino-card {
@@ -66,12 +67,12 @@
             background: linear-gradient(135deg, #1e1b4b, #0f172a);
             border: 2px solid #38bdf8;
             border-radius: 50rem;
-            padding: 8px 22px;
+            padding: 6px 18px;
             font-family: 'Orbitron', sans-serif;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
-        /* CONTENEDOR DE ANUNCIOS */
+        /* ANUNCIOS */
         .ad-sidebar-box {
             background: #0b0f19;
             border: 1px solid rgba(99, 102, 241, 0.2);
@@ -93,19 +94,29 @@
             margin-bottom: 20px;
         }
 
-        /* ESCENARIOS ARCADE 2D */
+        /* ZONA ARCADE & MODO FULLSCREEN */
         .arcade-wrapper {
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
             border: 2px solid #6366f1;
             border-radius: 24px;
             box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
-            padding: 25px;
+            padding: 20px;
+            position: relative;
+        }
+        .arcade-wrapper.fullscreen-mode {
+            position: fixed !important;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 9999;
+            border-radius: 0;
+            padding: 15px;
+            overflow-y: auto;
+            background: #030712;
         }
         .game-stage-2d {
-            background: #030712;
+            background: #0b0f19;
             border: 2px solid rgba(99, 102, 241, 0.5);
             border-radius: 18px;
-            min-height: 320px;
+            min-height: 310px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -119,9 +130,9 @@
             color: #cbd5e1;
             font-weight: 700;
             border-radius: 12px;
-            padding: 8px 16px;
+            padding: 8px 14px;
             transition: 0.2s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .arcade-tab.active {
             background: #4f46e5;
@@ -130,50 +141,58 @@
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
         }
 
-        /* JUEGO DEL GATO NEÓN */
+        /* CANVAS DE JUEGOS */
+        .arcade-canvas {
+            background: #1e1b4b;
+            border-radius: 14px;
+            border: 2px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        /* JUEGO DE MINAS GRID */
+        .mines-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 55px);
+            grid-template-rows: repeat(4, 55px);
+            gap: 8px;
+            justify-content: center;
+        }
+        .mine-cell {
+            background: #1e1b4b;
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.3);
+        }
+        .mine-cell:hover {
+            background: #312e81;
+            border-color: #38bdf8;
+            transform: scale(1.05);
+        }
+
+        /* GATO IMPOSIBLE */
         .tictactoe-grid {
             display: grid;
-            grid-template-columns: repeat(3, 75px);
-            grid-template-rows: repeat(3, 75px);
+            grid-template-columns: repeat(3, 70px);
+            grid-template-rows: repeat(3, 70px);
             gap: 8px;
         }
         .tictactoe-cell {
             background: #111827;
             border: 2px solid #4f46e5;
             border-radius: 12px;
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.2s;
             font-family: 'Orbitron', sans-serif;
             color: #38bdf8;
-            box-shadow: inset 0 0 10px rgba(79, 70, 229, 0.2);
-        }
-        .tictactoe-cell:hover {
-            background: #1e1b4b;
-            border-color: #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
-
-        /* MOTOR GRÁFICO CANVAS */
-        .arcade-canvas {
-            background: #581c87; /* Morado estilo Chicken Cross clásico */
-            border-radius: 14px;
-            border: 2px solid rgba(234, 179, 8, 0.5);
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
-        }
-
-        /* MONEDA */
-        .coin-2d {
-            font-size: 4.5rem;
-            display: inline-block;
-            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
-            transition: transform 0.6s ease-out;
-        }
-        .coin-spin {
-            transform: rotateY(1080deg) scale(1.15);
         }
     </style>
 </head>
@@ -182,14 +201,19 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand fw-extrabold fs-4" href="#">
-                <i class="fa-solid fa-dice text-warning me-2"></i>Slot<span class="text-info">Comparador</span>
+            <a class="navbar-brand fw-extrabold fs-5" href="#">
+                <i class="fa-solid fa-dice text-warning me-1"></i>Slot<span class="text-info">Comparador</span>
             </a>
-            <!-- HUD DE FICHAS VIRTUALES -->
-            <div class="wallet-hud d-flex align-items-center text-warning">
-                <i class="fa-solid fa-coins me-2 fs-5"></i>
-                <span class="text-white small me-1">Fichas:</span>
-                <span id="saldo-fichas" class="fw-bold fs-5 text-info">100</span>
+            <!-- HUD DE FICHAS Y FULLSCREEN -->
+            <div class="d-flex align-items-center gap-2">
+                <div class="wallet-hud d-flex align-items-center text-warning">
+                    <i class="fa-solid fa-coins me-2 fs-6"></i>
+                    <span class="text-white small me-1">Fichas:</span>
+                    <span id="saldo-fichas" class="fw-bold fs-6 text-info">100</span>
+                </div>
+                <button onclick="toggleFullScreen()" class="btn btn-outline-info btn-sm rounded-circle p-2" title="Pantalla Completa Móvil">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -197,12 +221,12 @@
     <!-- Header -->
     <header class="hero-section text-center">
         <div class="container">
-            <h1 class="h4 fw-bold mb-1 text-white">Zona Arcade & Casinos Autorizados</h1>
-            <p class="text-muted small mx-auto mb-0" style="max-width: 550px;">Diviértete con tus 100 fichas virtuales en los minijuegos neón.</p>
+            <h1 class="h5 fw-bold mb-1 text-white">Zona Arcade & Casinos Autorizados</h1>
+            <p class="text-muted small mx-auto mb-0" style="max-width: 500px;">Juega con tus 100 fichas virtuales en pantalla completa.</p>
         </div>
     </header>
 
-    <!-- BANNER MÓVIL (ARRIBA) -->
+    <!-- BANNER MÓVIL -->
     <div class="container d-lg-none mt-3">
         <div class="ad-mobile-box">
             <script>
@@ -219,12 +243,12 @@
     </div>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <div class="container-fluid my-4">
+    <div class="container-fluid my-3">
         <div class="row px-lg-4 justify-content-center">
             
-            <!-- ANUNCIO LATERAL IZQUIERDO (PC) -->
+            <!-- ANUNCIO LATERAL PC -->
             <div class="col-lg-3 d-none d-lg-block">
-                <div class="ad-sidebar-box sticky-top" style="top: 90px;">
+                <div class="ad-sidebar-box sticky-top" style="top: 80px;">
                     <script>
                         atOptions = {
                             'key' : '36184539941b9613accf596895648460',
@@ -241,28 +265,30 @@
             <!-- CONTENIDO CENTRAL -->
             <div class="col-lg-8">
 
-                <!-- 🎮 ZONA ARCADE INTERACTIVA 2D 🎮 -->
+                <!-- 🎮 ZONA ARCADE 2D 🎮 -->
                 <section class="mb-5">
-                    <div class="arcade-wrapper">
-                        <div class="text-center mb-3">
-                            <h3 class="text-white fw-bold fs-5" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-2"></i>SALÓN DE ARCADE FANTASY
+                    <div id="arcade-container" class="arcade-wrapper">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3 class="text-white fw-bold fs-6 mb-0" style="font-family: 'Orbitron', sans-serif;">
+                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CHICKEN MASTER & ARCADE
                             </h3>
-                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Cruza los carriles y retira tus ganancias!</p>
+                            <button onclick="toggleFullScreen()" class="btn btn-sm btn-dark text-info border border-info">
+                                <i class="fa-solid fa-expand me-1"></i> Fullscreen
+                            </button>
                         </div>
 
                         <!-- Selector de Juegos -->
-                        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                        <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
+                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Master</button>
                             <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab">🛩️ AviaMasters</button>
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Cross (x10)</button>
-                            <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
-                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Imposible</button>
+                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas</button>
+                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Pro</button>
                         </div>
 
                         <!-- Escenario 2D -->
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
-                                <div id="pantalla-juego" class="game-stage-2d text-center p-3 mb-3">
+                                <div id="pantalla-juego" class="game-stage-2d text-center p-3 mb-2">
                                     <!-- Dinámico -->
                                 </div>
                                 <div id="contenedor-boton-accion" class="text-center">
@@ -272,10 +298,9 @@
                         </div>
 
                         <!-- CTA Afiliados -->
-                        <div class="mt-4 p-3 rounded-4 bg-dark border border-success border-opacity-50 text-center">
-                            <h6 class="text-white fw-bold mb-1">🔥 ¿Se acabaron tus fichas o quieres dinero real?</h6>
-                            <p class="text-muted small mb-2">Recarga la página para obtener 100 fichas nuevas o reclama bonos de bienvenida.</p>
-                            <a href="#lista-casinos" class="btn btn-success btn-sm fw-bold px-3 py-2">Ver Casinos Recomendados ⬇️</a>
+                        <div class="mt-3 p-2 rounded-3 bg-dark border border-success border-opacity-50 text-center">
+                            <h6 class="text-white fw-bold small mb-1">🔥 ¿Quieres dinero real o más fichas?</h6>
+                            <a href="#lista-casinos" class="btn btn-success btn-sm fw-bold px-3 py-1">Ver Casinos Recomendados ⬇️</a>
                         </div>
                     </div>
                 </section>
@@ -307,7 +332,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // SISTEMA DE FICHAS VIRTUALES
         let fichas = 100;
         const COSTO_PARTIDA = 10;
 
@@ -315,17 +339,21 @@
             document.getElementById('saldo-fichas').innerText = fichas;
             if (fichas <= 0) {
                 document.getElementById('pantalla-juego').innerHTML = `
-                    <div class="p-4 text-center">
-                        <i class="fa-solid fa-triangle-exclamation text-danger fa-3x mb-3"></i>
-                        <h4 class="text-white fw-bold">¡Te has quedado sin fichas!</h4>
-                        <p class="text-muted small mb-3">Recarga la página en tu navegador para obtener 100 fichas nuevas y seguir generando vistas.</p>
-                        <button onclick="location.reload()" class="btn btn-warning fw-bold text-dark px-4 py-2 shadow">RECARGAR FICHAS 🔄</button>
+                    <div class="p-3 text-center">
+                        <i class="fa-solid fa-triangle-exclamation text-danger fa-3x mb-2"></i>
+                        <h5 class="text-white fw-bold">¡Sin Fichas!</h5>
+                        <button onclick="location.reload()" class="btn btn-warning btn-sm fw-bold text-dark px-3 mt-2">RECARGAR 🔄</button>
                     </div>
                 `;
                 document.getElementById('contenedor-boton-accion').innerHTML = '';
                 return false;
             }
             return true;
+        }
+
+        function toggleFullScreen() {
+            const contenedor = document.getElementById('arcade-container');
+            contenedor.classList.toggle('fullscreen-mode');
         }
 
         async function cargarCasinos() {
@@ -336,7 +364,7 @@
                 contenedor.innerHTML = '';
 
                 casinos.forEach((casino, index) => {
-                    const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Popular</span>' : (index === 1 ? '<span class="badge bg-warning text-dark ms-2">#2 Destacado</span>' : '');
+                    const topBadge = index === 0 ? '<span class="badge bg-danger ms-2">#1 Popular</span>' : '';
                     contenedor.innerHTML += `
                         <div class="col-lg-4 col-md-6">
                             <div class="casino-card p-4 h-100 d-flex flex-column justify-content-between">
@@ -352,23 +380,16 @@
                                         <span class="text-uppercase small text-muted d-block mb-1 fw-bold">Bono Exclusivo</span>
                                         <span class="bonus-text fs-6">${casino.bono}</span>
                                     </div>
-                                    <p class="text-muted small mb-4">
-                                        <i class="fa-solid fa-wallet text-secondary me-1"></i> <strong>Pagos:</strong> ${casino.metodos_pago}
-                                    </p>
+                                    <p class="text-muted small mb-4"><strong>Pagos:</strong> ${casino.metodos_pago}</p>
                                 </div>
-                                <a href="/go/${casino.id}" target="_blank" class="btn btn-claim shadow-sm text-center">
-                                    Reclamar Bono <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
-                                </a>
+                                <a href="/go/${casino.id}" target="_blank" class="btn btn-claim shadow-sm text-center">Reclamar Bono ↗</a>
                             </div>
                         </div>
                     `;
                 });
-            } catch (e) {
-                console.error(e);
-            }
+            } catch (e) { console.error(e); }
         }
 
-        // SELECTOR DE JUEGOS
         function cambiarJuego(juego) {
             if (fichas <= 0) return;
             detenerMotores();
@@ -378,77 +399,165 @@
             const pantalla = document.getElementById('pantalla-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
-            if (juego === 'avion') {
+            if (juego === 'gallina') {
                 pantalla.innerHTML = `
-                    <canvas id="canvas-aviamasters" width="340" height="210" class="arcade-canvas mb-2"></canvas>
+                    <canvas id="canvas-chickenmaster" width="320" height="220" class="arcade-canvas mb-2"></canvas>
+                    <div id="estado-chicken" class="text-warning fw-bold small">Apuesta: 10 fichas | Nivel 0/5 (1.0x)</div>
+                `;
+                contenedorBtn.innerHTML = `
+                    <div class="d-flex justify-content-center gap-2">
+                        <button onclick="saltarChickenMaster()" class="btn btn-warning fw-bold px-3 py-2 text-dark shadow">SALTAR CARRIL 🐔</button>
+                        <button onclick="retirarChickenMaster()" id="btn-retirar-chicken" class="btn btn-success fw-bold px-3 py-2 shadow" style="display:none;">CASHOUT 💰</button>
+                    </div>
+                `;
+                iniciarChickenMasterScene();
+            } else if (juego === 'avion') {
+                pantalla.innerHTML = `
+                    <canvas id="canvas-aviamasters" width="320" height="210" class="arcade-canvas mb-2"></canvas>
                     <div class="d-flex justify-content-around w-100 text-light small fw-bold" style="font-family:'Orbitron'">
-                        <span>ALTITUDE: <strong id="hud-alt">0.0m</strong></span>
-                        <span>DIST: <strong id="hud-dist">0.0m</strong></span>
+                        <span>ALT: <strong id="hud-alt">0m</strong></span>
                         <span>MULT: <strong id="hud-mult" class="text-warning">1.00x</strong></span>
                     </div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="iniciarAviaMasters()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR AVIAMASTERS 🛩️ (-10 fichas)</button>`;
-                dibujarAviaMastersFrame(1.00, 50, 150);
-            } else if (juego === 'gallina') {
-                pantalla.innerHTML = `
-                    <canvas id="canvas-chickencross" width="340" height="230" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-warning fw-bold small mt-1" style="font-family:'Orbitron'">Apuesta: 10 fichas | Multiplicador: 1.0x</div>
-                `;
-                contenedorBtn.innerHTML = `
-                    <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <button onclick="saltarChickenCross()" id="btn-saltar" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">HACER CLICK / SALTAR 🐔</button>
-                        <button onclick="retirarChickenCross()" id="btn-retirar" class="btn btn-danger fw-bold px-4 py-2 shadow" style="display:none;">Cashout (10.0 fichas)</button>
-                    </div>
-                `;
-                iniciarChickenCrossScene();
-            } else if (juego === 'moneda') {
-                pantalla.innerHTML = `
-                    <div id="coin-element" class="coin-2d mb-2">🪙</div>
-                    <div id="estado-moneda" class="text-warning fw-bold fs-5 mb-2" style="font-family:'Orbitron'">¡Elige Cara o Cruz!</div>
-                `;
-                contenedorBtn.innerHTML = `
-                    <div class="d-flex justify-content-center gap-3">
-                        <button onclick="lanzarMoneda2D('Cara')" class="btn btn-info fw-bold px-4 py-2 shadow">Elegir CARA 🪙</button>
-                        <button onclick="lanzarMoneda2D('Cruz')" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">Elegir CRUZ 👑</button>
-                    </div>
-                `;
+                contenedorBtn.innerHTML = `<button onclick="iniciarAviaMasters()" class="btn btn-success fw-bold px-4 py-2 shadow">INICIAR VUELO 🛩️ (-10f)</button>`;
+                dibujarAviaMastersFrame(1.00, 40, 140);
+            } else if (juego === 'minas') {
+                iniciarMinasJuego();
             } else if (juego === 'gato') {
                 iniciarGatoImposible();
             }
         }
 
         function detenerMotores() {
-            if (intervaloAvia) clearInterval(intervaloAvia);
             if (intervaloChicken) clearInterval(intervaloChicken);
+            if (intervaloAvia) clearInterval(intervaloAvia);
             vueloAviaActivo = false;
         }
 
-        // --- 1. MOTOR AVIAMASTERS ---
-        let intervaloAvia = null;
-        let vueloAviaActivo = false;
+        // --- 1. CHICKEN MASTER (Carros Verticales con Atropello y Multiplicadores) ---
+        let nivelChicken = 0;
+        let gananciaChicken = 0;
+        let autosY = [-50, 70, 190];
+        let intervaloChicken = null;
+        const multsChickenVals = [1.15, 1.37, 1.64, 2.10, 3.50];
 
-        function dibujarAviaMastersFrame(mult, avionX, avionY) {
-            const canvas = document.getElementById('canvas-aviamasters');
+        function iniciarChickenMasterScene() {
+            dibujarChickenMasterFrame();
+            if (intervaloChicken) clearInterval(intervaloChicken);
+            intervaloChicken = setInterval(() => {
+                for(let i=0; i<3; i++) {
+                    autosY[i] += 8;
+                    if (autosY[i] > 240) autosY[i] = -60;
+                }
+                dibujarChickenMasterFrame();
+            }, 50);
+        }
+
+        function dibujarChickenMasterFrame() {
+            const canvas = document.getElementById('canvas-chickenmaster');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#1e3a8a';
+            // Fondo asfalto con carriles verticales
+            ctx.fillStyle = '#0f172a';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-            ctx.beginPath();
-            ctx.arc(90, 50, 22, 0, Math.PI*2);
-            ctx.arc(250, 40, 28, 0, Math.PI*2);
-            ctx.fill();
+            ctx.strokeStyle = '#38bdf8';
+            ctx.setLineDash([6, 6]);
+            ctx.beginPath(); ctx.moveTo(106, 0); ctx.lineTo(106, canvas.height); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(213, 0); ctx.lineTo(213, canvas.height); ctx.stroke();
+            ctx.setLineDash([]);
 
+            // Bloques de multiplicadores verticales
+            let posXs = [53, 160, 266];
+            for(let i=0; i<5; i++) {
+                let carrilIndex = i % 3;
+                let posY = 15 + (i * 40);
+                ctx.fillStyle = '#1e293b';
+                ctx.fillRect(posXs[carrilIndex] - 22, posY, 44, 30);
+                ctx.strokeStyle = '#f59e0b';
+                ctx.strokeRect(posXs[carrilIndex] - 22, posY, 44, 30);
+                ctx.fillStyle = '#facc15';
+                ctx.font = 'bold 10px Orbitron';
+                ctx.fillText(multsChickenVals[i] + 'x', posXs[carrilIndex] - 18, posY + 18);
+            }
+
+            // Carros circulando VERTICALMENTE
+            ctx.font = '22px sans-serif';
+            ctx.fillText('🚗', 45, autosY[0]);
+            ctx.fillText('🚙', 150, autosY[1]);
+            ctx.fillText('🚒', 255, autosY[2]);
+
+            // Gallina en su avance
+            let chickenCoords = [{x: 53, y: 190}, {x: 160, y: 150}, {x: 266, y: 110}, {x: 160, y: 70}, {x: 53, y: 30}];
+            let currentCoord = chickenCoords[nivelChicken];
+            ctx.font = '26px sans-serif';
+            ctx.fillText('🐔', currentCoord.x - 12, currentCoord.y);
+        }
+
+        function saltarChickenMaster() {
+            if (nivelChicken === 0) {
+                if (!actualizarHUD()) return;
+                fichas -= COSTO_PARTIDA;
+                actualizarHUD();
+                gananciaChicken = COSTO_PARTIDA;
+            }
+
+            // Azar real: Riesgo de choque por carros verticales
+            let riesgo = 0.18 + (nivelChicken * 0.15);
+            if (Math.random() < riesgo) {
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Atropellado por el carro vertical! Perdiste ${gananciaChicken} fichas.</span>`;
+                nivelChicken = 0;
+                gananciaChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
+                return;
+            }
+
+            nivelChicken++;
+            gananciaChicken = Math.floor(COSTO_PARTIDA * multsChickenVals[nivelChicken - 1]);
+            document.getElementById('btn-retirar-chicken').style.display = 'inline-block';
+            document.getElementById('btn-retirar-chicken').innerText = `CASHOUT (${gananciaChicken}f)`;
+
+            if (nivelChicken >= 5) {
+                fichas += gananciaChicken;
+                actualizarHUD();
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste a la meta! Ganaste +${gananciaChicken} fichas.</span>`;
+                nivelChicken = 0;
+                gananciaChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
+            } else {
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 Nivel ${nivelChicken}/5 superado (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f</span>`;
+            }
+        }
+
+        function retirarChickenMaster() {
+            if (nivelChicken > 0 && gananciaChicken > 0) {
+                fichas += gananciaChicken;
+                actualizarHUD();
+                alert(`🎉 ¡Retirado con éxito! +${gananciaChicken} fichas.`);
+                nivelChicken = 0;
+                gananciaChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success">💰 Cobro realizado correctamente.</span>`;
+            }
+        }
+
+        // --- 2. AVIAMASTERS ---
+        let intervaloAvia = null;
+        let vueloAviaActivo = false;
+
+        function dibujarAviaMastersFrame(mult, x, y) {
+            const canvas = document.getElementById('canvas-aviamasters');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#1e3a8a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#475569';
-            ctx.fillRect(10, 165, 120, 25);
-            ctx.fillStyle = '#334155';
-            ctx.fillRect(35, 148, 55, 17);
-
-            ctx.font = '30px sans-serif';
-            ctx.fillText('🛩️', avionX, avionY);
+            ctx.fillRect(10, 160, 100, 20);
+            ctx.font = '28px sans-serif';
+            ctx.fillText('🛩️', x, y);
         }
 
         function iniciarAviaMasters() {
@@ -460,294 +569,176 @@
                 actualizarHUD();
                 vueloAviaActivo = true;
                 let m = 1.00;
-                let posX = 50;
-                let posY = 150;
-                let alt = 0.0;
-                let dist = 0.0;
-                const crash = (Math.random() * 3.5 + 1.3).toFixed(2);
+                let posX = 40, posY = 140;
+                let alt = 0;
+                let crash = (Math.random() * 3.5 + 1.2).toFixed(2);
 
                 btn.innerText = "¡RETIRAR PREMIO!";
-                btn.className = "btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark";
+                btn.className = "btn btn-warning btn-sm fw-bold px-4 py-2 text-dark shadow";
 
                 intervaloAvia = setInterval(() => {
-                    m += 0.05;
-                    alt += 3.2;
-                    dist += 18.5;
-                    posX += 2.2;
-                    posY -= 1.2;
-                    if (posY < 35) posY = 35;
-
+                    m += 0.04;
+                    alt += 2.5;
+                    posX += 2;
+                    posY -= 1;
                     document.getElementById('hud-mult').innerText = m.toFixed(2) + "x";
-                    document.getElementById('hud-alt').innerText = alt.toFixed(1) + "m";
-                    document.getElementById('hud-dist').innerText = dist.toFixed(1) + "m";
+                    document.getElementById('hud-alt').innerText = alt.toFixed(0) + "m";
                     dibujarAviaMastersFrame(m, posX, posY);
 
-                    if (m >= crash || posX > 310) {
+                    if (m >= crash || posX > 290) {
                         clearInterval(intervaloAvia);
                         vueloAviaActivo = false;
                         document.getElementById('hud-mult').innerText = "💥 CRASH";
-                        btn.innerText = "INICIAR AVIAMASTERS 🛩️ (-10 fichas)";
-                        btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
+                        btn.innerText = "INICIAR VUELO 🛩️ (-10f)";
+                        btn.className = "btn btn-success btn-sm fw-bold px-4 py-2 shadow";
                     }
                 }, 100);
             } else {
                 clearInterval(intervaloAvia);
                 vueloAviaActivo = false;
-                let premio = Math.floor(COSTO_PARTIDA * 2.1);
+                let premio = Math.floor(COSTO_PARTIDA * 2.2);
                 fichas += premio;
                 actualizarHUD();
-                alert(`🎉 ¡Retiro exitoso! Ganaste +${premio} fichas.`);
-                btn.innerText = "INICIAR AVIAMASTERS 🛩️ (-10 fichas)";
-                btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
+                alert(`🎉 ¡Premio retirado! +${premio} fichas.`);
+                btn.innerText = "INICIAR VUELO 🛩️ (-10f)";
+                btn.className = "btn btn-success btn-sm fw-bold px-4 py-2 shadow";
             }
         }
 
-        // --- 2. MOTOR CHICKEN CROSS (ESTILO VIDEO TIKTOK / SHORTS) ---
-        let pasoChickenCross = 0;
-        let gananciaChickenCross = 0;
-        let autoPosH = -50;
-        let intervaloChicken = null;
-        const multsCross = [1.54, 2.41, 4.20, 6.50, 10.00];
+        // --- 3. JUEGO DE MINAS (ESTILO ESTRELLAS / DIAMANTES) ---
+        let minasTablero = Array(16).fill(false);
+        let minasDescubiertas = 0;
+        let minasActivo = false;
 
-        function iniciarChickenCrossScene() {
-            dibujarChickenCrossFrame();
-            if (intervaloChicken) clearInterval(intervaloChicken);
-            intervaloChicken = setInterval(() => {
-                autoPosH += 7;
-                if (autoPosH > 350) autoPosH = -60;
-                dibujarChickenCrossFrame();
-            }, 50);
-        }
-
-        function dibujarChickenCrossFrame() {
-            const canvas = document.getElementById('canvas-chickencross');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Fondo de la calle horizontal estilo juego del pollo
-            ctx.fillStyle = '#4c1d95';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Líneas divisorias horizontales de carriles
-            ctx.strokeStyle = '#c084fc';
-            ctx.lineWidth = 2;
-            ctx.setLineDash([10, 10]);
-            ctx.beginPath(); ctx.moveTo(0, 75); ctx.lineTo(canvas.width, 75); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(0, 150); ctx.lineTo(canvas.width, 150); ctx.stroke();
-            ctx.setLineDash([]);
-
-            // Bloques de multiplicadores horizontales (Estilo cajitas moradas con texto blanco)
-            let boxX = [20, 85, 150, 215, 280];
-            for(let i=0; i<5; i++) {
-                ctx.fillStyle = '#6b21a8';
-                ctx.fillRect(boxX[i], 90, 52, 45);
-                ctx.strokeStyle = '#facc15';
-                ctx.lineWidth = i === pasoChickenCross ? 3 : 1;
-                ctx.strokeRect(boxX[i], 90, 52, 45);
-
-                ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 11px Orbitron';
-                ctx.fillText(multsCross[i] + 'x', boxX[i] + 4, 118);
-            }
-
-            // Carro circulando de forma aleatoria por la calle
-            ctx.font = '26px sans-serif';
-            ctx.fillText('🚕', autoPosH, 125);
-
-            // Gallina en su posición actual sobre los carriles
-            let chickenXPos = 25 + (pasoChickenCross * 65);
-            ctx.font = '28px sans-serif';
-            ctx.fillText('🐔', chickenXPos, 125);
-        }
-
-        function saltarChickenCross() {
-            if (pasoChickenCross === 0) {
-                if (!actualizarHUD()) return;
-                fichas -= COSTO_PARTIDA;
-                actualizarHUD();
-                gananciaChickenCross = COSTO_PARTIDA;
-            }
-
-            // Azar real: Riesgo de atropello por el carro
-            let probabilidadChoque = 0.25 + (pasoChickenCross * 0.12);
-            if (Math.random() < probabilidadChoque) {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡ATROPELLADO! Perdiste ${gananciaChickenCross} fichas.</span>`;
-                pasoChickenCross = 0;
-                gananciaChickenCross = 0;
-                document.getElementById('btn-retirar').style.display = 'none';
-                return;
-            }
-
-            pasoChickenCross++;
-            let mult = multsCross[pasoChickenCross - 1];
-            gananciaChickenCross = Math.floor(COSTO_PARTIDA * mult);
-
-            // Actualizar botón rojo de Cashout estilo video
-            const btnRetirar = document.getElementById('btn-retirar');
-            btnRetirar.style.display = 'inline-block';
-            btnRetirar.innerText = `Cashout (${gananciaChickenCross.toFixed(1)} Fichas)`;
-
-            if (pasoChickenCross >= 5) {
-                fichas += gananciaChickenCross;
-                actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Meta alcanzada (x10)! Ganaste +${gananciaChickenCross} fichas.</span>`;
-                pasoChickenCross = 0;
-                gananciaChickenCross = 0;
-                btnRetirar.style.display = 'none';
-            } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">✨ ¡Paso ${pasoChickenCross}/5 exitoso! Multiplicador: ${mult}x</span>`;
-            }
-        }
-
-        function retirarChickenCross() {
-            if (pasoChickenCross > 0 && gananciaChickenCross > 0) {
-                fichas += gananciaChickenCross;
-                actualizarHUD();
-                alert(`🎉 ¡Cobro exitoso! Sumaste +${gananciaChickenCross} fichas a tu balance.`);
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">💰 ¡Cashout completado con éxito!</span>`;
-                pasoChickenCross = 0;
-                gananciaChickenCross = 0;
-                document.getElementById('btn-retirar').style.display = 'none';
-            }
-        }
-
-        // --- 3. JUEGO MONEDA ---
-        function lanzarMoneda2D(eleccion) {
+        function iniciarMinasJuego() {
             if (!actualizarHUD()) return;
             fichas -= COSTO_PARTIDA;
             actualizarHUD();
+            minasActivo = true;
+            minasDescubiertas = 0;
 
-            const coin = document.getElementById('coin-element');
-            coin.classList.add('coin-spin');
-            
-            setTimeout(() => {
-                coin.classList.remove('coin-spin');
-                const resultado = Math.random() >= 0.5 ? 'Cara' : 'Cruz';
-                coin.innerText = resultado === 'Cara' ? '🪙' : '👑';
-                if (eleccion === resultado) {
-                    let premio = 25;
-                    fichas += premio;
-                    actualizarHUD();
-                    document.getElementById('estado-moneda').innerHTML = `<span class="text-success">🎉 Salió ${resultado}. ¡Ganaste +${premio} fichas!</span>`;
-                } else {
-                    document.getElementById('estado-moneda').innerHTML = `<span class="text-danger">😢 Salió ${resultado}. Suerte la próxima.</span>`;
-                }
-            }, 600);
+            minasTablero = Array(16).fill(false);
+            // Colocar 3 minas al azar
+            let colocadas = 0;
+            while(colocadas < 3) {
+                let idx = Math.floor(Math.random() * 16);
+                if (!minasTablero[idx]) { minasTablero[idx] = true; colocadas++; }
+            }
+
+            const pantalla = document.getElementById('pantalla-juego');
+            const contenedorBtn = document.getElementById('contenedor-boton-accion');
+
+            let gridHTML = '<div class="mines-grid">';
+            for(let i=0; i<16; i++) {
+                gridHTML += `<div class="mine-cell" id="mine-${i}" onclick="clicMina(${i})">❓</div>`;
+            }
+            gridHTML += '</div>';
+
+            pantalla.innerHTML = gridHTML;
+            contenedorBtn.innerHTML = `<div id="estado-minas" class="text-info small fw-bold mt-2">¡Encuentra estrellas y evita las minas! 💎</div>`;
         }
 
-        // --- 4. JUEGO DEL GATO IMPOSIBLE ---
+        function clicMina(index) {
+            if (!minasActivo) return;
+            const celda = document.getElementById(`mine-${index}`);
+            if (celda.innerText !== '❓') return;
+
+            if (minasTablero[index]) {
+                celda.innerText = '💣';
+                celda.style.background = '#7f1d1d';
+                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Boom! Pisaste una mina y perdiste.</span>`;
+                minasActivo = false;
+            } else {
+                celda.innerText = '⭐';
+                celda.style.background = '#065f46';
+                minasDescubiertas++;
+                let premioActual = Math.floor(COSTO_PARTIDA * (1 + (minasDescubiertas * 0.4)));
+                document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">✨ ¡Estrella encontrada! Acumulado: ${premioActual} fichas</span>`;
+
+                if (minasDescubiertas >= 13) {
+                    fichas += premioActual;
+                    actualizarHUD();
+                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Completaste todas las estrellas! Ganaste +${premioActual} fichas.</span>`;
+                    minasActivo = false;
+                }
+            }
+        }
+
+        // --- 4. GATO PRO ---
         let tableroGato = ['', '', '', '', '', '', '', '', ''];
-        let juegoGatoActivo = true;
+        let gatoActivo = true;
 
         function iniciarGatoImposible() {
             if (!actualizarHUD()) return;
-            juegoGatoActivo = true;
-            tableroGato = ['', '', '', '', '', '', '', '', ''];
+            gatoActivo = true;
+            tableroGato = Array(9).fill('');
+            fichas -= COSTO_PARTIDA;
+            actualizarHUD();
 
             const pantalla = document.getElementById('pantalla-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
 
             pantalla.innerHTML = `
-                <div class="tictactoe-grid mb-2" id="grid-gato">
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(0)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(1)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(2)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(3)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(4)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(5)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(6)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(7)"></div>
-                    <div class="tictactoe-cell" onclick="jugarGatoImposible(8)"></div>
+                <div class="tictactoe-grid mb-2" id="grid-gato" style="margin: 0 auto;">
+                    ${Array(9).fill(0).map((_, i) => `<div class="tictactoe-cell" onclick="jugarGato(${i})"></div>`).join('')}
                 </div>
-                <div id="estado-gato" class="text-info small fw-bold">Modo Imposible (IA Perfecta) 🤖</div>
+                <div id="estado-gato" class="text-info small fw-bold">Gana a la IA para duplicar (+20f) 🤖</div>
             `;
-            contenedorBtn.innerHTML = `<button onclick="iniciarGatoImposible()" class="btn btn-outline-info btn-sm fw-bold px-4">Reiniciar Gato 🔄</button>`;
-            
-            fichas -= COSTO_PARTIDA;
-            actualizarHUD();
+            contenedorBtn.innerHTML = `<button onclick="iniciarGatoImposible()" class="btn btn-outline-info btn-sm px-3">Reiniciar 🔄</button>`;
         }
 
-        function jugarGatoImposible(index) {
-            if (!juegoGatoActivo || tableroGato[index] !== '') return;
-
-            tableroGato[index] = 'X';
+        function jugarGato(i) {
+            if (!gatoActivo || tableroGato[i] !== '') return;
+            tableroGato[i] = 'X';
             actualizarVisualGato();
 
-            if (verificarGanador(tableroGato, 'X')) {
-                let premio = 50;
-                fichas += premio;
+            if (verificarGanadorGato(tableroGato, 'X')) {
+                fichas += 25;
                 actualizarHUD();
-                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Increíble! Le ganaste a la IA perfecta (+${premio} fichas)</span>`;
-                juegoGatoActivo = false;
+                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +25 fichas!</span>`;
+                gatoActivo = false;
                 return;
             }
 
             if (!tableroGato.includes('')) {
-                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Se devuelven tus fichas.</span>`;
                 fichas += COSTO_PARTIDA;
                 actualizarHUD();
-                juegoGatoActivo = false;
+                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
+                gatoActivo = false;
                 return;
             }
 
+            // IA simple
             setTimeout(() => {
-                if (!juegoGatoActivo) return;
-                let mov = obtenerMovimientoMinimax(tableroGato, 'O');
-                if (mov !== -1) {
+                if (!gatoActivo) return;
+                let vacias = [];
+                tableroGato.forEach((v, idx) => { if(v === '') vacias.push(idx); });
+                if(vacias.length > 0) {
+                    let mov = vacias[Math.floor(Math.random() * vacias.length)];
                     tableroGato[mov] = 'O';
                     actualizarVisualGato();
-
-                    if (verificarGanador(tableroGato, 'O')) {
-                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA perfecta ganó. Perdiste la apuesta.</span>`;
-                        juegoGatoActivo = false;
-                    } else if (!tableroGato.includes('')) {
-                        document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Se devuelven tus fichas.</span>`;
-                        fichas += COSTO_PARTIDA;
-                        actualizarHUD();
-                        juegoGatoActivo = false;
+                    if (verificarGanadorGato(tableroGato, 'O')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA ganó. Perdiste.</span>`;
+                        gatoActivo = false;
                     }
                 }
-            }, 300);
-        }
-
-        function obtenerMovimientoMinimax(tab, jugador) {
-            for (let i = 0; i < 9; i++) {
-                if (tab[i] === '') {
-                    tab[i] = 'O';
-                    if (verificarGanador(tab, 'O')) { tab[i] = ''; return i; }
-                    tab[i] = '';
-                }
-            }
-            for (let i = 0; i < 9; i++) {
-                if (tab[i] === '') {
-                    tab[i] = 'X';
-                    if (verificarGanador(tab, 'X')) { tab[i] = ''; return i; }
-                    tab[i] = '';
-                }
-            }
-            if (tab[4] === '') return 4;
-            const esquinas = [0, 2, 6, 8].filter(i => tab[i] === '');
-            if (esquinas.length > 0) return esquinas[Math.floor(Math.random() * esquinas.length)];
-            const vacias = [];
-            tab.forEach((v, i) => { if (v === '') vacias.push(i); });
-            return vacias.length > 0 ? vacias[Math.floor(Math.random() * vacias.length)] : -1;
+            }, 250);
         }
 
         function actualizarVisualGato() {
             const celdas = document.querySelectorAll('.tictactoe-cell');
-            tableroGato.forEach((val, i) => {
-                celdas[i].innerText = val;
-                celdas[i].style.color = val === 'X' ? '#38bdf8' : '#f59e0b';
+            tableroGato.forEach((v, i) => {
+                celdas[i].innerText = v;
+                celdas[i].style.color = v === 'X' ? '#38bdf8' : '#f59e0b';
             });
         }
 
-        function verificarGanador(tab, jugador) {
+        function verificarGanadorGato(t, j) {
             const comb = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            return comb.some(c => c.every(i => tab[i] === jugador));
+            return comb.some(c => c.every(i => t[i] === j));
         }
 
-        // Inicialización
+        // Inicializar
         cargarCasinos();
         cambiarJuego('gallina');
     </script>
