@@ -265,7 +265,7 @@
                             <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ Avión Crash</button>
                             <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 Gallina Cross</button>
                             <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
-                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Neón</button>
+                            <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Neón (Difícil)</button>
                         </div>
 
                         <!-- Escenario 2D -->
@@ -512,7 +512,7 @@
             }, 600);
         }
 
-        // --- 4. JUEGO DEL GATO NEÓN (TIC-TAC-TOE) ---
+        // --- 4. JUEGO DEL GATO NEÓN (DIFICULTAD ALTA - INTELIGENTE) ---
         let tableroGato = ['', '', '', '', '', '', '', '', ''];
         let juegoGatoActivo = true;
 
@@ -536,7 +536,7 @@
                     <div class="tictactoe-cell" onclick="jugarGato(7)"></div>
                     <div class="tictactoe-cell" onclick="jugarGato(8)"></div>
                 </div>
-                <div id="estado-gato" class="text-info small fw-bold">Tu turno (X) - Apuesta: 10 fichas</div>
+                <div id="estado-gato" class="text-info small fw-bold">Tu turno (X) - IA en Modo Difícil 🤖</div>
             `;
             contenedorBtn.innerHTML = `<button onclick="iniciarGatoNeon()" class="btn btn-outline-info btn-sm fw-bold px-4">Reiniciar Gato 🔄</button>`;
             
@@ -550,39 +550,87 @@
             tableroGato[index] = 'X';
             actualizarVisualGato();
 
-            if (verificarGanadorGato('X')) {
-                let premio = 30;
+            if (verificarGanadorGato(tableroGato, 'X')) {
+                let premio = 35;
                 fichas += premio;
                 actualizarHUD();
-                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🎉 ¡Has vencido a la IA! (+${premio} fichas)</span>`;
+                document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Imposible! Le ganaste a la IA (+${premio} fichas)</span>`;
                 juegoGatoActivo = false;
                 return;
             }
 
             if (!tableroGato.includes('')) {
-                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Se devuelven tus fichas.</span>`;
+                document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate técnico! Se devuelven tus fichas.</span>`;
                 fichas += COSTO_PARTIDA;
                 actualizarHUD();
                 juegoGatoActivo = false;
                 return;
             }
 
-            // Turno de la IA (O)
+            // Turno de la IA (Modo Difícil)
             setTimeout(() => {
                 if (!juegoGatoActivo) return;
-                let celdasVacias = [];
-                tableroGato.forEach((val, i) => { if (val === '') celdasVacias.push(i); });
-                if (celdasVacias.length > 0) {
-                    let movimientoIA = celdasVacias[Math.floor(Math.random() * celdasVacias.length)];
-                    tableroGato[movimientoIA] = 'O';
+                
+                let mejorMovimiento = obtenerMejorMovimientoIA();
+                if (mejorMovimiento !== -1) {
+                    tableroGato[mejorMovimiento] = 'O';
                     actualizarVisualGato();
 
-                    if (verificarGanadorGato('O')) {
-                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA ganó. Perdiste la apuesta.</span>`;
+                    if (verificarGanadorGato(tableroGato, 'O')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA te ha derrotado. Perdiste la apuesta.</span>`;
+                        juegoGatoActivo = false;
+                    } else if (!tableroGato.includes('')) {
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Se devuelven tus fichas.</span>`;
+                        fichas += COSTO_PARTIDA;
+                        actualizarHUD();
                         juegoGatoActivo = false;
                     }
                 }
             }, 350);
+        }
+
+        // Inteligencia Artificial Estratégica (Modo Difícil)
+        function obtenerMejorMovimientoIA() {
+            // 1. Ver si la IA puede ganar en este turno
+            for (let i = 0; i < 9; i++) {
+                if (tableroGato[i] === '') {
+                    tableroGato[i] = 'O';
+                    if (verificarGanadorGato(tableroGato, 'O')) {
+                        tableroGato[i] = '';
+                        return i;
+                    }
+                    tableroGato[i] = '';
+                }
+            }
+
+            // 2. Bloquear al usuario si está a punto de ganar
+            for (let i = 0; i < 9; i++) {
+                if (tableroGato[i] === '') {
+                    tableroGato[i] = 'X';
+                    if (verificarGanadorGato(tableroGato, 'X')) {
+                        tableroGato[i] = '';
+                        return i;
+                    }
+                    tableroGato[i] = '';
+                }
+            }
+
+            // 3. Tomar el centro si está libre (estrategia clave)
+            if (tableroGato[4] === '') return 4;
+
+            // 4. Tomar esquinas libres
+            const esquinas = [0, 2, 6, 8].filter(i => tableroGato[i] === '');
+            if (esquinas.length > 0) {
+                return esquinas[Math.floor(Math.random() * esquinas.length)];
+            }
+
+            // 5. Cualquier celda restante
+            const vacias = [];
+            tableroGato.forEach((val, i) => { if (val === '') vacias.push(i); });
+            if (vacias.length > 0) {
+                return vacias[Math.floor(Math.random() * vacias.length)];
+            }
+            return -1;
         }
 
         function actualizarVisualGato() {
@@ -593,14 +641,14 @@
             });
         }
 
-        function verificarGanadorGato(jugador) {
+        function verificarGanadorGato(tablero, jugador) {
             const combinaciones = [
                 [0,1,2], [3,4,5], [6,7,8], // Filas
                 [0,3,6], [1,4,7], [2,5,8], // Columnas
                 [0,4,8], [2,4,6]          // Diagonales
             ];
             return combinaciones.some(comb => {
-                return comb.every(index => tableroGato[index] === jugador);
+                return comb.every(index => tablero[index] === jugador);
             });
         }
 
