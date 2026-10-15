@@ -159,10 +159,10 @@
 
         /* MOTOR GRÁFICO CANVAS */
         .arcade-canvas {
-            background: #020617;
+            background: #1e3a8a; /* Cielo Estilo AviaMasters */
             border-radius: 14px;
             border: 2px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
         /* MONEDA */
@@ -253,8 +253,8 @@
 
                         <!-- Selector de Juegos -->
                         <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ Avión Impulsor</button>
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 Gallina Freeway</button>
+                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ AviaMasters</button>
+                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 Chicken Road</button>
                             <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
                             <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Imposible</button>
                         </div>
@@ -380,19 +380,22 @@
 
             if (juego === 'avion') {
                 pantalla.innerHTML = `
-                    <canvas id="canvas-avion" width="340" height="210" class="arcade-canvas mb-2"></canvas>
-                    <div id="mult-avion" class="h4 fw-bold text-warning mb-0" style="font-family:'Orbitron'">1.00x</div>
-                    <p class="small text-muted mb-0">¡Esquiva el crash y aprovecha los impulsos de nubes!</p>
+                    <canvas id="canvas-aviamasters" width="340" height="210" class="arcade-canvas mb-2"></canvas>
+                    <div class="d-flex justify-content-around w-150 text-light small" style="font-family:'Orbitron'">
+                        <span>ALTITUDE: <strong id="hud-alt">0.0m</strong></span>
+                        <span>DIST: <strong id="hud-dist">0.0m</strong></span>
+                        <span>MULT: <strong id="hud-mult" class="text-warning">1.00x</strong></span>
+                    </div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="iniciarJuegoAvion()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR VUELO 🛩️ (-10 fichas)</button>`;
-                dibujarEscenaAvionInicial();
+                contenedorBtn.innerHTML = `<button onclick="iniciarAviaMasters()" class="btn btn-success btn-lg fw-bold px-5 py-3 shadow">INICIAR AVIAMASTERS 🛩️ (-10 fichas)</button>`;
+                dibujarAviaMastersFrame(1.00, 40, 160);
             } else if (juego === 'gallina') {
                 pantalla.innerHTML = `
-                    <canvas id="canvas-gallina" width="340" height="220" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-gallina" class="text-info fw-bold small">¡Salta los carriles de autos hasta la meta!</div>
+                    <canvas id="canvas-chickenroad" width="340" height="220" class="arcade-canvas mb-2"></canvas>
+                    <div id="estado-chicken" class="text-info fw-bold small">Elige tu alcantarilla para cruzar la calle</div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="saltarGallinaFreeway()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">SALTAR CARRIL 🐔 (-10 fichas)</button>`;
-                iniciarEscenaGallina();
+                contenedorBtn.innerHTML = `<button onclick="avanzarChickenRoad()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">AVANZAR ALCAHUETA 🐔 (-10 fichas)</button>`;
+                iniciarChickenRoadScene();
             } else if (juego === 'moneda') {
                 pantalla.innerHTML = `
                     <div id="coin-element" class="coin-2d mb-2">🪙</div>
@@ -410,189 +413,174 @@
         }
 
         function detenerMotores() {
-            if (intervaloAvion) clearInterval(intervaloAvion);
-            if (intervaloGallinaCars) clearInterval(intervaloGallinaCars);
-            vueloActivo = false;
+            if (intervaloAvia) clearInterval(intervaloAvia);
+            if (intervaloChicken) clearInterval(intervaloChicken);
+            vueloAviaActivo = false;
         }
 
-        // --- 1. JUEGO AVIÓN CON MOTOR CANVAS E IMPULSO DE NUBES ---
-        let intervaloAvion = null;
-        let vueloActivo = false;
+        // --- 1. MOTOR AVIAMASTERS (ESTILO AVIATION PORTAVIONES + NUBES) ---
+        let intervaloAvia = null;
+        let vueloAviaActivo = false;
 
-        function dibujarEscenaAvionInicial(mult = 1.00, avionX = 40, avionY = 170, nubeX = 200, nubeY = 80) {
-            const canvas = document.getElementById('canvas-avion');
+        function dibujarAviaMastersFrame(mult, avionX, avionY) {
+            const canvas = document.getElementById('canvas-aviamasters');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Fondo estrellado
-            ctx.fillStyle = '#0f172a';
+            // Cielo estilo AviaMasters
+            ctx.fillStyle = '#1e3a8a';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Nube impulsora
-            ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+            // Nubes de fondo
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
             ctx.beginPath();
-            ctx.arc(nubeX, nubeY, 25, 0, Math.PI * 2);
-            ctx.arc(nubeX + 15, nubeY - 10, 20, 0, Math.PI * 2);
+            ctx.arc(80, 60, 25, 0, Math.PI*2);
+            ctx.arc(240, 50, 30, 0, Math.PI*2);
             ctx.fill();
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '10px sans-serif';
-            ctx.fillText('⚡ IMPULSO', nubeX - 22, nubeY - 30);
 
-            // Trayectoria de vuelo
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(40, 170);
-            ctx.quadraticCurveTo(avionX / 2, 170, avionX, avionY);
-            ctx.stroke();
+            // Portaviones en la parte inferior izquierda
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(10, 160, 110, 25);
+            ctx.fillStyle = '#334155';
+            ctx.fillRect(30, 145, 50, 15);
 
-            // Avión 🛩️
-            ctx.font = '26px sans-serif';
-            ctx.fillText('🛩️', avionX - 15, avionY + 10);
+            // Avión rojo característico
+            ctx.font = '28px sans-serif';
+            ctx.fillText('🛩️', avionX, avionY);
         }
 
-        function iniciarJuegoAvion() {
+        function iniciarAviaMasters() {
             if (!actualizarHUD()) return;
             const btn = document.querySelector('#contenedor-boton-accion button');
 
-            if (!vueloActivo) {
+            if (!vueloAviaActivo) {
                 fichas -= COSTO_PARTIDA;
                 actualizarHUD();
-                vueloActivo = true;
+                vueloAviaActivo = true;
                 let m = 1.00;
                 let posX = 40;
-                let posY = 170;
-                let nX = 220;
-                let nY = 70;
-                const crash = (Math.random() * 3 + 1.3).toFixed(2);
+                let posY = 150;
+                let alt = 0.0;
+                let dist = 0.0;
+                const crash = (Math.random() * 3.2 + 1.2).toFixed(2);
 
-                btn.innerText = "¡RETIRAR GANANCIAS!";
+                btn.innerText = "¡RETIRAR PREMIO!";
                 btn.className = "btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark";
 
-                intervaloAvion = setInterval(() => {
-                    m += 0.04;
-                    posX += 3;
-                    posY -= 1.5;
-                    if (posY < 30) posY = 30;
+                intervaloAvia = setInterval(() => {
+                    m += 0.05;
+                    alt += 2.5;
+                    dist += 15.2;
+                    posX += 2;
+                    posY -= 1;
+                    if (posY < 40) posY = 40;
 
-                    // Detectar si choca con la nube impulsora
-                    let distanciaNube = Math.hypot(posX - nX, posY - nY);
-                    if (distanciaNube < 35) {
-                        m += 0.35; // Impulso extra
-                        nX = -100; // Desaparecer nube
-                    }
+                    document.getElementById('hud-mult').innerText = m.toFixed(2) + "x";
+                    document.getElementById('hud-alt').innerText = alt.toFixed(1) + "m";
+                    document.getElementById('hud-dist').innerText = dist.toFixed(1) + "m";
+                    dibujarAviaMastersFrame(m, posX, posY);
 
-                    document.getElementById('mult-avion').innerText = m.toFixed(2) + "x";
-                    dibujarEscenaAvionInicial(m, posX, posY, nX, nY);
-
-                    if (m >= crash || posX > 320) {
-                        clearInterval(intervaloAvion);
-                        vueloActivo = false;
-                        document.getElementById('mult-avion').innerText = "💥 ¡CRASH!";
-                        btn.innerText = "INICIAR VUELO 🛩️ (-10 fichas)";
+                    if (m >= crash || posX > 310) {
+                        clearInterval(intervaloAvia);
+                        vueloAviaActivo = false;
+                        document.getElementById('hud-mult').innerText = "💥 CRASH";
+                        btn.innerText = "INICIAR AVIAMASTERS 🛩️ (-10 fichas)";
                         btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
                     }
-                }, 90);
+                }, 100);
             } else {
-                clearInterval(intervaloAvion);
-                vueloActivo = false;
-                let premio = Math.floor(COSTO_PARTIDA * 1.9);
+                clearInterval(intervaloAvia);
+                vueloAviaActivo = false;
+                let premio = Math.floor(COSTO_PARTIDA * 2.0);
                 fichas += premio;
                 actualizarHUD();
-                alert(`🎉 ¡Retiraste a tiempo! Ganaste +${premio} fichas.`);
-                btn.innerText = "INICIAR VUELO 🛩️ (-10 fichas)";
+                alert(`🎉 ¡Retiro exitoso! Ganaste +${premio} fichas.`);
+                btn.innerText = "INICIAR AVIAMASTERS 🛩️ (-10 fichas)";
                 btn.className = "btn btn-success btn-lg fw-bold px-5 py-3 shadow";
             }
         }
 
-        // --- 2. JUEGO GALLINA FREEWAY CON CARROS EN MOVIMIENTO ---
-        let carrilGallina = 0;
-        let autosX = [50, 200, 100, 250];
-        let intervaloGallinaCars = null;
+        // --- 2. MOTOR CHICKEN ROAD (ESTILO ALCANTARILLAS Y AUTOS VERTICALES) ---
+        let pasoChicken = 0;
+        let autosChickenY = [-50, 70, 180];
+        let intervaloChicken = null;
 
-        function iniciarEscenaGallina() {
-            dibujarCanvasGallina();
-            if (intervaloGallinaCars) clearInterval(intervaloGallinaCars);
-            intervaloGallinaCars = setInterval(() => {
-                // Mover los autos en los 4 carriles
-                for(let i=0; i<4; i++) {
-                    autosX[i] += (i % 2 === 0 ? 4 : -4);
-                    if (autosX[i] > 340) autosX[i] = -20;
-                    if (autosX[i] < -20) autosX[i] = 340;
+        function iniciarChickenRoadScene() {
+            dibujarChickenFrame();
+            if (intervaloChicken) clearInterval(intervaloChicken);
+            intervaloChicken = setInterval(() => {
+                for(let i=0; i<3; i++) {
+                    autosChickenY[i] += 5;
+                    if (autosChickenY[i] > 240) autosChickenY[i] = -60;
                 }
-                dibujarCanvasGallina();
-            }, 50);
+                dibujarChickenFrame();
+            }, 60);
         }
 
-        function dibujarCanvasGallina() {
-            const canvas = document.getElementById('canvas-gallina');
+        function dibujarChickenFrame() {
+            const canvas = document.getElementById('canvas-chickenroad');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Fondo asfalto
-            ctx.fillStyle = '#1e293b';
+            // Pavimento de la calle
+            ctx.fillStyle = '#334155';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Líneas de carriles
-            ctx.strokeStyle = '#94a3b8';
-            ctx.setLineDash([6, 6]);
-            for(let y = 44; y < 200; y += 44) {
-                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
-            }
+            // Líneas divisorias verticales de carriles
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath(); ctx.moveTo(110, 0); ctx.lineTo(110, canvas.height); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(225, 0); ctx.lineTo(225, canvas.height); ctx.stroke();
             ctx.setLineDash([]);
 
-            // Dibujar Autos en movimiento
-            ctx.font = '20px sans-serif';
-            let carrilY = [35, 79, 123, 167];
-            let modelosCarros = ['🚗', '🚙', '🏎️', '🚕'];
-            for(let i=0; i<4; i++) {
-                ctx.fillText(modelosCarros[i], autosX[i], carrilY[i]);
+            // Tapas de alcantarilla con multiplicadores estilo Chicken Road
+            let alcantarillasX = [55, 168, 280];
+            let mults = ['1.01x', '1.06x', '1.19x'];
+            for(let i=0; i<3; i++) {
+                ctx.fillStyle = '#475569';
+                ctx.beginPath(); ctx.arc(alcantarillasX[i], 110, 22, 0, Math.PI*2); ctx.fill();
+                ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.stroke();
+                ctx.fillStyle = '#ffffff'; ctx.font = 'bold 11px Orbitron';
+                ctx.fillText(mults[i], alcantarillasX[i] - 16, 114);
             }
 
-            // Meta arriba
-            ctx.fillStyle = '#22c55e';
-            ctx.fillRect(0, 0, canvas.width, 18);
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 11px sans-serif';
-            ctx.fillText('🏁 ZONA DE META SEGURA 🏁', 90, 13);
-
-            // Gallina 🐔 posición según carril actual
-            let gallinaYCoord = 195 - (carrilGallina * 44);
+            // Vehículos circulando verticalmente
             ctx.font = '24px sans-serif';
-            ctx.fillText('🐔', 150, gallinaYCoord);
+            ctx.fillText('🚒', 70, autosChickenY[0]);
+            ctx.fillText('🚙', 185, autosChickenY[1]);
+
+            // Gallina en la banqueta izquierda
+            let gallinaXPos = 5 + (pasoChicken * 55);
+            ctx.fillText('🐔', gallinaXPos, 118);
         }
 
-        function saltarGallinaFreeway() {
+        function avanzarChickenRoad() {
             if (!actualizarHUD()) return;
-            if (carrilGallina === 0) {
+            if (pasoChicken === 0) {
                 fichas -= COSTO_PARTIDA;
                 actualizarHUD();
             }
 
-            carrilGallina++;
+            pasoChicken++;
+            let autoPos = autosChickenY[pasoChicken % 2];
             
-            // Comprobar colisión con el auto del carril anterior
-            let carrilIdx = 4 - carrilGallina;
-            if (carrilIdx >= 0 && carrilIdx < 4) {
-                let posAuto = autosX[carrilIdx];
-                // Si el auto está cerca de la posición central (140 a 180)
-                if (posAuto > 120 && posAuto < 190) {
-                    document.getElementById('estado-gallina').innerHTML = `<span class="text-danger fw-bold">💥 ¡Atropellado en el carril ${carrilGallina}! Perdiste.</span>`;
-                    carrilGallina = 0;
-                    return;
-                }
+            // Evaluar colisión simple con vehículo en movimiento
+            if (autoPos > 70 && autoPos < 150) {
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Te atropelló el vehículo! Perdiste.</span>`;
+                pasoChicken = 0;
+                return;
             }
 
-            if (carrilGallina >= 4) {
-                let premio = 35;
+            if (pasoChicken >= 3) {
+                let premio = 30;
                 fichas += premio;
                 actualizarHUD();
-                document.getElementById('estado-gallina').innerHTML = `<span class="text-success fw-bold">🏆 ¡Gallina victoriosa! Ganaste +${premio} fichas.</span>`;
-                carrilGallina = 0;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Cruzaste la calle con éxito! Ganaste +${premio} fichas.</span>`;
+                pasoChicken = 0;
             } else {
-                document.getElementById('estado-gallina').innerHTML = `<span class="text-warning fw-bold">👍 ¡Carril ${carrilGallina}/4 superado con éxito! Sigue saltando.</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 ¡Paso ${pasoChicken}/3 superado! Sigue avanzando.</span>`;
             }
         }
 
