@@ -159,7 +159,7 @@
 
         /* MOTOR GRÁFICO CANVAS */
         .arcade-canvas {
-            background: #1d4ed8; /* Cielo Azul Intenso AviaMasters */
+            background: #1d4ed8;
             border-radius: 14px;
             border: 2px solid rgba(56, 189, 248, 0.4);
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
@@ -248,7 +248,7 @@
                             <h3 class="text-white fw-bold fs-5" style="font-family: 'Orbitron', sans-serif;">
                                 <i class="fa-solid fa-gamepad text-warning me-2"></i>SALÓN DE ARCADE FANTASY
                             </h3>
-                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Gana para multiplicarlas!</p>
+                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Avanza por los carriles y retira a tiempo!</p>
                         </div>
 
                         <!-- Selector de Juegos -->
@@ -392,9 +392,14 @@
             } else if (juego === 'gallina') {
                 pantalla.innerHTML = `
                     <canvas id="canvas-chickenroad" width="340" height="220" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-info fw-bold small mt-1">Nivel 1/5 (Meta: 10x): ¡Avanza con suerte!</div>
+                    <div id="estado-chicken" class="text-info fw-bold small mt-1">Nivel 0/5 | Multiplicador actual: 1.0x (Apuesta: 10 fichas)</div>
                 `;
-                contenedorBtn.innerHTML = `<button onclick="avanzarChickenRoad()" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow text-dark">AVANZAR NIVEL 🐔 (-10 fichas)</button>`;
+                contenedorBtn.innerHTML = `
+                    <div class="d-flex justify-content-center gap-2">
+                        <button onclick="saltarChickenRoad()" class="btn btn-warning fw-lg fw-bold px-4 py-2 text-dark shadow">SALTAR AL SIGUIENTE CARRIL 🐔</button>
+                        <button onclick="retirarChickenRoad()" id="btn-retirar-chicken" class="btn btn-success fw-bold px-3 py-2 shadow" style="display:none;">¡RETIRAR 💰!</button>
+                    </div>
+                `;
                 iniciarChickenRoadScene();
             } else if (juego === 'moneda') {
                 pantalla.innerHTML = `
@@ -497,18 +502,20 @@
             }
         }
 
-        // --- 2. MOTOR CHICKEN ROAD (NUEVOS MULTIPLICADORES: 1.5, 4, 6.5, 8, 10) ---
+        // --- 2. MOTOR CHICKEN ROAD (CASH-OUT POR CARRIL Y AZAR) ---
         let nivelChicken = 0;
+        let gananciaActualChicken = 0;
         let autosChickenY = [-40, 60, 160];
         let intervaloChicken = null;
-        const multsChicken = ['1.5x', '4x', '6.5x', '8x', '10x'];
+        const multsChickenVals = [1.5, 4.0, 6.5, 8.0, 10.0];
+        const multsChickenStrs = ['1.5x', '4x', '6.5x', '8x', '10x'];
 
         function iniciarChickenRoadScene() {
             dibujarChickenFrame();
             if (intervaloChicken) clearInterval(intervaloChicken);
             intervaloChicken = setInterval(() => {
                 for(let i=0; i<3; i++) {
-                    autosChickenY[i] += 7;
+                    autosChickenY[i] += 6;
                     if (autosChickenY[i] > 240) autosChickenY[i] = -50;
                 }
                 dibujarChickenFrame();
@@ -530,14 +537,14 @@
             ctx.beginPath(); ctx.moveTo(225, 0); ctx.lineTo(225, canvas.height); ctx.stroke();
             ctx.setLineDash([]);
 
-            // Tapas de alcantarilla con 1.5, 4, 6.5, 8, 10
+            // Tapas de alcantarilla con los 5 multiplicadores
             let alcantarillasX = [55, 115, 175, 235, 295];
             for(let i=0; i<5; i++) {
                 ctx.fillStyle = '#334155';
                 ctx.beginPath(); ctx.arc(alcantarillasX[i], 110, 20, 0, Math.PI*2); ctx.fill();
                 ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.stroke();
                 ctx.fillStyle = '#facc15'; ctx.font = 'bold 10px Orbitron';
-                ctx.fillText(multsChicken[i], alcantarillasX[i] - 14, 114);
+                ctx.fillText(multsChickenStrs[i], alcantarillasX[i] - 14, 114);
             }
 
             ctx.font = '22px sans-serif';
@@ -549,31 +556,51 @@
             ctx.fillText('🐔', gallinaXPos, 116);
         }
 
-        function avanzarChickenRoad() {
-            if (!actualizarHUD()) return;
+        function saltarChickenRoad() {
             if (nivelChicken === 0) {
+                if (!actualizarHUD()) return;
                 fichas -= COSTO_PARTIDA;
                 actualizarHUD();
+                gananciaActualChicken = COSTO_PARTIDA;
             }
 
-            // Azar Real: Mayor multiplicador, mayor riesgo de choque
-            let probabilidadChoque = 0.3 + (nivelChicken * 0.12);
-            if (Math.random() < probabilidadChoque) {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡La gallina fue arrollada en el nivel ${nivelChicken + 1} (${multsChicken[nivelChicken]})! Perdiste.</span>`;
+            // Azar Real: Probabilidad de atropello por carro al intentar dar el salto
+            let riesgoChoque = 0.20 + (nivelChicken * 0.15);
+            if (Math.random() < riesgoChoque) {
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Un vehículo atropelló a la gallina en el carril ${nivelChicken + 1}! Perdiste ${gananciaActualChicken} fichas.</span>`;
                 nivelChicken = 0;
+                gananciaActualChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
                 return;
             }
 
             nivelChicken++;
+            let multActual = multsChickenVals[nivelChicken - 1];
+            gananciaActualChicken = Math.floor(COSTO_PARTIDA * multActual);
+
+            document.getElementById('btn-retirar-chicken').style.display = 'inline-block';
 
             if (nivelChicken >= 5) {
-                let premio = Math.floor(COSTO_PARTIDA * 10); // ¡Premio gordo x10!
-                fichas += premio;
+                fichas += gananciaActualChicken;
                 actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste al multiplicador x10! Ganaste +${premio} fichas.</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste a la meta x10! Ganaste +${gananciaActualChicken} fichas.</span>`;
                 nivelChicken = 0;
+                gananciaActualChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
             } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 ¡Nivel ${nivelChicken}/5 pasado (${multsChicken[nivelChicken-1]})! Siguiente multiplicador...</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 ¡Nivel ${nivelChicken}/5 alcanzado (${multsChickenStrs[nivelChicken-1]})! Acumulado: ${gananciaActualChicken} fichas. ¿Retirar o seguir?</span>`;
+            }
+        }
+
+        function retirarChickenRoad() {
+            if (nivelChicken > 0 && gananciaActualChicken > 0) {
+                fichas += gananciaActualChicken;
+                actualizarHUD();
+                alert(`🎉 ¡Retiraste con éxito! Sumaste +${gananciaActualChicken} fichas a tu balance.`);
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">💰 Retirado con éxito. ¡Inicia otra ronda!</span>`;
+                nivelChicken = 0;
+                gananciaActualChicken = 0;
+                document.getElementById('btn-retirar-chicken').style.display = 'none';
             }
         }
 
