@@ -56,27 +56,19 @@
         }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* ESPACIOS PUBLICITARIOS ADAPTATIVOS (PC Y MÓVIL) */
-        .ad-space-side {
+        /* CONTENEDOR DE ANUNCIOS PROFESIONAL Y CENTRADO */
+        .ad-container-pro {
             background: #0b0f19;
-            border: 1px dashed rgba(99, 102, 241, 0.4);
-            border-radius: 14px;
-            min-height: 500px;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 16px;
+            padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 15px;
-            color: #64748b;
-        }
-        .ad-banner-mobile {
-            background: #0b0f19;
-            border: 1px dashed rgba(99, 102, 241, 0.4);
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            color: #64748b;
-            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
         }
 
         /* ESCENARIOS ARCADE 2D */
@@ -115,7 +107,7 @@
             box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
         }
 
-        /* ANIMACIÓN 2D DE AVION Y MONEDA */
+        /* ANIMACIÓN 2D */
         #plane-icon {
             font-size: 3.5rem;
             transition: transform 0.1s linear;
@@ -163,9 +155,10 @@
         </div>
     </header>
 
-    <!-- BANNER PUBLICITARIO PARA MÓVIL (ARRIBA) -->
-    <div class="container d-lg-none">
-        <div class="ad-banner-mobile">
+    <!-- BANNER SUPERIOR MÓVIL -->
+    <div class="container d-lg-none mt-3">
+        <div class="ad-container-pro">
+            <span class="text-muted small mb-2 uppercase tracking-wider fw-bold">Publicidad Patrocinada</span>
             <script>
                 atOptions = {
                     'key' : '378ad42d30475f670e8b806ce90b7741',
@@ -179,26 +172,29 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL CON PUBLICIDAD LATERAL (PC) -->
-    <div class="container-fluid my-3">
-        <div class="row px-lg-4">
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container-fluid my-4">
+        <div class="row px-lg-4 justify-content-center">
             
-            <!-- ANUNCIO LATERAL IZQUIERDO (Sólo PC) -->
-            <div class="col-lg-2 d-none d-lg-block">
-                <script>
-                    atOptions = {
-                        'key' : '36184539941b9613accf596895648460',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://bicea.org/22/36184539941b9613accf596895648460"></script>
+            <!-- ANUNCIO LATERAL IZQUIERDO (Escritorio) -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="ad-container-pro sticky-top" style="top: 90px;">
+                    <span class="text-muted small mb-2 fw-bold">Patrocinador Oficial</span>
+                    <script>
+                        atOptions = {
+                            'key' : '36184539941b9613accf596895648460',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://bicea.org/22/36184539941b9613accf596895648460"></script>
+                </div>
             </div>
 
-            <!-- CONTENIDO PRINCIPAL (PC Y MÓVIL) -->
-            <div class="col-lg-8">
+            <!-- CONTENIDO CENTRAL -->
+            <div class="col-lg-7">
 
                 <!-- LISTA DE CASINOS -->
                 <main class="mb-5">
@@ -249,20 +245,6 @@
                     </div>
                 </section>
 
-            </div>
-
-            <!-- ANUNCIO LATERAL DERECHO (Sólo PC) -->
-            <div class="col-lg-2 d-none d-lg-block">
-                <script>
-                    atOptions = {
-                        'key' : '36184539941b9613accf596895648460',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://bicea.org/22/36184539941b9613accf596895648460"></script>
             </div>
 
         </div>
@@ -380,6 +362,7 @@
                     document.getElementById('mult-avion').innerText = m.toFixed(2) + "x";
 
                     if (m >= crash) {
+                        clearInterval(timerDev); // Corregido por seguridad
                         clearInterval(timerAvion);
                         vueloActivo = false;
                         plane.style.transform = `translateY(0px) rotate(0deg)`;
