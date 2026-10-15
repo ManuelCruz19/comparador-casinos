@@ -159,10 +159,10 @@
 
         /* MOTOR GRÁFICO CANVAS */
         .arcade-canvas {
-            background: #1d4ed8;
+            background: #581c87; /* Morado estilo Chicken Cross clásico */
             border-radius: 14px;
-            border: 2px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            border: 2px solid rgba(234, 179, 8, 0.5);
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.2);
         }
 
         /* MONEDA */
@@ -248,13 +248,13 @@
                             <h3 class="text-white fw-bold fs-5" style="font-family: 'Orbitron', sans-serif;">
                                 <i class="fa-solid fa-gamepad text-warning me-2"></i>SALÓN DE ARCADE FANTASY
                             </h3>
-                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Avanza por los carriles y retira a tiempo!</p>
+                            <p class="text-muted small mb-0">Cada partida consume <strong>10 fichas</strong>. ¡Cruza los carriles y retira tus ganancias!</p>
                         </div>
 
                         <!-- Selector de Juegos -->
                         <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab active">🛩️ AviaMasters</button>
-                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab">🐔 Chicken Road (x10)</button>
+                            <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab">🛩️ AviaMasters</button>
+                            <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Cross (x10)</button>
                             <button onclick="cambiarJuego('moneda')" id="tab-moneda" class="arcade-tab">🪙 Cara o Cruz</button>
                             <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Imposible</button>
                         </div>
@@ -391,16 +391,16 @@
                 dibujarAviaMastersFrame(1.00, 50, 150);
             } else if (juego === 'gallina') {
                 pantalla.innerHTML = `
-                    <canvas id="canvas-chickenroad" width="340" height="220" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-info fw-bold small mt-1">Nivel 0/5 | Multiplicador: 1.0x (Apuesta: 10 fichas)</div>
+                    <canvas id="canvas-chickencross" width="340" height="230" class="arcade-canvas mb-2"></canvas>
+                    <div id="estado-chicken" class="text-warning fw-bold small mt-1" style="font-family:'Orbitron'">Apuesta: 10 fichas | Multiplicador: 1.0x</div>
                 `;
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <button onclick="saltarChickenRoad()" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">SALTAR CARRIL 🐔</button>
-                        <button onclick="retirarChickenRoad()" id="btn-retirar-chicken" class="btn btn-success fw-bold px-4 py-2 shadow" style="display:none;">¡RETIRAR GANANCIAS 💰!</button>
+                        <button onclick="saltarChickenCross()" id="btn-saltar" class="btn btn-warning fw-bold px-4 py-2 text-dark shadow">HACER CLICK / SALTAR 🐔</button>
+                        <button onclick="retirarChickenCross()" id="btn-retirar" class="btn btn-danger fw-bold px-4 py-2 shadow" style="display:none;">Cashout (10.0 fichas)</button>
                     </div>
                 `;
-                iniciarChickenRoadScene();
+                iniciarChickenCrossScene();
             } else if (juego === 'moneda') {
                 pantalla.innerHTML = `
                     <div id="coin-element" class="coin-2d mb-2">🪙</div>
@@ -502,105 +502,113 @@
             }
         }
 
-        // --- 2. MOTOR CHICKEN ROAD (1.5x, 4x, 6.5x, 8x, 10x con Retirada y Azar) ---
-        let nivelChicken = 0;
-        let gananciaActualChicken = 0;
-        let autosChickenY = [-40, 60, 160];
+        // --- 2. MOTOR CHICKEN CROSS (ESTILO VIDEO TIKTOK / SHORTS) ---
+        let pasoChickenCross = 0;
+        let gananciaChickenCross = 0;
+        let autoPosH = -50;
         let intervaloChicken = null;
-        const multsVals = [1.5, 4.0, 6.5, 8.0, 10.0];
-        const multsStrs = ['1.5x', '4x', '6.5x', '8x', '10x'];
+        const multsCross = [1.54, 2.41, 4.20, 6.50, 10.00];
 
-        function iniciarChickenRoadScene() {
-            dibujarChickenFrame();
+        function iniciarChickenCrossScene() {
+            dibujarChickenCrossFrame();
             if (intervaloChicken) clearInterval(intervaloChicken);
             intervaloChicken = setInterval(() => {
-                for(let i=0; i<3; i++) {
-                    autosChickenY[i] += 6;
-                    if (autosChickenY[i] > 240) autosChickenY[i] = -50;
-                }
-                dibujarChickenFrame();
+                autoPosH += 7;
+                if (autoPosH > 350) autoPosH = -60;
+                dibujarChickenCrossFrame();
             }, 50);
         }
 
-        function dibujarChickenFrame() {
-            const canvas = document.getElementById('canvas-chickenroad');
+        function dibujarChickenCrossFrame() {
+            const canvas = document.getElementById('canvas-chickencross');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#1e293b';
+            // Fondo de la calle horizontal estilo juego del pollo
+            ctx.fillStyle = '#4c1d95';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.strokeStyle = '#64748b';
-            ctx.setLineDash([8, 8]);
-            ctx.beginPath(); ctx.moveTo(110, 0); ctx.lineTo(110, canvas.height); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(225, 0); ctx.lineTo(225, canvas.height); ctx.stroke();
+            // Líneas divisorias horizontales de carriles
+            ctx.strokeStyle = '#c084fc';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath(); ctx.moveTo(0, 75); ctx.lineTo(canvas.width, 75); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(0, 150); ctx.lineTo(canvas.width, 150); ctx.stroke();
             ctx.setLineDash([]);
 
-            // Tapas de alcantarilla con los 5 multiplicadores exactos
-            let alcantarillasX = [55, 115, 175, 235, 295];
+            // Bloques de multiplicadores horizontales (Estilo cajitas moradas con texto blanco)
+            let boxX = [20, 85, 150, 215, 280];
             for(let i=0; i<5; i++) {
-                ctx.fillStyle = '#334155';
-                ctx.beginPath(); ctx.arc(alcantarillasX[i], 110, 20, 0, Math.PI*2); ctx.fill();
-                ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.stroke();
-                ctx.fillStyle = '#facc15'; ctx.font = 'bold 10px Orbitron';
-                ctx.fillText(multsStrs[i], alcantarillasX[i] - 14, 114);
+                ctx.fillStyle = '#6b21a8';
+                ctx.fillRect(boxX[i], 90, 52, 45);
+                ctx.strokeStyle = '#facc15';
+                ctx.lineWidth = i === pasoChickenCross ? 3 : 1;
+                ctx.strokeRect(boxX[i], 90, 52, 45);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 11px Orbitron';
+                ctx.fillText(multsCross[i] + 'x', boxX[i] + 4, 118);
             }
 
-            ctx.font = '22px sans-serif';
-            ctx.fillText('🚒', 65, autosChickenY[0]);
-            ctx.fillText('🚚', 180, autosChickenY[1]);
+            // Carro circulando de forma aleatoria por la calle
+            ctx.font = '26px sans-serif';
+            ctx.fillText('🚕', autoPosH, 125);
 
-            let gallinaXPos = 15 + (nivelChicken * 58);
-            ctx.font = '24px sans-serif';
-            ctx.fillText('🐔', gallinaXPos, 116);
+            // Gallina en su posición actual sobre los carriles
+            let chickenXPos = 25 + (pasoChickenCross * 65);
+            ctx.font = '28px sans-serif';
+            ctx.fillText('🐔', chickenXPos, 125);
         }
 
-        function saltarChickenRoad() {
-            if (nivelChicken === 0) {
+        function saltarChickenCross() {
+            if (pasoChickenCross === 0) {
                 if (!actualizarHUD()) return;
                 fichas -= COSTO_PARTIDA;
                 actualizarHUD();
-                gananciaActualChicken = COSTO_PARTIDA;
+                gananciaChickenCross = COSTO_PARTIDA;
             }
 
-            // Azar real: probabilidad de choque por nivel
-            let riesgoChoque = 0.22 + (nivelChicken * 0.12);
-            if (Math.random() < riesgoChoque) {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Carro atropelló a la gallina en el carril ${nivelChicken + 1}! Perdiste ${gananciaActualChicken} fichas.</span>`;
-                nivelChicken = 0;
-                gananciaActualChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
+            // Azar real: Riesgo de atropello por el carro
+            let probabilidadChoque = 0.25 + (pasoChickenCross * 0.12);
+            if (Math.random() < probabilidadChoque) {
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡ATROPELLADO! Perdiste ${gananciaChickenCross} fichas.</span>`;
+                pasoChickenCross = 0;
+                gananciaChickenCross = 0;
+                document.getElementById('btn-retirar').style.display = 'none';
                 return;
             }
 
-            nivelChicken++;
-            let multActual = multsVals[nivelChicken - 1];
-            gananciaActualChicken = Math.floor(COSTO_PARTIDA * multActual);
+            pasoChickenCross++;
+            let mult = multsCross[pasoChickenCross - 1];
+            gananciaChickenCross = Math.floor(COSTO_PARTIDA * mult);
 
-            document.getElementById('btn-retirar-chicken').style.display = 'inline-block';
+            // Actualizar botón rojo de Cashout estilo video
+            const btnRetirar = document.getElementById('btn-retirar');
+            btnRetirar.style.display = 'inline-block';
+            btnRetirar.innerText = `Cashout (${gananciaChickenCross.toFixed(1)} Fichas)`;
 
-            if (nivelChicken >= 5) {
-                fichas += gananciaActualChicken;
+            if (pasoChickenCross >= 5) {
+                fichas += gananciaChickenCross;
                 actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste al multiplicador x10 final! Ganaste +${gananciaActualChicken} fichas.</span>`;
-                nivelChicken = 0;
-                gananciaActualChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Meta alcanzada (x10)! Ganaste +${gananciaChickenCross} fichas.</span>`;
+                pasoChickenCross = 0;
+                gananciaChickenCross = 0;
+                btnRetirar.style.display = 'none';
             } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 ¡Nivel ${nivelChicken}/5 superado (${multsStrs[nivelChicken-1]})! Acumulado: ${gananciaActualChicken} fichas. ¿Continuar o Retirar?</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">✨ ¡Paso ${pasoChickenCross}/5 exitoso! Multiplicador: ${mult}x</span>`;
             }
         }
 
-        function retirarChickenRoad() {
-            if (nivelChicken > 0 && gananciaActualChicken > 0) {
-                fichas += gananciaActualChicken;
+        function retirarChickenCross() {
+            if (pasoChickenCross > 0 && gananciaChickenCross > 0) {
+                fichas += gananciaChickenCross;
                 actualizarHUD();
-                alert(`🎉 ¡Retiro exitoso! Sumaste +${gananciaActualChicken} fichas a tu balance.`);
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">💰 ¡Retirado con éxito! Inicia una nueva ronda.</span>`;
-                nivelChicken = 0;
-                gananciaActualChicken = 0;
-                document.getElementById('btn-retirar-chicken').style.display = 'none';
+                alert(`🎉 ¡Cobro exitoso! Sumaste +${gananciaChickenCross} fichas a tu balance.`);
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">💰 ¡Cashout completado con éxito!</span>`;
+                pasoChickenCross = 0;
+                gananciaChickenCross = 0;
+                document.getElementById('btn-retirar').style.display = 'none';
             }
         }
 
@@ -741,7 +749,7 @@
 
         // Inicialización
         cargarCasinos();
-        cambiarJuego('avion');
+        cambiarJuego('gallina');
     </script>
 </body>
 </html>
