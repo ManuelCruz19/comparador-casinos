@@ -141,6 +141,32 @@
             box-shadow: 0 0 20px rgba(79, 70, 229, 0.8);
         }
 
+        /* SELECTOR DE APUESTA */
+        .bet-selector {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #4f46e5;
+            border-radius: 12px;
+            padding: 8px 15px;
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bet-btn {
+            background: #1e1b4b;
+            border: 1px solid #818cf8;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .bet-btn.active {
+            background: #4f46e5;
+            border-color: #38bdf8;
+        }
+
         /* TARJETAS DE BLACKJACK */
         .card-table-ui {
             display: flex;
@@ -276,6 +302,17 @@
                             </button>
                         </div>
 
+                        <!-- Selector de Apuesta -->
+                        <div class="text-center">
+                            <div class="bet-selector">
+                                <span class="text-white small fw-bold">Apuesta:</span>
+                                <button onclick="cambiarApuesta(10)" class="bet-btn active" id="b-10">10f</button>
+                                <button onclick="cambiarApuesta(20)" class="bet-btn" id="b-20">20f</button>
+                                <button onclick="cambiarApuesta(50)" class="bet-btn" id="b-50">50f</button>
+                                <button onclick="cambiarApuesta(100)" class="bet-btn" id="b-100">100f</button>
+                            </div>
+                        </div>
+
                         <!-- Selector de Juegos -->
                         <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
                             <button onclick="cambiarJuego('blackjack')" id="tab-blackjack" class="arcade-tab active">🃏 Blackjack Pro</button>
@@ -304,7 +341,7 @@
                     </div>
                 </section>
 
-                <!-- LISTA DE CASINOS AMPLIADA Y REAL -->
+                <!-- LISTA DE CASINOS CON ENLACES REALES -->
                 <main class="mb-5">
                     <h2 class="h5 fw-bold mb-4 text-white"><i class="fa-solid fa-ranking-star text-warning me-2"></i>Casinos Online Autorizados en México</h2>
                     <div id="lista-casinos" class="row g-4">
@@ -332,7 +369,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let fichas = 100;
-        const COSTO_PARTIDA = 10;
+        let apuestaActual = 10;
+        let juegoActivo = 'blackjack';
 
         function actualizarHUD() {
             document.getElementById('saldo-fichas').innerText = fichas;
@@ -350,21 +388,32 @@
             return true;
         }
 
+        function cambiarApuesta(monto) {
+            if (monto > fichas) {
+                alert("No tienes suficientes fichas para esta apuesta.");
+                return;
+            }
+            apuestaActual = monto;
+            document.querySelectorAll('.bet-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`b-${monto}`).classList.add('active');
+        }
+
         function toggleFullScreen() {
             const contenedor = document.getElementById('arcade-container');
             contenedor.classList.toggle('fullscreen-mode');
         }
 
+        // Listado ampliado con enlaces reales a los sitios oficiales de los casinos
         const casinosReales = [
-            { id: 'caliente', nombre: 'Caliente Casino', calificacion: '4.8', bono: '$1,000 MXN sin depósito + 100%', metodos_pago: 'SPEI, OXXO, Tarjetas' },
-            { id: 'codere', nombre: 'Codere México', calificacion: '4.7', bono: 'Hasta $5,000 MXN en apuestas', metodos_pago: 'SPEI, OXXO Pay, Efectivo' },
-            { id: 'winpot', nombre: 'Winpot Casino', calificacion: '4.6', bono: '$500 MXN gratis + Bono de bienvenida', metodos_pago: 'SPEI, STP, OXXO' },
-            { id: 'novibet', nombre: 'Novibet', calificacion: '4.6', bono: '100% hasta $4,000 MXN + giros', metodos_pago: 'SPEI, Tarjetas Bancarias' },
-            { id: 'playuzu', nombre: 'PlayUZU', calificacion: '4.5', bono: '80 Giros sin requisito de apuesta', metodos_pago: 'SPEI, PayPal, Tarjetas' },
-            { id: 'strendus', nombre: 'Strendus', calificacion: '4.5', bono: '$600 MXN de regalo al registrarte', metodos_pago: 'SPEI, OXXO, CoDi' },
-            { id: '1xbet', nombre: '1xBet México', calificacion: '4.4', bono: 'Bono del 100% en primer depósito', metodos_pago: 'SPEI, Criptomonedas, Tarjetas' },
-            { id: 'betway', nombre: 'Betway', calificacion: '4.4', bono: 'Apuestas iniales aseguradas', metodos_pago: 'SPEI, Neteller, Tarjetas' },
-            { id: 'bigbola', nombre: 'Big Bola', calificacion: '4.3', bono: 'Bono exclusivo de bienvenida', metodos_pago: 'SPEI, Tarjetas bancarias' }
+            { id: 'caliente', nombre: 'Caliente Casino', calificacion: '4.8', bono: '$1,000 MXN sin depósito + 100%', metodos_pago: 'SPEI, OXXO, Tarjetas', url: 'https://www.caliente.mx' },
+            { id: 'codere', nombre: 'Codere México', calificacion: '4.7', bono: 'Hasta $5,000 MXN en apuestas', metodos_pago: 'SPEI, OXXO Pay, Efectivo', url: 'https://www.codere.mx' },
+            { id: 'winpot', nombre: 'Winpot Casino', calificacion: '4.6', bono: '$500 MXN gratis + Bono de bienvenida', metodos_pago: 'SPEI, STP, OXXO', url: 'https://www.winpot.mx' },
+            { id: 'novibet', nombre: 'Novibet', calificacion: '4.6', bono: '100% hasta $4,000 MXN + giros', metodos_pago: 'SPEI, Tarjetas Bancarias', url: 'https://www.novibet.mx' },
+            { id: 'playuzu', nombre: 'PlayUZU', calificacion: '4.5', bono: '80 Giros sin requisito de apuesta', metodos_pago: 'SPEI, PayPal, Tarjetas', url: 'https://www.playuzu.mx' },
+            { id: 'strendus', nombre: 'Strendus', calificacion: '4.5', bono: '$600 MXN de regalo al registrarte', metodos_pago: 'SPEI, OXXO, CoDi', url: 'https://www.strendus.com.mx' },
+            { id: '1xbet', nombre: '1xBet México', calificacion: '4.4', bono: 'Bono del 100% en primer depósito', metodos_pago: 'SPEI, Criptomonedas, Tarjetas', url: 'https://1xbet.com.mx' },
+            { id: 'betway', nombre: 'Betway', calificacion: '4.4', bono: 'Apuestas iniciales aseguradas', metodos_pago: 'SPEI, Neteller, Tarjetas', url: 'https://betway.mx' },
+            { id: 'bigbola', nombre: 'Big Bola', calificacion: '4.3', bono: 'Bono exclusivo de bienvenida', metodos_pago: 'SPEI, Tarjetas bancarias', url: 'https://www.bigbola.com' }
         ];
 
         function cargarCasinos() {
@@ -390,7 +439,7 @@
                                 </div>
                                 <p class="text-muted small mb-4"><strong>Pagos:</strong> ${casino.metodos_pago}</p>
                             </div>
-                            <a href="#" class="btn btn-claim shadow-sm text-center">Reclamar Bono ↗</a>
+                            <a href="${casino.url}" target="_blank" class="btn btn-claim shadow-sm text-center">Reclamar Bono ↗</a>
                         </div>
                     </div>
                 `;
@@ -398,7 +447,7 @@
         }
 
         function cambiarJuego(juego) {
-            if (fichas <= 0) return;
+            juegoActivo = juego;
             document.querySelectorAll('.arcade-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(`tab-${juego}`).classList.add('active');
 
@@ -415,7 +464,8 @@
 
         function iniciarBlackjack() {
             if (!actualizarHUD()) return;
-            fichas -= COSTO_PARTIDA;
+            if (apuestaActual > fichas) { alert("Apuesta mayor a tus fichas disponibles."); return; }
+            fichas -= apuestaActual;
             actualizarHUD();
             bjActivo = true;
 
@@ -461,7 +511,7 @@
                     <div class="card-table-ui">
                         ${bjJugador.map(c => `<div class="playing-card">${c}</div>`).join('')}
                     </div>
-                    <div id="estado-bj" class="text-info fw-bold small mt-2">Toma una decisión estratégica</div>
+                    <div id="estado-bj" class="text-info fw-bold small mt-2">Apuesta actual: ${apuestaActual} fichas</div>
                 </div>
             `;
 
@@ -473,7 +523,7 @@
                     </div>
                 `;
             } else {
-                contenedorBtn.innerHTML = `<button onclick="iniciarBlackjack()" class="btn btn-success fw-bold px-4 py-2 shadow">Nueva Partida (-10f) 🔄</button>`;
+                contenedorBtn.innerHTML = `<button onclick="iniciarBlackjack()" class="btn btn-success fw-bold px-4 py-2 shadow">Nueva Partida (${apuestaActual}f) 🔄</button>`;
             }
         }
 
@@ -485,7 +535,7 @@
 
             if (p > 21) {
                 bjActivo = false;
-                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">💥 ¡Te pasaste de 21! Perdiste la apuesta.</span>`;
+                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">💥 ¡Te pasaste de 21! Perdiste ${apuestaActual} fichas.</span>`;
                 renderizarBlackjack();
             }
         }
@@ -494,7 +544,6 @@
             if (!bjActivo) return;
             bjActivo = false;
 
-            // Turno de la IA del Crupier
             while (calcularPuntajeBJ(bjCrupier) < 17) {
                 bjCrupier.push(obtenerCartaAleatoria());
             }
@@ -505,29 +554,30 @@
             renderizarBlackjack();
 
             if (pCrup > 21 || pJug > pCrup) {
-                let premio = COSTO_PARTIDA * 2;
+                let premio = apuestaActual * 2;
                 fichas += premio;
                 actualizarHUD();
                 document.getElementById('estado-bj').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste el Blackjack! +${premio} fichas.</span>`;
             } else if (pJug === pCrup) {
-                fichas += COSTO_PARTIDA;
+                fichas += apuestaActual;
                 actualizarHUD();
                 document.getElementById('estado-bj').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
             } else {
-                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">🤖 El Crupier ganó. Suerte la próxima.</span>`;
+                document.getElementById('estado-bj').innerHTML = `<span class="text-danger fw-bold">🤖 El Crupier ganó. Perdiste ${apuestaActual} fichas.</span>`;
             }
         }
 
-        // --- 2. DUELO DE PENALES ---
+        // --- 2. DUELO DE PENALES (Fallo instantáneo) ---
         let gananciaPenal = 0;
         let rondaPenal = 0;
 
         function iniciarPenales() {
             if (!actualizarHUD()) return;
-            fichas -= COSTO_PARTIDA;
+            if (apuestaActual > fichas) { alert("Apuesta mayor a tus fichas disponibles."); return; }
+            fichas -= apuestaActual;
             actualizarHUD();
             rondaPenal = 1;
-            gananciaPenal = COSTO_PARTIDA;
+            gananciaPenal = apuestaActual;
             renderizarPenales('¡Elige a dónde patear el penal!');
         }
 
@@ -551,12 +601,25 @@
         }
 
         function patearPenal(zonaElegida) {
+            if (rondaPenal === 0) return;
             const zonasIA = ['Izquierda', 'Centro', 'Derecha'];
             const paradaIA = zonasIA[Math.floor(Math.random() * zonasIA.length)];
 
             if (zonaElegida === paradaIA) {
-                renderizarPenales(`❌ ¡El portero se tiró a la ${paradaIA} y atajó tu penal! Perdiste ${gananciaPenal}f.`);
+                // ¡Fallo instantáneo! Se pierden las ganancias de inmediato
                 rondaPenal = 0;
+                gananciaPenal = 0;
+                const pantalla = document.getElementById('pantalla-juego');
+                const contenedorBtn = document.getElementById('contenedor-boton-accion');
+                pantalla.innerHTML = `
+                    <div class="p-2">
+                        <div class="goal-container" style="background: rgba(239, 68, 68, 0.2);">
+                            <div class="d-flex align-items-center justify-content-center h-100 text-danger fw-bold fs-3">ATAJADO ❌</div>
+                        </div>
+                        <div class="text-danger fw-bold small">💥 El portero adivinó tu disparo a la ${paradaIA}. ¡Perdiste tu apuesta!</div>
+                    </div>
+                `;
+                contenedorBtn.innerHTML = `<button onclick="iniciarPenales()" class="btn btn-warning btn-sm fw-bold text-dark">Jugar de Nuevo (${apuestaActual}f)</button>`;
             } else {
                 gananciaPenal = Math.floor(gananciaPenal * 1.5);
                 rondaPenal++;
@@ -565,10 +628,10 @@
         }
 
         function retirarPenales() {
-            if (gananciaPenal > 0) {
+            if (gananciaPenal > 0 && rondaPenal > 0) {
                 fichas += gananciaPenal;
                 actualizarHUD();
-                alert(`🎉 ¡Cobro exitoso! +${gananciaPenal} fichas.`);
+                alert(`🎉 ¡Cobro exitoso! +${gananciaPenal} fichas añadidas.`);
                 iniciarPenales();
             }
         }
@@ -607,11 +670,12 @@
 
         function iniciarMinasJuego() {
             if (!actualizarHUD()) return;
-            fichas -= COSTO_PARTIDA;
+            if (apuestaActual > fichas) { alert("Apuesta mayor a tus fichas disponibles."); return; }
+            fichas -= apuestaActual;
             actualizarHUD();
             minasActivo = true;
             minasDescubiertas = 0;
-            premioActualMinas = COSTO_PARTIDA;
+            premioActualMinas = apuestaActual;
 
             minasTablero = Array(16).fill(false);
             let colocadas = 0;
@@ -632,7 +696,7 @@
             pantalla.innerHTML = gridHTML;
             contenedorBtn.innerHTML = `
                 <div class="d-flex justify-content-center gap-2 mt-2 align-items-center flex-wrap">
-                    <span id="estado-minas" class="text-info small fw-bold">Estrellas: 0 | Acumulado: 10f</span>
+                    <span id="estado-minas" class="text-info small fw-bold">Estrellas: 0 | Acumulado: ${apuestaActual}f</span>
                     <button onclick="retirarMinas()" id="btn-retirar-minas" class="btn btn-success btn-sm fw-bold" style="display:none;">CASHOUT 💰</button>
                     <button onclick="prepararMinasJuego()" class="btn btn-outline-danger btn-sm fw-bold">🔄 Reiniciar</button>
                 </div>
@@ -647,7 +711,7 @@
             if (minasTablero[index]) {
                 celda.innerText = '💣';
                 celda.style.background = '#7f1d1d';
-                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Bomba! Perdiste.</span>`;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Bomba! Perdiste ${apuestaActual} fichas.</span>`;
                 minasActivo = false;
                 document.getElementById('btn-retirar-minas').style.display = 'none';
             } else {
@@ -679,10 +743,11 @@
 
         function iniciarGatoImposible() {
             if (!actualizarHUD()) return;
+            if (apuestaActual > fichas) { alert("Apuesta mayor a tus fichas disponibles."); return; }
+            fichas -= apuestaActual;
+            actualizarHUD();
             gatoActivo = true;
             tableroGato = Array(9).fill('');
-            fichas -= COSTO_PARTIDA;
-            actualizarHUD();
 
             const pantalla = document.getElementById('pantalla-juego');
             const contenedorBtn = document.getElementById('contenedor-boton-accion');
@@ -703,7 +768,7 @@
             actualizarVisualGato();
 
             if (verificarGanador(tableroGato, 'X')) {
-                let premio = 50;
+                let premio = apuestaActual * 2.5;
                 fichas += premio;
                 actualizarHUD();
                 document.getElementById('estado-gato').innerHTML = `<span class="text-success fw-bold">🏆 ¡Imposible! Le ganaste a la IA (+${premio}f)</span>`;
@@ -713,7 +778,7 @@
 
             if (!tableroGato.includes('')) {
                 document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
-                fichas += COSTO_PARTIDA;
+                fichas += apuestaActual;
                 actualizarHUD();
                 gatoActivo = false;
                 return;
@@ -727,11 +792,11 @@
                     actualizarVisualGato();
 
                     if (verificarGanador(tableroGato, 'O')) {
-                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA invencible ganó. Perdiste.</span>`;
+                        document.getElementById('estado-gato').innerHTML = `<span class="text-danger fw-bold">🤖 La IA invencible ganó. Perdiste ${apuestaActual}f.</span>`;
                         gatoActivo = false;
                     } else if (!tableroGato.includes('')) {
                         document.getElementById('estado-gato').innerHTML = `<span class="text-warning fw-bold">🤝 ¡Empate! Fichas devueltas.</span>`;
-                        fichas += COSTO_PARTIDA;
+                        fichas += apuestaActual;
                         actualizarHUD();
                         gatoActivo = false;
                     }
