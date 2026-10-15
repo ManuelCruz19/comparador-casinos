@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Top Casinos Online México 2026 | Bonos Gratis & Minijuegos Arcade</title>
-    <meta name="description" content="Compara los mejores casinos online autorizados en México. Reclama bonos sin depósito, pagos rápidos por SPEI y juega gratis a minijuegos arcade 2D.">
+    <title>Top Casinos Online México 2026 | Bonos Gratis & Minijuegos Arcade 3D</title>
+    <meta name="description" content="Compara los mejores casinos online autorizados en México. Reclama bonos sin depósito, pagos rápidos por SPEI y juega gratis a minijuegos arcade 3D de alta gama.">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-92DGVM5HR9"></script>
@@ -24,7 +24,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #05070b;
+            background-color: #030712;
             color: #f8fafc;
             overflow-x: hidden;
             margin: 0;
@@ -32,12 +32,12 @@
         }
         .text-muted { color: #94a3b8 !important; }
         .navbar {
-            background: rgba(5, 7, 11, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .hero-section {
-            background: radial-gradient(circle at top, #1e1b4b 0%, #05070b 70%);
+            background: radial-gradient(circle at top, #312e81 0%, #030712 70%);
             padding: 20px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -62,14 +62,14 @@
         }
         .bonus-text { color: #38bdf8; font-weight: 700; }
 
-        /* BANCO DE FICHAS HUD */
+        /* BANCO DE FICHAS HUD 3D */
         .wallet-hud {
             background: linear-gradient(135deg, #1e1b4b, #0f172a);
             border: 2px solid #38bdf8;
             border-radius: 50rem;
             padding: 6px 18px;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
         }
 
         /* ANUNCIOS */
@@ -94,12 +94,12 @@
             margin-bottom: 20px;
         }
 
-        /* ZONA ARCADE & MODO FULLSCREEN */
+        /* ZONA ARCADE ESTILO APLICACIÓN 3D */
         .arcade-wrapper {
             background: linear-gradient(145deg, #0f172a, #1e1b4b);
             border: 2px solid #6366f1;
             border-radius: 24px;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 50px rgba(79, 70, 229, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.15);
             padding: 20px;
             position: relative;
         }
@@ -113,16 +113,17 @@
             background: #030712;
         }
         .game-stage-2d {
-            background: #0b0f19;
-            border: 2px solid rgba(99, 102, 241, 0.5);
+            background: radial-gradient(circle, #0f172a 0%, #030712 100%);
+            border: 2px solid rgba(99, 102, 241, 0.6);
             border-radius: 18px;
-            min-height: 310px;
+            min-height: 320px;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            box-shadow: inset 0 10px 20px rgba(0, 0, 20, 0.8);
         }
         .arcade-tab {
             background: #111827;
@@ -133,66 +134,76 @@
             padding: 8px 14px;
             transition: 0.2s;
             font-size: 0.85rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .arcade-tab.active {
-            background: #4f46e5;
+            background: linear-gradient(135deg, #4f46e5, #3730a3);
             color: #ffffff;
             border-color: #818cf8;
-            box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.8), inset 0 2px 3px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* CANVAS */
+        /* CANVAS 3D ESTILO APP */
         .arcade-canvas {
-            background: #1e1b4b;
+            background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
             border-radius: 14px;
-            border: 2px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            border: 2px solid rgba(56, 189, 248, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(56, 189, 248, 0.3);
         }
 
-        /* JUEGO DE MINAS GRID */
+        /* JUEGO DE MINAS 3D GRID */
         .mines-grid {
             display: grid;
-            grid-template-columns: repeat(4, 55px);
-            grid-template-rows: repeat(4, 55px);
-            gap: 8px;
+            grid-template-columns: repeat(4, 58px);
+            grid-template-rows: repeat(4, 58px);
+            gap: 10px;
             justify-content: center;
         }
         .mine-cell {
-            background: #1e1b4b;
+            background: linear-gradient(145deg, #1e1b4b, #111827);
             border: 2px solid #6366f1;
-            border-radius: 12px;
-            font-size: 1.6rem;
+            border-radius: 14px;
+            font-size: 1.7rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.2s;
-            box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.3);
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.15);
         }
         .mine-cell:hover {
-            background: #312e81;
+            background: linear-gradient(145deg, #312e81, #1e1b4b);
             border-color: #38bdf8;
-            transform: scale(1.05);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
         }
 
-        /* GATO PRO */
+        /* GATO PRO 3D */
         .tictactoe-grid {
             display: grid;
-            grid-template-columns: repeat(3, 70px);
-            grid-template-rows: repeat(3, 70px);
-            gap: 8px;
+            grid-template-columns: repeat(3, 72px);
+            grid-template-rows: repeat(3, 72px);
+            gap: 10px;
         }
         .tictactoe-cell {
-            background: #111827;
+            background: linear-gradient(145deg, #111827, #0f172a);
             border: 2px solid #4f46e5;
-            border-radius: 12px;
-            font-size: 2rem;
+            border-radius: 14px;
+            font-size: 2.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             color: #38bdf8;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.1);
+            transition: 0.2s;
+        }
+        .tictactoe-cell:hover {
+            transform: translateY(-2px);
+            border-color: #38bdf8;
+            box-shadow: 0 8px 15px rgba(56,189,248,0.3);
         }
     </style>
 </head>
@@ -221,8 +232,8 @@
     <!-- Header -->
     <header class="hero-section text-center">
         <div class="container">
-            <h1 class="h5 fw-bold mb-1 text-white">Zona Arcade & Casinos Autorizados</h1>
-            <p class="text-muted small mx-auto mb-0" style="max-width: 500px;">Juega con tus 100 fichas virtuales en pantalla completa.</p>
+            <h1 class="h5 fw-bold mb-1 text-white">Zona Arcade 3D & Casinos Autorizados</h1>
+            <p class="text-muted small mx-auto mb-0" style="max-width: 500px;">Disfruta de la experiencia inmersiva en pantalla completa.</p>
         </div>
     </header>
 
@@ -265,12 +276,12 @@
             <!-- CONTENIDO CENTRAL -->
             <div class="col-lg-8">
 
-                <!-- 🎮 ZONA ARCADE 2D 🎮 -->
+                <!-- 🎮 ZONA ARCADE 3D 🎮 -->
                 <section class="mb-5">
                     <div id="arcade-container" class="arcade-wrapper">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h3 class="text-white fw-bold fs-6 mb-0" style="font-family: 'Orbitron', sans-serif;">
-                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CHICKEN MASTER & MINAS
+                                <i class="fa-solid fa-gamepad text-warning me-1"></i>CASINO ARCADE 3D
                             </h3>
                             <button onclick="toggleFullScreen()" class="btn btn-sm btn-dark text-info border border-info">
                                 <i class="fa-solid fa-expand me-1"></i> Fullscreen
@@ -281,11 +292,11 @@
                         <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
                             <button onclick="cambiarJuego('gallina')" id="tab-gallina" class="arcade-tab active">🐔 Chicken Master</button>
                             <button onclick="cambiarJuego('avion')" id="tab-avion" class="arcade-tab">🛩️ AviaMasters</button>
-                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas & Bombas</button>
+                            <button onclick="cambiarJuego('minas')" id="tab-minas" class="arcade-tab">💎 Minas & Estrellas</button>
                             <button onclick="cambiarJuego('gato')" id="tab-gato" class="arcade-tab">❌ Gato Pro</button>
                         </div>
 
-                        <!-- Escenario 2D -->
+                        <!-- Escenario 2D / 3D -->
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
                                 <div id="pantalla-juego" class="game-stage-2d text-center p-3 mb-2">
@@ -402,7 +413,7 @@
             if (juego === 'gallina') {
                 pantalla.innerHTML = `
                     <canvas id="canvas-chickenmaster" width="320" height="220" class="arcade-canvas mb-2"></canvas>
-                    <div id="estado-chicken" class="text-warning fw-bold small">Apuesta: 10 fichas | Nivel 0/5 (1.0x) - Calle tranquila</div>
+                    <div id="estado-chicken" class="text-warning fw-bold small">Apuesta: 10 fichas | 5 Carriles 3D (Calle tranquila)</div>
                 `;
                 contenedorBtn.innerHTML = `
                     <div class="d-flex justify-content-center gap-2">
@@ -434,7 +445,7 @@
             vueloAviaActivo = false;
         }
 
-        // --- 1. CHICKEN MASTER (5 Carriles, Tráfico Tranquilo, Azar en el Salto) ---
+        // --- 1. CHICKEN MASTER 3D (5 CARRILES Y AZAR EN EL SALTO) ---
         let nivelChicken = 0;
         let gananciaChicken = 0;
         let autoY = -60;
@@ -443,35 +454,39 @@
         const multsChickenVals = [1.15, 1.37, 1.64, 2.10, 3.50];
 
         function iniciarChickenMasterScene() {
-            dibujarChickenMasterFrame();
+            dibujarChickenMasterSceneFrame();
             if (intervaloChicken) clearInterval(intervaloChicken);
-            // Calle mayormente tranquila; el carro pasa ocasionalmente
             intervaloChicken = setInterval(() => {
                 if (carroAtropellando) {
                     autoY += 12;
                     if (autoY > 260) { autoY = -60; carroAtropellando = false; }
                 }
-                dibujarChickenMasterFrame();
+                dibujarChickenMasterSceneFrame();
             }, 50);
         }
 
-        function dibujarChickenMasterFrame() {
+        function dibujarChickenMasterSceneFrame() {
             const canvas = document.getElementById('canvas-chickenmaster');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Fondo de la pista con carriles
-            ctx.fillStyle = '#0f172a';
+            // Fondo 3D asfalto con profundidad
+            let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            grad.addColorStop(0, '#1e1b4b');
+            grad.addColorStop(1, '#0f172a');
+            ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Líneas de carretera 3D
             ctx.strokeStyle = '#38bdf8';
-            ctx.setLineDash([6, 6]);
+            ctx.lineWidth = 2;
+            ctx.setLineDash([8, 8]);
             ctx.beginPath(); ctx.moveTo(106, 0); ctx.lineTo(106, canvas.height); ctx.stroke();
             ctx.beginPath(); ctx.moveTo(213, 0); ctx.lineTo(213, canvas.height); ctx.stroke();
             ctx.setLineDash([]);
 
-            // 5 Carriles / Niveles distribuidos idéntico a tu captura
+            // 5 Carriles / Niveles 3D
             let coordsCarriles = [
                 {x: 53, y: 35, mult: '1.15x'},
                 {x: 160, y: 75, mult: '1.37x'},
@@ -482,22 +497,21 @@
 
             for(let i=0; i<5; i++) {
                 let c = coordsCarriles[i];
-                ctx.fillStyle = i === nivelChicken ? '#312e81' : '#1e293b';
+                ctx.fillStyle = i === nivelChicken ? '#4f46e5' : '#1e293b';
                 ctx.fillRect(c.x - 24, c.y - 15, 48, 30);
                 ctx.strokeStyle = i === nivelChicken ? '#38bdf8' : '#f59e0b';
+                ctx.lineWidth = i === nivelChicken ? 3 : 1;
                 ctx.strokeRect(c.x - 24, c.y - 15, 48, 30);
                 ctx.fillStyle = '#facc15';
                 ctx.font = 'bold 11px Orbitron';
                 ctx.fillText(c.mult, c.x - 18, c.y + 4);
             }
 
-            // Carro ocasional en la pista
             if (carroAtropellando) {
-                ctx.font = '24px sans-serif';
+                ctx.font = '26px sans-serif';
                 ctx.fillText('🚙', 145, autoY);
             }
 
-            // Posición de la gallina según el nivel actual (0 al 5)
             let chickenPos = [
                 {x: 20, y: 195},
                 {x: 53, y: 35},
@@ -507,7 +521,7 @@
                 {x: 53, y: 195}
             ];
             let pos = chickenPos[nivelChicken];
-            ctx.font = '26px sans-serif';
+            ctx.font = '28px sans-serif';
             ctx.fillText('🐔', pos.x - 12, pos.y + 6);
         }
 
@@ -519,11 +533,10 @@
                 gananciaChicken = COSTO_PARTIDA;
             }
 
-            // Azar real al dar el salto: 25% de probabilidad de que cruce un carro y la atropelle
             if (Math.random() < 0.25) {
                 carroAtropellando = true;
                 autoY = -40;
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Un carro apareció de la nada y atropelló a la gallina! Perdiste ${gananciaChicken} fichas.</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-danger fw-bold">💥 ¡Atropellado! Perdiste ${gananciaChicken} fichas.</span>`;
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
@@ -538,12 +551,12 @@
             if (nivelChicken >= 5) {
                 fichas += gananciaChicken;
                 actualizarHUD();
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Llegaste a la meta (3.5x)! Ganaste +${gananciaChicken} fichas.</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${gananciaChicken} fichas en la meta!</span>`;
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
             } else {
-                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 Nivel ${nivelChicken}/5 superado (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f. ¿Saltar o Retirar?</span>`;
+                document.getElementById('estado-chicken').innerHTML = `<span class="text-warning fw-bold">👍 Nivel ${nivelChicken}/5 (${multsChickenVals[nivelChicken-1]}x). Acumulado: ${gananciaChicken}f</span>`;
             }
         }
 
@@ -551,7 +564,7 @@
             if (nivelChicken > 0 && gananciaChicken > 0) {
                 fichas += gananciaChicken;
                 actualizarHUD();
-                alert(`🎉 ¡Retiro exitoso! +${gananciaChicken} fichas añadidas a tu balance.`);
+                alert(`🎉 ¡Retiro exitoso! +${gananciaChicken} fichas.`);
                 nivelChicken = 0;
                 gananciaChicken = 0;
                 document.getElementById('btn-retirar-chicken').style.display = 'none';
@@ -559,7 +572,7 @@
             }
         }
 
-        // --- 2. AVIAMASTERS ---
+        // --- 2. AVIAMASTERS 3D ---
         let intervaloAvia = null;
         let vueloAviaActivo = false;
 
@@ -568,11 +581,14 @@
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#1e3a8a';
+            let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            grad.addColorStop(0, '#1e3a8a');
+            grad.addColorStop(1, '#0f172a');
+            ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#475569';
             ctx.fillRect(10, 160, 100, 20);
-            ctx.font = '28px sans-serif';
+            ctx.font = '30px sans-serif';
             ctx.fillText('🛩️', x, y);
         }
 
@@ -621,7 +637,7 @@
             }
         }
 
-        // --- 3. JUEGO DE MINAS (Con opción de bombas y Cashout con ganancias) ---
+        // --- 3. JUEGO DE MINAS 3D (Con selector de bombas, Cashout y botón Reiniciar) ---
         let minasTablero = Array(16).fill(false);
         let minasDescubiertas = 0;
         let minasActivo = false;
@@ -648,8 +664,8 @@
 
         function configurarBombas(n) {
             cantidadBombas = n;
-            document.querySelectorAll('.btn-outline-info, .btn-info, .btn-outline-warning, .btn-warning').forEach(b => {
-                if(b.id.startsWith('b-')) b.className = "btn btn-sm btn-outline-secondary";
+            document.querySelectorAll('.btn-outline-info, .btn-info, .btn-outline-warning').forEach(b => {
+                if(b.id && b.id.startsWith('b-')) b.className = "btn btn-sm btn-outline-secondary";
             });
             document.getElementById(`b-${n}`).className = "btn btn-sm btn-info active";
         }
@@ -680,9 +696,10 @@
 
             pantalla.innerHTML = gridHTML;
             contenedorBtn.innerHTML = `
-                <div class="d-flex justify-content-center gap-2 mt-2 align-items-center">
+                <div class="d-flex justify-content-center gap-2 mt-2 align-items-center flex-wrap">
                     <span id="estado-minas" class="text-info small fw-bold">Estrellas: 0 | Acumulado: 10f</span>
                     <button onclick="retirarMinas()" id="btn-retirar-minas" class="btn btn-success btn-sm fw-bold" style="display:none;">CASHOUT 💰</button>
+                    <button onclick="prepararMinasJuego()" class="btn btn-outline-danger btn-sm fw-bold">🔄 Volver a Empezar</button>
                 </div>
             `;
         }
@@ -695,14 +712,13 @@
             if (minasTablero[index]) {
                 celda.innerText = '💣';
                 celda.style.background = '#7f1d1d';
-                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Pisaste una bomba! Perdiste todo.</span>`;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-danger fw-bold">💥 ¡Bomba! Perdiste la partida.</span>`;
                 minasActivo = false;
                 document.getElementById('btn-retirar-minas').style.display = 'none';
             } else {
                 celda.innerText = '⭐';
                 celda.style.background = '#065f46';
                 minasDescubiertas++;
-                // Multiplicador aumenta más conforme hay más bombas
                 let multFactor = 1.25 + (cantidadBombas * 0.15);
                 premioActualMinas = Math.floor(premioActualMinas * multFactor);
 
@@ -712,7 +728,7 @@
                 if (minasDescubiertas >= (16 - cantidadBombas)) {
                     fichas += premioActualMinas;
                     actualizarHUD();
-                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${premioActualMinas} fichas al encontrar todas las estrellas!</span>`;
+                    document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">🏆 ¡Ganaste +${premioActualMinas} fichas!</span>`;
                     minasActivo = false;
                     document.getElementById('btn-retirar-minas').style.display = 'none';
                 }
@@ -723,15 +739,15 @@
             if (minasActivo && premioActualMinas > 0) {
                 fichas += premioActualMinas;
                 actualizarHUD();
-                alert(`🎉 ¡Retiro exitoso de Minas! Ganaste +${premioActualMinas} fichas.`);
+                alert(`🎉 ¡Retiraste con éxito! +${premioActualMinas} fichas añadidas.`);
                 minasActivo = false;
-                document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">💰 Retirado con éxito. Inicia otra partida.</span>`;
+                document.getElementById('estado-minas').innerHTML = `<span class="text-success fw-bold">💰 Retirado con éxito.</span>`;
                 document.getElementById('btn-retirar-minas').style.display = 'none';
             }
         }
 
-        // --- 4. GATO PRO ---
-        let tableroGato = ['', '', '', '', '', '', '', '', ''];
+        // --- 4. GATO PRO 3D ---
+        let tableroGato = Array(9).fill('');
         let gatoActivo = true;
 
         function iniciarGatoImposible() {
@@ -748,7 +764,7 @@
                 <div class="tictactoe-grid mb-2" id="grid-gato" style="margin: 0 auto;">
                     ${Array(9).fill(0).map((_, i) => `<div class="tictactoe-cell" onclick="jugarGato(${i})"></div>`).join('')}
                 </div>
-                <div id="estado-gato" class="text-info small fw-bold">Gana a la IA para duplicar (+20f) 🤖</div>
+                <div id="estado-gato" class="text-info small fw-bold">Gana a la IA para duplicar (+25f) 🤖</div>
             `;
             contenedorBtn.innerHTML = `<button onclick="iniciarGatoImposible()" class="btn btn-outline-info btn-sm px-3">Reiniciar 🔄</button>`;
         }
